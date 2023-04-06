@@ -4,8 +4,8 @@ from flask import request
 #Datos de prueba en JSON
 
 USUARIOS = {
-    1: {'nombre':'Boby', 'raza':'Obejero Aleman'},
-    2: {'nombre':'Peter', 'raza':'Caniche'}
+    1: {'nombre':'Juan', 'tipo_empleado':'Administrador'},
+    2: {'nombre':'Pedro', 'tipo_empleado':'Administrador'}
 }
 
 

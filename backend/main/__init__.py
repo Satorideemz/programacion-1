@@ -18,6 +18,7 @@ def create_app():
     load_dotenv()
     #cargar a la API el recurso Animales y especificar la ruta 
     api.add_resource(resources.UsuariosResource, '/usuarios')
+    api.add_resource(resources.UsuariosAlumnosResource, '/usuariosalumnos')
     #cargar a la API el recurso Animal y especificar la ruta 
     api.add_resource(resources.UsuarioResource, '/usuario/<id>')
     

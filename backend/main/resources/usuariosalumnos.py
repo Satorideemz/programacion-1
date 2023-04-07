@@ -10,12 +10,12 @@ USUARIOSALUMNOS = {
 
 
 class UsuariosAlumnos(Resource):
-    #obtener lista de los animales
+    #obtener lista de los alumnos
     def get(self):
         return USUARIOSALUMNOS
-    #insertar recurso
+    #insertar alumno
     def post(self):
-        animal = request.get_json()
+        usuariosalumnos = request.get_json()
         id = int(max(USUARIOSALUMNOS.keys()))+1
-        USUARIOSALUMNOS[id] = animal
+        USUARIOSALUMNOS[id] = usuariosalumnos
         return USUARIOSALUMNOS[id], 201

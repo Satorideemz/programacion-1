@@ -15,13 +15,14 @@ class Usuario(Resource):
     def get(self, id):
         #Verifico que exista el usuario
         if int(id) in USUARIOS:
-            #retorno animal
+
             return USUARIOS[int(id)]
         #Si no existe 404
         return '', 404
     
     def put(self, id):
         if int(id) in USUARIOS:
+            #edito usuario
             usuario = USUARIOS[int(id)]
             data = request.get_json()
             usuario.update(data)
@@ -39,7 +40,7 @@ class Usuario(Resource):
 
 #Coleccion de recurso Usuarios
 class Usuarios(Resource):
-    #obtener lista de los animales
+    #obtener lista de usuarios
     def get(self):
         return USUARIOS
     #insertar recurso

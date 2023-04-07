@@ -16,10 +16,11 @@ def create_app():
     app = Flask(__name__)
     #variables de entono
     load_dotenv()
-    #cargar a la API el recurso Animales y especificar la ruta 
+    
     api.add_resource(resources.UsuariosResource, '/usuarios')
+    
     api.add_resource(resources.UsuariosAlumnosResource, '/usuariosalumnos')
-    #cargar a la API el recurso Animal y especificar la ruta 
+    
     api.add_resource(resources.UsuarioResource, '/usuario/<id>')
     
     #Cargar la aplicacion en la API de Flask Restful

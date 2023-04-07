@@ -44,7 +44,7 @@ class Usuarios(Resource):
         return USUARIOS
     #insertar recurso
     def post(self):
-        animal = request.get_json()
+        usuario = request.get_json()
         id = int(max(USUARIOS.keys()))+1
-        USUARIOS[id] = animal
+        USUARIOS[id] = usuario
         return USUARIOS[id], 201

@@ -2,3 +2,7 @@
 from .usuario import Usuario as UsuarioResource
 from .usuario import Usuarios as UsuariosResource
 from .usuariosalumnos import UsuariosAlumnos as UsuariosAlumnosResource
+
+from .usuariosalumnos import UsuarioAlumno as UsuarioAlumnoResource
+from .usuariosprofesor import UsuariosProfesores as UsuariosProfesoresResource
+from .planificacion import Planificacion as PlanificacionResource

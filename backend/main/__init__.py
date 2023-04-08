@@ -29,6 +29,8 @@ def create_app():
     
     api.add_resource(resources.PlanificacionResource, '/planificacion/<id>')
     
+    api.add_resource(resources.PagoResource, '/pago/<id>')
+
     #Cargar la aplicacion en la API de Flask Restful
     #es para que la aplicacion de flask funcione como API
     api.init_app(app)

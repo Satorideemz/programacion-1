@@ -6,3 +6,6 @@ from .usuariosalumnos import UsuariosAlumnos as UsuariosAlumnosResource
 from .usuariosalumnos import UsuarioAlumno as UsuarioAlumnoResource
 from .usuariosprofesor import UsuariosProfesores as UsuariosProfesoresResource
 from .planificacion import Planificacion as PlanificacionResource
+
+from .pago import Pago as PagoResource
+

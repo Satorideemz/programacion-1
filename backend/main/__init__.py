@@ -18,16 +18,22 @@ def create_app():
     load_dotenv()
     
     api.add_resource(resources.UsuariosResource, '/usuarios')
-    
-    api.add_resource(resources.UsuariosAlumnosResource, '/usuariosalumnos')
-    
+
     api.add_resource(resources.UsuarioResource, '/usuario/<id>')
 
+    api.add_resource(resources.UsuariosAlumnosResource, '/usuariosalumnos')
+
     api.add_resource(resources.UsuarioAlumnoResource, '/usuarioalumno/<id>')
-   
-    api.add_resource(resources.UsuariosProfesoresResource, '/usuariosprofesores')
-    
+
+    api.add_resource(resources.UsuarioProfesorResource, '/usuarioprofesor/<id>')
+
+    api.add_resource(resources.PlanificacionesResource, '/planificaciones')
+
     api.add_resource(resources.PlanificacionResource, '/planificacion/<id>')
+
+    api.add_resource(resources.PlanificacionalumnoResource, '/planificacionalumno/<id>')
+
+    api.add_resource(resources.ClasesResource, '/clases')
     
     api.add_resource(resources.PagoResource, '/pago/<id>')
 

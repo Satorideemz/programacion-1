@@ -35,3 +35,17 @@ class Planificacion(Resource): #A la clase planificacion le indico que va a ser 
             animal.update(data)
             return '', 201
         return '', 404
+    
+    
+class Planificaciones(Resource):
+    
+    #Obtenemos la coleccion de PROFESORES
+    def get(self):
+        return PLANIFICACIONES
+    
+    #Insertamos un nuevo Profesor
+    def post(self):
+        planificacion = request.get_json()
+        id = int(max(PLANIFICACIONES.keys())) + 1
+        PLANIFICACIONES[id] = planificacion
+        return PLANIFICACIONES[id], 201

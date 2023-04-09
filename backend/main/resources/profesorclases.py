@@ -9,7 +9,7 @@ USUARIOSPROFESORES = {
 }
 
 #Coleccion de recurso Profesores
-class UsuariosProfesores(Resource):
+class Profesorclases(Resource):
     #obtener lista de los profesores
     def get(self):
         return USUARIOSPROFESORES

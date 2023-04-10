@@ -5,7 +5,7 @@ from flask import request
 
 USUARIOS = {
     1: {'nombre':'Juan', 'tipo_empleado':'Administrador'},
-    2: {'nombre':'Pedro', 'tipo_empleado':'Profesor'}
+    2: {'nombre':'Pedro', 'tipo_empleado':'Administrador'}
 }
 
 

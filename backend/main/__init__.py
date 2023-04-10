@@ -31,9 +31,9 @@ def create_app():
 
     api.add_resource(resources.PlanificacionResource, '/planificacion/<id>')
 
-    api.add_resource(resources.PlanificacionalumnoResource, '/planificacionalumno/<id>')
+    api.add_resource(resources.PlanificacionAlumnoResource, '/planificacionalumno/<id>')
 
-    api.add_resource(resources.ClasesResource, '/clases')
+    api.add_resource(resources.ProfesorClasesResource, '/clases')
     
     api.add_resource(resources.PagoResource, '/pago/<id>')
 

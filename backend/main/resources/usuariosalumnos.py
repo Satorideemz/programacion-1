@@ -12,17 +12,6 @@ USUARIOSALUMNOS = {
 
 }
 
-
-class UsuariosAlumnos(Resource):
-    #obtener lista de los alumnos
-    def get(self):
-        return USUARIOSALUMNOS
-    #insertar alumno
-    def post(self):
-        usuariosalumnos = request.get_json()
-        id = int(max(USUARIOSALUMNOS.keys()))+1
-        USUARIOSALUMNOS[id] = usuariosalumnos
-        return USUARIOSALUMNOS[id], 201
     
 #Defino el recurso Alumnos
 class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tipo recurso(Resource)
@@ -51,3 +40,15 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
             animal.update(data)
             return '', 201
         return '', 404
+    
+
+class UsuariosAlumnos(Resource):
+    #obtener lista de los alumnos
+    def get(self):
+        return USUARIOSALUMNOS
+    #insertar alumno
+    def post(self):
+        usuariosalumnos = request.get_json()
+        id = int(max(USUARIOSALUMNOS.keys()))+1
+        USUARIOSALUMNOS[id] = usuariosalumnos
+        return USUARIOSALUMNOS[id], 201

@@ -8,7 +8,7 @@ PLANIFICACIONES = {
     3: {'nombre':'ADM de chocolate', 'nivel de intencidad':'3', 'estado':'actualizado'}
 }
 
-#Defino el recurso planificacion
+#Defino el recurso planificacion de profesores
 class Planificacion(Resource): #A la clase planificacion le indico que va a ser del tipo recurso(Resource)
     #obtener recurso
     def get(self, id):

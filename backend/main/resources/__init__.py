@@ -5,14 +5,14 @@ from .usuario import Usuarios as UsuariosResource
 from .usuariosalumnos import UsuarioAlumno as UsuarioAlumnoResource
 from .usuariosalumnos import UsuariosAlumnos as UsuariosAlumnosResource
 
-from .usuarioprofesor import Profesor as UsuarioProfesorResource
+from .usuarioprofesor import UsuarioProfesor as UsuarioProfesorResource
 
 from .planificacion import Planificacion as PlanificacionResource
 from .planificacion import Planificaciones as PlanificacionesResource
 
-from .planificacionalumno import PlanificacionA as PlanificacionalumnoResource
+from .planificacionalumno import PlanificacionAlumno as PlanificacionAlumnoResource
 
-from .profesorclases import Profesorclases as ClasesResource
+from .profesorclases import ProfesorClases as ProfesorClasesResource
 
 from .pago import Pago as PagoResource
 from .login import Login as LoginResource

@@ -18,7 +18,7 @@ PROFESORES= {
 #Definos el recurso 
 
 # Definimos la clase Profesor y le indicamos que va a ser de tipo Resource
-class Profesor(Resource):
+class UsuarioProfesor(Resource):
     
     #Obtenemos el Recurso
     def get(self, id):
@@ -35,7 +35,6 @@ class Profesor(Resource):
     #Modificamos el Recurso PROFESOR
     def put(self, id):
         
-         
         if int(id) in PROFESORES:
             
             #Guardamos el Profesor

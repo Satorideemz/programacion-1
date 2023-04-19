@@ -5,3 +5,5 @@
 /share
 .env
 pyvenv.cfg
+*.pyc
+**_/pycache

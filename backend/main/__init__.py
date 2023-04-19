@@ -4,18 +4,17 @@ import os
 #Importamos nuevas librerias clase 3
 from flask_restful import Api #Agrego la clase API
 
-#Importo dir de recursos
-import main.resources as resources
-
-
 #Importo SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
 #Inicio Restful
 api = Api()
 
+
+
 #Inicio SQLAlchemy
 db = SQLAlchemy()
+
 
 
 #Vamos a crear un metodo que inicializara la app y todos los modulos
@@ -32,6 +31,9 @@ def create_app():
     #Url de configuracion de bd
     app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:////'+os.getenv('DATABASE_PATH')+os.getenv('DATABASE_NAME')    
     db.init_app(app)
+    
+    #Importo dir de recursos
+    import main.resources as resources
 
     api.add_resource(resources.UsuariosResource, '/usuarios')
 

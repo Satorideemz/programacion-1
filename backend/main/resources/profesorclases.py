@@ -19,3 +19,10 @@ class ProfesorClases(Resource):
     def get(self):
         profesores = db.session.query(ClaseModel).all()
         return jsonify([profesor.to_json() for profesor in profesores])
+
+
+    def post(self):
+        profesores = ClaseModel.from_json(request.get_json())
+        db.session.add(profesores)
+        db.session.commit()
+        return profesores.to_json(), 201

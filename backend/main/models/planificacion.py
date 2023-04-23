@@ -1,11 +1,12 @@
 from .. import db
+from datetime import datetime
 
-class Planificacion(db.model):
+class Planificacion(db.Model):
     
     id_planificacion = db.Column(db.Integer, primary_key=True)
     detalles = db.Column(db.String(300), nullable=False)
     estado = db.Column(db.String(15), nullable=False)
-    fecha = db.Column(db.Date, nullable=False)
+    fecha = db.Column(db.DateTime, nullable=False)
     
     
     def __repr__(self):
@@ -16,7 +17,7 @@ class Planificacion(db.model):
             'id_planificacion' : self.id_planificacion,
             'detalles' : str(self.detalles),
             'estado' : str(self.estado),
-            'fecha' : self.fecha,
+            'fecha' : str(self.fecha.strftime("%d-%m-%Y")),
         }
         return planificacion_json
     
@@ -25,7 +26,7 @@ class Planificacion(db.model):
             'id_planificacion' : self.id_planificacion,
             'detalles' : str(self.detalles),
             'estado' : str(self.estado),
-            'fecha' : self.fecha,
+            'fecha' : str(self.fecha.strftime("%d-%m-%Y")),
         }
         return planificacion_json
     
@@ -36,7 +37,7 @@ class Planificacion(db.model):
         id_planificacion = planificacion_json.get('id_planificacion')
         detalles = planificacion_json.get('detalles')
         estado = planificacion_json.get('estado')
-        fecha = planificacion_json.get('fecha')
+        fecha = datetime.strptime(planificacion_json.get('fecha'), "%d-%m-%Y")
         
         
         return Planificacion(id_planificacion = id_planificacion,

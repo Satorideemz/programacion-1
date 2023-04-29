@@ -1,6 +1,6 @@
 from .. import db
 
-class Usuario(db.Model):
+class UsuarioProfesor(db.Model):
     id_Usuario = db.Column(db.Integer,primary_key=True)
     id_Profesor = db.Column(db.Integer,primary_key=True)
     id_Clase = db.Column(db.Integer,primary_key=True)

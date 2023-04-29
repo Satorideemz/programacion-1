@@ -1,22 +1,24 @@
 from .. import db
+from . import UsuarioModel
 
-class Usuario(db.Model):
-    id_Usuario = db.Column(db.Integer,primary_key=True)
+class UsuariosAlumnos(db.Model):
     id_Alumno = db.Column(db.Integer,primary_key=True)
     estado_de_la_cuenta = db.Column(db.String(15),nullable=False)
-
+    id_Usuario = db.Column(db.Integer,db.ForeignKey("usuario.id_Usuario"), nullable=False)
+    usuarios= db.relationship("Usuario", back_populates="alumno", uselist=False, single_parent=True)
     
     
     def __repr__(self):
-        return '<Usuario: %r >' % (self.nombre)
-    
+        return '<UsuariosAlumnos: %r >' % (self.nombre)
+
     #convierto objeto en json
     def to_json(self):
+        self.usuariosalumnos = db.session.query(UsuarioModel).get_or_404(self.id_Usuario)
         usuario_json = {
             'id_Usuario' : self.id_Usuario,
             'id_Alumno' : self.id_Alumno,
             'estado_de_la_cuenta' : str(self.estado_de_la_cuenta),
-            
+            'usuario' : self.usuariosalumnos.to_json()
         }
         return usuario_json
     
@@ -39,7 +41,7 @@ class Usuario(db.Model):
         
         
         
-        return Usuario(id_Usuario = id_Usuario,
+        return UsuariosAlumnos(id_Usuario = id_Usuario,
                        id_Alumno = id_Alumno,
                        estado_de_la_cuenta = estado_de_la_cuenta,
                         )

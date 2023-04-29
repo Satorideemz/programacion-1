@@ -4,16 +4,6 @@ from flask import jsonify
 from .. import db
 from main.models import UsuarioModel
 
-#Datos de prueba en JSON
-
-
-#Ya no se necesitan mas estos json, ahora que tenemos la DB
-#USUARIOS = {
-#    1: {'nombre':'Juan', 'tipo_empleado':'Administrador'},
-#    2: {'nombre':'Pedro', 'tipo_empleado':'Administrador'}
-#}
-
-
 #Defino el recurso Usuario
 class Usuario(Resource): 
     #obtener recurso

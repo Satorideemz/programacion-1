@@ -14,6 +14,7 @@ class Usuario(db.Model):
     edad = db.Column(db.Integer,nullable=False)
     sexo = db.Column(db.String(15),nullable=True)
     alumno = db.relationship("UsuariosAlumnos", back_populates= "usuarios",cascade="all, delete-orphan")
+    profesor = db.relationship("UsuarioProfesor", back_populates= "usuarioprofesor",cascade="all, delete-orphan")
     
     def __repr__(self):
         return '<Usuario: %r >' % (self.nombre)
@@ -35,8 +36,8 @@ class Usuario(db.Model):
         return usuario_json
     
     def to_json_complete(self):
-        #???
-        #alumnos = [usuariosalumnos.to_json() for usuariosalumnos in self.alumno]
+        
+        alumnos = [usuariosalumnos.to_json() for usuariosalumnos in self.alumno]
         usuario_json = {
             'id_Usuario' : self.id_Usuario,
             'rol' : str(self.rol),
@@ -48,7 +49,7 @@ class Usuario(db.Model):
             'password' : str(self.password),
             'edad' : self.edad,
             'sexo' : str(self.sexo),
-            'alumnos': self.alumno.to_json()
+            'alumnos': alumnos
         }
         return usuario_json
 

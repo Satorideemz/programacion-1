@@ -5,13 +5,7 @@ from .. import db
 from main.models import ClaseModel
 
 
-#Datos de prueba en JSON
-#USUARIOSPROFESORES = {
-#    1: {'nombre':'Sofia', 'clases':'Yoga'},
-#    2: {'nombre':'Analia', 'clases':'Cross fit'},
-#    3: {'nombre':'Veronica', 'clases':'Pilates'},
-#    4: {'nombre':'Cristian', 'clases':'Gym_maquinas'}
-#}
+
 
 #Coleccion de recurso Profesores
 class ProfesorClases(Resource):

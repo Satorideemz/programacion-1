@@ -4,13 +4,6 @@ from main.models import PlanificacionModel
 from flask import jsonify
 from .. import db
 
-#Datos de prueba en JSON
-#PlanificacionModel = {
-#    1: {'nombre':'tren superior y piernas', 'nivel de intencidad':'5', 'estado':'actualizado'},
-#    2: {'nombre':'principiante', 'nivel de intencidad':'1', 'estado':'desactualizado'},
-#    3: {'nombre':'ADM de chocolate', 'nivel de intencidad':'3', 'estado':'actualizado'}
-#}
-
 #Defino el recurso planificacion de profesores
 class Planificacion(Resource): #A la clase planificacion le indico que va a ser del tipo recurso(Resource)
     #obtener recurso

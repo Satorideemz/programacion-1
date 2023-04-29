@@ -5,7 +5,7 @@ class UsuariosAlumnos(db.Model):
     id_Alumno = db.Column(db.Integer,primary_key=True)
     estado_de_la_cuenta = db.Column(db.String(15),nullable=False)
     id_Usuario = db.Column(db.Integer,db.ForeignKey("usuario.id_Usuario"), nullable=False)
-    usuarios= db.relationship("Usuario", back_populates="alumno", uselist=False, single_parent=True)
+    usuarios= db.relationship("Usuario", back_populates="alumno", uselist=False, single_parent=True )
     
     
     def __repr__(self):
@@ -37,10 +37,7 @@ class UsuariosAlumnos(db.Model):
         id_Usuario = usuario_json.get('id_Usuario')
         id_Alumno = usuario_json.get('id_Alumno')
         estado_de_la_cuenta = usuario_json.get('estado_de_la_cuenta')
-        
-        
-        
-        
+ 
         return UsuariosAlumnos(id_Usuario = id_Usuario,
                        id_Alumno = id_Alumno,
                        estado_de_la_cuenta = estado_de_la_cuenta,

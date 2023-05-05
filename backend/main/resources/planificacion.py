@@ -2,7 +2,10 @@ from flask_restful import Resource
 from flask import request
 from main.models import PlanificacionModel
 from flask import jsonify
+from datetime import datetime
+from sqlalchemy import func, desc, asc
 from .. import db
+
 
 #Defino el recurso planificacion de profesores
 class Planificacion(Resource): #A la clase planificacion le indico que va a ser del tipo recurso(Resource)
@@ -37,9 +40,32 @@ class Planificaciones(Resource):
     
     #Obtenemos la coleccion de PROFESORES
     def get(self):
-        planificaciones = db.session.query(PlanificacionModel).all()
-        return jsonify([planificacion.to_json() for planificacion in planificaciones])
-    
+        page = 1
+        per_page = 3
+
+        planificaciones = db.session.query(PlanificacionModel) #.order_by(desc(PlanificacionModel.fecha))
+
+
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+
+
+        if request.args.get('fecha'):
+            planificaciones = planificaciones.order_by(desc(PlanificacionModel.fecha))
+
+
+        planificaciones = planificaciones.paginate(page=page, per_page=per_page, error_out=True, max_per_page=3)
+
+        return jsonify ({'planificaciones': [planificacion.to_json() for planificacion in planificaciones],
+                  'total': planificaciones.total,
+                  'pages': planificaciones.pages,
+                  'page': page
+                })
+
+
+
     #Insertamos un nuevo Profesor
     def post(self):
         planificacion = PlanificacionModel.from_json(request.get_json())

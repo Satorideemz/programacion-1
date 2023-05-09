@@ -3,7 +3,7 @@ from flask import request
 from flask import jsonify
 from .. import db
 from main.models import ClaseModel
-
+from sqlalchemy import func, desc, asc
 
 
 
@@ -11,8 +11,50 @@ from main.models import ClaseModel
 class ProfesorClases(Resource):
     #obtener lista de los profesores
     def get(self):
-        profesores = db.session.query(ClaseModel).all()
+        profesores = db.session.query(ClaseModel).order_by(desc(ClaseModel.horaInicio))
         return jsonify([profesor.to_json() for profesor in profesores])
+
+
+
+
+    def get(self):
+        page = 1
+        per_page = 10
+
+        clases = db.session.query(ClaseModel)
+
+
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+
+        #traemos las 10 clases ordenadas por la que comience mas temprano
+        if request.args.get('get_by_start_hour'):
+            clases = clases.order_by(asc(ClaseModel.horaInicio))
+
+
+        clases = clases.paginate(page=page, per_page=per_page, error_out=True, max_per_page=10)
+
+        return jsonify ({'alumnos': [clase.to_json() for clase in clases],
+                  'total': clases.total,
+                  'pages': clases.pages,
+                  'page': page
+                })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #    def post(self):

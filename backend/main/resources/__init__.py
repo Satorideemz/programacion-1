@@ -6,6 +6,8 @@ from .usuariosalumnos import UsuarioAlumno as UsuarioAlumnoResource
 from .usuariosalumnos import UsuariosAlumnos as UsuariosAlumnosResource
 
 from .usuarioprofesor import UsuarioProfesor as UsuarioProfesorResource
+from .usuarioprofesor import UsuariosProfesores as UsuariosProfesoresResource
+
 
 from .planificacion import Planificacion as PlanificacionResource
 from .planificacion import Planificaciones as PlanificacionesResource

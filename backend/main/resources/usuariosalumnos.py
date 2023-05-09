@@ -2,7 +2,8 @@ from flask_restful import Resource
 from flask import request
 from flask import jsonify
 from .. import db
-from main.models import UsuariosAlumnosModel
+from main.models import UsuariosAlumnosModel, UsuarioModel
+from sqlalchemy import func, desc, asc
 
 #Defino el recurso Alumnos
 class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tipo recurso(Resource)
@@ -33,9 +34,36 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
 
 class UsuariosAlumnos(Resource):
     #obtener lista de los alumnos
+
+
     def get(self):
-        usuariosalumnos = db.session.query(UsuariosAlumnosModel).all()
-        return jsonify([usuariosalumnos.to_json() for usuariosalumnos in usuariosalumnos])
+        page = 1
+        per_page = 30
+
+        usuariosalumnos = db.session.query(UsuariosAlumnosModel)
+
+
+        if request.args.get('page'):
+            page = int(request.args.get('page'))
+
+        if request.args.get('per_page'):
+            per_page = int(request.args.get('per_page'))
+
+        #traemos los 30 primeros profesores ordenados por su estado de cuenta siendo primeros los que estan al dia
+        if request.args.get('get_by_status'):
+            usuariosalumnos = usuariosalumnos.order_by(desc(UsuariosAlumnosModel.estado_de_la_cuenta))
+
+
+        usuariosalumnos = usuariosalumnos.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
+
+        return jsonify ({'alumnos': [usuarioalumno.to_json() for usuarioalumno in usuariosalumnos],
+                  'total': usuariosalumnos.total,
+                  'pages': usuariosalumnos.pages,
+                  'page': page
+                })
+
+
+
 
     #insertar alumno
     def post(self):

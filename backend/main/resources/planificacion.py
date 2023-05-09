@@ -41,9 +41,9 @@ class Planificaciones(Resource):
     #Obtenemos la coleccion de PROFESORES
     def get(self):
         page = 1
-        per_page = 3
+        per_page = 1
 
-        planificaciones = db.session.query(PlanificacionModel) #.order_by(desc(PlanificacionModel.fecha))
+        planificaciones = db.session.query(PlanificacionModel)
 
 
         if request.args.get('page'):
@@ -51,12 +51,12 @@ class Planificaciones(Resource):
         if request.args.get('per_page'):
             per_page = int(request.args.get('per_page'))
 
-
-        if request.args.get('fecha'):
+        #solo traemos la planificacion mas reciente a la pagina
+        if request.args.get('get_by_date'):
             planificaciones = planificaciones.order_by(desc(PlanificacionModel.fecha))
 
 
-        planificaciones = planificaciones.paginate(page=page, per_page=per_page, error_out=True, max_per_page=3)
+        planificaciones = planificaciones.paginate(page=page, per_page=per_page, error_out=True, max_per_page=1)
 
         return jsonify ({'planificaciones': [planificacion.to_json() for planificacion in planificaciones],
                   'total': planificaciones.total,

@@ -3,24 +3,14 @@ from flask import request
 from flask import jsonify
 from .. import db
 from main.models import UsuarioModel
-from sqlalchemy import func, desc
-from flask_jwt_extended import jwt_required, get_jwt_identity
-from main.auth.decorators import role_required
 
 #Defino el recurso Usuario
 class Usuario(Resource): 
-
     #obtener recurso
-    @jwt_required(optional=True)    
     def get(self, id):
         usuario = db.session.query(UsuarioModel).get_or_404(id)
-        current_identity = get_jwt_identity()
-        if current_identity:
-            return usuario.to_json_complete()
-        else:
-            return usuario.to_json()
-        
-    @jwt_required()
+        return usuario.to_json()
+    
     def put(self, id):
         usuario = db.session.query(UsuarioModel).get_or_404(id)
         data = request.get_json().items()
@@ -30,7 +20,6 @@ class Usuario(Resource):
         db.session.commit()
         return usuario.to_json(), 201
     
-    @role_required(roles = ["admin"])
     def delete(self, id):
         usuario = db.session.query(UsuarioModel).get_or_404(id)
         db.session.delete(usuario)

@@ -4,19 +4,20 @@ from flask import jsonify
 from .. import db
 from main.models import ClaseModel
 from sqlalchemy import func, desc, asc
-
-
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import role_required
 
 #Coleccion de recurso Profesores
 class ProfesorClases(Resource):
     #obtener lista de los profesores
-    def get(self):
-        profesores = db.session.query(ClaseModel).order_by(desc(ClaseModel.horaInicio))
-        return jsonify([profesor.to_json() for profesor in profesores])
+    
+    #def get(self):
+    #    profesores = db.session.query(ClaseModel).order_by(desc(ClaseModel.horaInicio))
+    #    return jsonify([profesor.to_json() for profesor in profesores])
+    #metodo antiguo duplicado
 
 
-
-
+    @role_required(roles = ["admin"])
     def get(self):
         page = 1
         per_page = 10

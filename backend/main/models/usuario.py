@@ -41,7 +41,8 @@ class Usuario(db.Model):
     def to_json(self):
         usuario_json = {
             'id_Usuario' : self.id_Usuario,
-            'rol' : str(self.rol),
+        #si no tiene permiso el atributo rol no se muestra en eljson    
+        #    'rol' : str(self.rol),
             'nombre' : str(self.nombre),
             'apellido' : str(self.apellido),
             'mail' : str(self.mail),

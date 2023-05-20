@@ -4,16 +4,24 @@ from flask import jsonify
 from .. import db
 from main.models import UsuarioProfesorModel
 from sqlalchemy import func, desc, asc
-
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import role_required
 
 class UsuarioProfesor(Resource):
     
     #Obtenemos el Recurso
+    @role_required(roles = ["admin"])
     def get(self, id):
         usuarioprofesor = db.session.query(UsuarioProfesorModel).get_or_404(id)
-        return usuarioprofesor.to_json()
+        current_identity = get_jwt_identity()
+
+        if current_identity:
+            return usuarioprofesor.to_json_complete()
+        else:
+            return usuarioprofesor.to_json()
     
     #Modificamos el Recurso PROFESOR
+    @role_required(roles = ["admin"])
     def put(self, id):
         usuarioprofesor = db.session.query(UsuarioProfesorModel).get_or_404(id)
         data = request.get_json().items()
@@ -27,13 +35,12 @@ class UsuarioProfesor(Resource):
 class UsuariosProfesores(Resource):
     #obtener lista de los alumnos
 
-
+    @role_required(roles = ["admin"])
     def get(self):
         page = 1
         per_page = 10
 
         usuariosprofesores = db.session.query(UsuarioProfesorModel)
-
         
         if request.args.get('page'):
             page = int(request.args.get('page'))
@@ -58,6 +65,7 @@ class UsuariosProfesores(Resource):
 
 
     #insertar alumno
+    @role_required(roles = ["admin"])
     def post(self):
         usuariosprofesores = UsuarioProfesorModel.from_json(request.get_json())
         db.session.add(usuariosprofesores)

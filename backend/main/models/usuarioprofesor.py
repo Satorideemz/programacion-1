@@ -5,7 +5,7 @@ import json
 class UsuarioProfesor(db.Model):
     id_Usuario = db.Column(db.Integer,db.ForeignKey("usuario.id_Usuario"), nullable=False)
     id_Profesor = db.Column(db.Integer,primary_key=True)
-    id_Clase = db.Column(db.Integer,nullable=False)
+    id_Clase = db.Column(db.Integer,nullable=True)
     disponibilidad = db.Column(db.String(80),nullable=False)
     titulo = db.Column(db.String(80),nullable=False)
     usuarioprofesor = db.relationship("Usuario", back_populates="profesor", uselist=False, single_parent=True)

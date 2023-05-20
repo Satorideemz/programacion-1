@@ -9,18 +9,19 @@ from main.auth.decorators import role_required
 
 #Defino el recurso Usuario
 class Usuario(Resource): 
-
+    
     #obtener recurso
-    @jwt_required(optional=True)    
+    @role_required(roles = ["admin"]) 
     def get(self, id):
         usuario = db.session.query(UsuarioModel).get_or_404(id)
         current_identity = get_jwt_identity()
+        # si el rol tiene permiso le devuelve json completo
         if current_identity:
             return usuario.to_json_complete()
         else:
             return usuario.to_json()
         
-    @jwt_required()
+    @role_required(roles = ["admin"])
     def put(self, id):
         usuario = db.session.query(UsuarioModel).get_or_404(id)
         data = request.get_json().items()
@@ -41,11 +42,13 @@ class Usuario(Resource):
 #Coleccion de recurso Usuarios
 class Usuarios(Resource):
     #obtener lista de usuarios
+    @role_required(roles = ["admin"])
     def get(self):
         usuarios = db.session.query(UsuarioModel).all()
         return jsonify([usuario.to_json() for usuario in usuarios])
     
     #insertar recurso
+    @role_required(roles = ["admin"])
     def post(self):
         usuario = UsuarioModel.from_json(request.get_json())
         db.session.add(usuario)

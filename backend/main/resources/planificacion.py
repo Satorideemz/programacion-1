@@ -5,18 +5,25 @@ from flask import jsonify
 from datetime import datetime
 from sqlalchemy import func, desc, asc
 from .. import db
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import role_required
 
 
 #Defino el recurso planificacion de profesores
 class Planificacion(Resource): #A la clase planificacion le indico que va a ser del tipo recurso(Resource)
     #obtener recurso
+    @role_required(roles = ["admin"]) 
     def get(self, id):
         
         planificacion = db.session.query(PlanificacionModel).get_or_404(id)
-        return planificacion.to_json()
-        
+        current_identity = get_jwt_identity()
+        if current_identity:
+            return planificacion.to_json()
+        else:
+            return planificacion.to_json_short()        
         
     #eliminar recurso
+    @role_required(roles = ["admin"])
     def delete(self, id):
         
        planificacion = db.session.query(PlanificacionModel).get_or_404(id)
@@ -25,7 +32,9 @@ class Planificacion(Resource): #A la clase planificacion le indico que va a ser 
        return '',204
         
         
+    
     #Modificar el recurso planificacion / aca puedo cabiar el estado de una planificacion a actualizado o desactualizado, luego cuando programe hago una restrigcion para quesi no esta actualizado no se pueda usar
+    @role_required(roles = ["admin"])
     def put(self, id):
         planificacion = db.session.query(PlanificacionModel).get_or_404(id)
         data = request.get_json().items()
@@ -38,7 +47,8 @@ class Planificacion(Resource): #A la clase planificacion le indico que va a ser 
     
 class Planificaciones(Resource):
     
-    #Obtenemos la coleccion de PROFESORES
+    #Obtenemos la coleccion de planificaciones
+    @role_required(roles = ["admin"])
     def get(self):
         page = 1
         per_page = 1

@@ -4,15 +4,23 @@ from flask import jsonify
 from .. import db
 from main.models import UsuariosAlumnosModel, UsuarioModel
 from sqlalchemy import func, desc, asc
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import role_required
 
 #Defino el recurso Alumnos
 class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tipo recurso(Resource)
     #obtener recurso
+    @role_required(roles = ["admin"]) 
     def get(self, id):
         usuariosalumnos = db.session.query(UsuariosAlumnosModel).get_or_404(id)
-        return usuariosalumnos.to_json()
+        current_identity = get_jwt_identity()
+        if current_identity:
+            return usuariosalumnos.to_json_complete()
+        else:
+            return usuariosalumnos.to_json()
 
     #eliminar recurso
+    @role_required(roles = ["admin"])
     def delete(self, id):
         usuariosalumnos = db.session.query(UsuariosAlumnosModel).get_or_404(id)
         db.session.delete(usuariosalumnos)
@@ -22,6 +30,7 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
 
 
     #Modificar el recurso alumno / aca puedo cabiar el estado de un alumno a activo 0 suspendido, luego cuando programe hago una restrigcion para quesi no esta activo no vea su planificacion
+    @role_required(roles = ["admin"])
     def put(self, id):
         usuariosalumnos = db.session.query(UsuariosAlumnosModel).get_or_404(id)
         data = request.get_json().items()
@@ -35,7 +44,7 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
 class UsuariosAlumnos(Resource):
     #obtener lista de los alumnos
 
-
+    @role_required(roles = ["admin"])
     def get(self):
         page = 1
         per_page = 30
@@ -64,7 +73,7 @@ class UsuariosAlumnos(Resource):
 
 
 
-
+    @role_required(roles = ["admin"])
     #insertar alumno
     def post(self):
         usuariosalumnos = UsuariosAlumnosModel.from_json(request.get_json())

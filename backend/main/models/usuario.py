@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class Usuario(db.Model):
     id_Usuario = db.Column(db.Integer,primary_key=True)
-    rol = db.Column(db.String(15),nullable=False,server_default="users")
+    rol = db.Column(db.String(15),nullable=False,server_default="alumno")
     nombre = db.Column(db.String(15),nullable=False)
     apellido = db.Column(db.String(15),nullable=False)
     mail = db.Column(db.String(30),nullable=False, unique=True, index=True)
@@ -96,7 +96,6 @@ class Usuario(db.Model):
         sexo = usuario_json.get('sexo')
         
         
-        
         return Usuario(id_Usuario = id_Usuario,
                        rol = rol,
                        nombre = nombre,
@@ -104,7 +103,7 @@ class Usuario(db.Model):
                        mail = mail,
                        dni = dni,
                        telefono = telefono,
-                       password = password,
+                       plain_password = password,
                        edad =  edad,
                        sexo = sexo
                         )

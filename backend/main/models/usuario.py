@@ -1,16 +1,13 @@
 from .. import db
 import json
-#Importamos de python 2 funciones
-from werkzeug.security import generate_password_hash, check_password_hash
-
 
 
 class Usuario(db.Model):
     id_Usuario = db.Column(db.Integer,primary_key=True)
-    rol = db.Column(db.String(15),nullable=False, server_default="alumno")
+    rol = db.Column(db.String(15),nullable=False)
     nombre = db.Column(db.String(15),nullable=False)
     apellido = db.Column(db.String(15),nullable=False)
-    mail = db.Column(db.String(30),nullable=False, unique=True, index=True)
+    mail = db.Column(db.String(30),nullable=False)
     dni = db.Column(db.Integer,nullable=False)
     telefono = db.Column(db.Integer,nullable=False)
     password = db.Column(db.String(30),nullable=False)
@@ -18,21 +15,6 @@ class Usuario(db.Model):
     sexo = db.Column(db.String(15),nullable=True)
     alumno = db.relationship("UsuariosAlumnos", back_populates= "usuarios",cascade="all, delete-orphan")
     profesor = db.relationship("UsuarioProfesor", back_populates= "usuarioprofesor",cascade="all, delete-orphan")
-    
-
-
-    #Getter de la contraseña plana no permite leerla
-    @property
-    def plain_password(self):
-        raise AttributeError('Pass no se puede leer')
-    #Setter de la contraseña toma un valor en texto plano
-    #Calcula el hash y lo guarda en el atributo password
-    @plain_password.setter
-    def plain_password(self, password):
-        self.password = generate_password_hash(password)
-    #Método que compara una contraseña en texto plano con el hash guardado en la db
-    def validate_pass(self,password):
-        return check_password_hash(self.password, password)
     
     def __repr__(self):
         return '<Usuario: %r >' % (self.nombre)

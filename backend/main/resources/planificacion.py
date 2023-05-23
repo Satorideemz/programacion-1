@@ -12,7 +12,7 @@ from main.auth.decorators import role_required
 #Defino el recurso planificacion de profesores
 class Planificacion(Resource): #A la clase planificacion le indico que va a ser del tipo recurso(Resource)
     #obtener recurso
-    @role_required(roles = ["admin"]) 
+    @role_required(roles = ["admin","profesor","alumno"]) 
     def get(self, id):
         
         planificacion = db.session.query(PlanificacionModel).get_or_404(id)
@@ -23,7 +23,7 @@ class Planificacion(Resource): #A la clase planificacion le indico que va a ser 
             return planificacion.to_json_short()        
         
     #eliminar recurso
-    @role_required(roles = ["admin"])
+    @role_required(roles = ["admin","profesor"])
     def delete(self, id):
         
        planificacion = db.session.query(PlanificacionModel).get_or_404(id)
@@ -34,7 +34,7 @@ class Planificacion(Resource): #A la clase planificacion le indico que va a ser 
         
     
     #Modificar el recurso planificacion / aca puedo cabiar el estado de una planificacion a actualizado o desactualizado, luego cuando programe hago una restrigcion para quesi no esta actualizado no se pueda usar
-    @role_required(roles = ["admin"])
+    @role_required(roles = ["admin","profesor"])
     def put(self, id):
         planificacion = db.session.query(PlanificacionModel).get_or_404(id)
         data = request.get_json().items()
@@ -48,7 +48,7 @@ class Planificacion(Resource): #A la clase planificacion le indico que va a ser 
 class Planificaciones(Resource):
     
     #Obtenemos la coleccion de planificaciones
-    @role_required(roles = ["admin"])
+    @role_required(roles = ["admin","profesor","alumno"])
     def get(self):
         page = 1
         per_page = 1
@@ -76,7 +76,8 @@ class Planificaciones(Resource):
 
 
 
-    #Insertamos un nuevo Profesor
+    #Insertamos una nuevo planificacion
+    @role_required(roles = ["admin","profesor"])
     def post(self):
         planificacion = PlanificacionModel.from_json(request.get_json())
         db.session.add(planificacion)

@@ -35,7 +35,7 @@ class UsuarioProfesor(Resource):
 class UsuariosProfesores(Resource):
     #obtener lista de los alumnos
 
-    @role_required(roles = ["admin"])
+    @role_required(roles = ["admin","profesor","alumno"])
     def get(self):
         page = 1
         per_page = 10

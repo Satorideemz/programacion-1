@@ -17,7 +17,7 @@ class ProfesorClases(Resource):
     #metodo antiguo duplicado
 
 
-    @role_required(roles = ["admin"])
+    @role_required(roles = ["admin","profesor","alumno"])
     def get(self):
         page = 1
         per_page = 10

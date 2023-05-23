@@ -57,6 +57,9 @@ class Usuario(db.Model):
     def to_json_complete(self):
         
         alumnos = [usuariosalumnos.to_json() for usuariosalumnos in self.alumno]
+    #    clases = [usuariosprofesor.to_json() for usuariosprofesor in self.profesor]
+
+
         usuario_json = {
             'id_Usuario' : self.id_Usuario,
             'rol' : str(self.rol),
@@ -68,7 +71,8 @@ class Usuario(db.Model):
             'password' : str(self.password),
             'edad' : self.edad,
             'sexo' : str(self.sexo),
-            'alumnos': alumnos
+            'alumnos': alumnos,
+    #        'clase' : clases
         }
         return usuario_json
 

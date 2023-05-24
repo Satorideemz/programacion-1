@@ -9,6 +9,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 #Importo Flask JWT
 from flask_jwt_extended import JWTManager
+
+#Importar Flask mail
+from flask_mail import Mail
+
+
 #Inicio Restful
 api = Api()
 
@@ -19,8 +24,11 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 #Inicializar JWT
-
 jwt = JWTManager()
+
+#Inicializar
+mailsender = Mail()
+
 #Vamos a crear un metodo que inicializara la app y todos los modulos
 def create_app():
     #inicio Flask
@@ -78,6 +86,17 @@ def create_app():
     #Importar blueprint
     app.register_blueprint(routes.auth)
     
+    #Configuración de mail
+    app.config['MAIL_HOSTNAME'] = os.getenv('MAIL_HOSTNAME')
+    app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+    app.config['MAIL_PORT'] = os.getenv('MAIL_PORT')
+    app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS')
+    app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+    app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+    app.config['FLASKY_MAIL_SENDER'] = os.getenv('FLASKY_MAIL_SENDER')
+    #Inicializar en app
+    mailsender.init_app(app)
+
 
     #Por ultimo retornamos la aplicacion iniializada
     return app

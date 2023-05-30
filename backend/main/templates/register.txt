@@ -1,4 +1,4 @@
-Bienvenido !
+Bienvenido! {{usuario.nombre}} {{usuario.apellido}}
 
 Gracias por registrarte en nuestro sistema.
 

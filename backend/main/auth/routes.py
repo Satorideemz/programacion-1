@@ -47,7 +47,7 @@ def register():
             db.session.commit()
             #Enviar mail de bienvenida
             sent = sendMail([usuario.mail],"Welcome!",'register',usuario = usuario)
-
+            
 
         except Exception as error:
             db.session.rollback()

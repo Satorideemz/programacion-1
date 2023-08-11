@@ -10,11 +10,16 @@ class UsuarioProfesor(db.Model):
     titulo = db.Column(db.String(80),nullable=False)
     usuarioprofesor = db.relationship("Usuario", back_populates="profesor", uselist=False, single_parent=True)
 
+
     #clasedelprofesor = db.relationship("ProfesorClases", back_populates="clasedelprofesor", uselist=False, single_parent=True)
     #profesorclase = db.relationship('Clase', secondary=ProfesorClases, backref=db.backref('Clase', lazy='dynamic'))
     
+
     def __repr__(self):
-        return '<UsuarioProfesor: %r >' % (self.nombre)
+        return '<UsuarioProfesor: %r >' % (self.id_Profesor)
+    
+    def get_id_clase(self):
+        return self.id_Clase
     
     #convierto objeto en json
     def to_json(self):
@@ -25,10 +30,11 @@ class UsuarioProfesor(db.Model):
             'id_Clase' : self.id_Clase,
             'disponibilidad' : str(self.disponibilidad),
             'titulo' : str(self.titulo),
-            'usuarioprofesor' : self.usuarioprofesor.to_json()
+            'profesor_detalle' : self.usuarioprofesor.to_json()
 
         }
         return usuario_json
+    
     
     def to_json_short(self):
         usuario_json = {
@@ -43,14 +49,14 @@ class UsuarioProfesor(db.Model):
     
 
     def to_json_complete(self):
-        profesorclase = [profeclase.to_json() for profeclase in self.profesorclase]
+        self.usuarioprofesor = db.session.query(UsuarioModel).get_or_404(self.id_Usuario)
         usuarioprofesor_json = {
             'id_Usuario' : self.id_Usuario,
             'id_Profesor' : self.id_Profesor,
             'id_Clase' : self.id_Clase,
             'disponibilidad' : str(self.disponibilidad),
-            'titulo' : str(self.titulo), 
-            'profesorclase' : profesorclase
+            'titulo' : str(self.titulo),
+            'profesor_detalle' : self.usuarioprofesor.to_json() 
         }
         return usuarioprofesor_json
     
@@ -64,7 +70,7 @@ class UsuarioProfesor(db.Model):
         id_Clase = usuario_json.get('id_Clase')
         disponibilidad = usuario_json.get('disponibilidad')
         titulo = usuario_json.get('titulo')
-        
+    
         
         
         return UsuarioProfesor(id_Usuario = id_Usuario,
@@ -73,3 +79,5 @@ class UsuarioProfesor(db.Model):
                        disponibilidad = disponibilidad,
                        titulo = titulo,
                         )
+
+    

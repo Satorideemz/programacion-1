@@ -48,7 +48,7 @@ class Usuario(db.Model):
             'mail' : str(self.mail),
             'dni' : self.dni,
             'telefono' : self.telefono,
-            'password' : str(self.password),
+            #'password' : str(self.password),
             'edad' : self.edad,
             'sexo' : str(self.sexo),
         }

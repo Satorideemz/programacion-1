@@ -45,7 +45,7 @@ class Usuarios(Resource):
     @role_required(roles = ["admin"])
     def get(self):
         usuarios = db.session.query(UsuarioModel).all()
-        return jsonify([usuario.to_json() for usuario in usuarios])
+        return jsonify([usuario.to_json_complete() for usuario in usuarios])
     
     #insertar recurso
     @role_required(roles = ["admin"])

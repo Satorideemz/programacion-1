@@ -11,6 +11,7 @@ ProfesorClases = db.Table("profesorclases",
     db.Column("id_Clase",db.Integer,db.ForeignKey("clase.id_Clase"),primary_key=True),
     db.Column("id_Profesor",db.Integer,db.ForeignKey("usuario_profesor.id_Profesor"),primary_key=True)
     )
+
 #Se define la tabla intermedia entre alumno y clases
 
 AlumnoClases = db.Table("alumnoclases",
@@ -68,23 +69,17 @@ class Clase(db.Model):
     
 
     def to_json_complete(self):
-        profesorclase = [profeclase.to_json() for profeclase in self.profesorclase2]
+        #profesorclase = [profeclase.to_json() for profeclase in self.profesorclase]
         clase_json = {
             'id_Clase' : self.id_Clase,
             'detalles' : str(self.detalles),
             'dia' : str(self.dia),
             'horaFin' : str(self.horaFin.strftime("%H:%M")),
             'horaInicio' : str(self.horaInicio.strftime("%H:%M")),
-            'profesorclase' : profesorclase
+          #  'profesorclase' : profesorclase
         }
         return clase_json
     
-
-
-
-
-
-
 
 
 

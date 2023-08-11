@@ -3,6 +3,8 @@ from flask import request
 from flask import jsonify
 from .. import db
 from main.models import ClaseModel
+
+
 from sqlalchemy import func, desc, asc
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
@@ -38,28 +40,17 @@ class ProfesorClases(Resource):
 
         clases = clases.paginate(page=page, per_page=per_page, error_out=True, max_per_page=10)
 
-        return jsonify ({'alumnos': [clase.to_json() for clase in clases],
+        return jsonify ({'clases': [clase.to_json() for clase in clases],
                   'total': clases.total,
                   'pages': clases.pages,
                   'page': page
                 })
 
+    def post(self):
+        clase = ClaseModel.from_json(request.get_json())
+        
+        db.session.add(clase)
+        db.session.add(clase)
+        db.session.commit()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#    def post(self):
-#        profesores = ClaseModel.from_json(request.get_json())
-#        db.session.add(profesores)
-#        db.session.commit()
-#        return profesores.to_json(), 201
+        return clase.to_json(), 201

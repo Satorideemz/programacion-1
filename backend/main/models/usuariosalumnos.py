@@ -20,6 +20,7 @@ class UsuariosAlumnos(db.Model):
         self.usuariosalumnos = db.session.query(UsuarioModel).get_or_404(self.id_Usuario)
         usuario_json = {
             'id_Usuario' : self.id_Usuario,
+            'id_Clase' : self.id_Clase,
             'id_Alumno' : self.id_Alumno,
             'estado_de_la_cuenta' : str(self.estado_de_la_cuenta),
             'alumno_detalle' : self.usuariosalumnos.to_json()
@@ -50,10 +51,12 @@ class UsuariosAlumnos(db.Model):
     #convertir json a objeto
     def from_json(usuario_json):
         id_Usuario = usuario_json.get('id_Usuario')
+        id_Clase = usuario_json.get('id_Clase')
         id_Alumno = usuario_json.get('id_Alumno')
         estado_de_la_cuenta = usuario_json.get('estado_de_la_cuenta')
- 
+
         return UsuariosAlumnos(id_Usuario = id_Usuario,
+                       id_Clase =  id_Clase,       
                        id_Alumno = id_Alumno,
                        estado_de_la_cuenta = estado_de_la_cuenta,
                         )

@@ -44,7 +44,7 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
         if 'id_Clase' in jsonalumnos and jsonalumnos['id_Clase'] is not None :
 
             clase_asociada=db.session.query(ClaseModel).get_or_404(jsonalumnos['id_Clase'])
-            clase_asociada.alumnosclases.append(usuariosalumnos)
+            clase_asociada.alumnoclases.append(usuariosalumnos)
 
         db.session.add(usuariosalumnos)
         db.session.commit()
@@ -92,7 +92,7 @@ class UsuariosAlumnos(Resource):
         if 'id_Clase' in jsonalumnos and jsonalumnos['id_Clase'] is not None :
             print(jsonalumnos['id_Clase'])
             clase_asociada=db.session.query(ClaseModel).get_or_404(jsonalumnos['id_Clase'])
-            clase_asociada.alumnosclases.append(usuariosalumnos)
+            clase_asociada.alumnoclases.append(usuariosalumnos)
 
         db.session.add(usuariosalumnos)
         db.session.commit()

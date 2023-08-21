@@ -43,6 +43,17 @@ class Planificacion(Resource): #A la clase planificacion le indico que va a ser 
             setattr(planificacion, key, value)
         db.session.add(planificacion)
         db.session.commit()
+
+
+        jsonplanificaciones=planificacion.to_json()
+        if 'id_Clase' in jsonplanificaciones and jsonplanificaciones['id_Clase'] is not None :
+
+            clase_asociada=db.session.query(ClaseModel).get_or_404(jsonplanificaciones['id_Clase'])
+            clase_asociada.planificacionclases.append(planificacion)
+
+        db.session.add(planificacion)
+        db.session.commit()
+
         return planificacion.to_json(), 201
     
     

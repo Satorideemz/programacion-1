@@ -67,6 +67,8 @@ def create_app():
     #api.add_resource(resources.PlanificacionAlumnoResource, '/planificacionalumno/<id>')
 
     api.add_resource(resources.ProfesorClasesResource, '/clases')
+
+    api.add_resource(resources.ProfesorClaseResource, '/clase/<id>')
     
     api.add_resource(resources.PagoResource, '/pago/<id>')
 

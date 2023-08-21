@@ -9,6 +9,20 @@ from sqlalchemy import func, desc, asc
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
 
+class ProfesorClase(Resource):
+    
+    def get(self,id):
+        clase= db.session.query(ClaseModel).get_or_404(id)
+
+        return clase.to_json()
+        
+
+
+
+
+
+
+
 #Coleccion de recurso Profesores
 class ProfesorClases(Resource):
     #obtener lista de los profesores

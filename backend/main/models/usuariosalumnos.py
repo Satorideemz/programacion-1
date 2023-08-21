@@ -3,8 +3,9 @@ from . import UsuarioModel
 
 class UsuariosAlumnos(db.Model):
     id_Alumno = db.Column(db.Integer,primary_key=True)
-    estado_de_la_cuenta = db.Column(db.String(15),nullable=False)
     id_Usuario = db.Column(db.Integer,db.ForeignKey("usuario.id_Usuario"), nullable=False)
+    id_Clase = db.Column(db.Integer,nullable=True)    
+    estado_de_la_cuenta = db.Column(db.String(15),nullable=False)
     usuarios= db.relationship("Usuario", back_populates="alumno", uselist=False, single_parent=True )
     
     

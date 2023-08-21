@@ -20,6 +20,7 @@ AlumnoClases = db.Table("alumnoclases",
     db.Column("id_Alumno",db.Integer,db.ForeignKey("usuarios_alumnos.id_Alumno"),primary_key=True)
     )
 
+
 #Se define la tabla intermedia entre planificacion y clases
 PlanificacionClases = db.Table("planificacionclases",
                           
@@ -51,6 +52,7 @@ class Clase(db.Model):
         clase_json = {
             'id_Clase' : self.id_Clase,
             'detalles' : str(self.detalles),
+            'detalles_generales' : str(self.detalles),
             'dia' : str(self.dia),
             'horaFin' : str(self.horaFin.strftime("%H:%M")),
             'horaInicio' : str(self.horaInicio.strftime("%H:%M")),
@@ -62,6 +64,7 @@ class Clase(db.Model):
         clase_json = {
             'id_Clase' : self.id_Clase,
             'detalles' : str(self.detalles),
+            'detalles_generales' : str(self.detalles),
             'dia' : str(self.dia),
             'horaFin' : str(self.horaFin.strftime("%H:%M")),
             'horaInicio' : str(self.horaInicio.strftime("%H:%M")),
@@ -74,6 +77,7 @@ class Clase(db.Model):
         clase_json = {
             'id_Clase' : self.id_Clase,
             'detalles' : str(self.detalles),
+            'detalles_generales' : str(self.detalles),
             'dia' : str(self.dia),
             'horaFin' : str(self.horaFin.strftime("%H:%M")),
             'horaInicio' : str(self.horaInicio.strftime("%H:%M")),
@@ -86,10 +90,11 @@ class Clase(db.Model):
 
     @staticmethod
     
+    
     def from_json(clase_json):
-        
         id_Clase = clase_json.get('id_Clase')
         detalles = clase_json.get('detalles')
+        detallesgenerales = clase_json.get('detalles_generales')
         dia = clase_json.get('dia')
         horaFin = datetime.strptime(clase_json.get('horaFin'), "%H:%M")
         horaInicio = datetime.strptime(clase_json.get('horaInicio'), "%H:%M")
@@ -98,6 +103,7 @@ class Clase(db.Model):
 
         return Clase(id_Clase = id_Clase,
                      detalles = detalles,
+                     detallesgenerales = detallesgenerales,
                      dia = dia,
                      horaFin = horaFin,
                      horaInicio = horaInicio)

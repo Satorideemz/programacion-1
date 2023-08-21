@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from flask import request
 from main.models import PlanificacionModel
+from main.models import ClaseModel
 from flask import jsonify
 from datetime import datetime
 from sqlalchemy import func, desc, asc
@@ -83,3 +84,20 @@ class Planificaciones(Resource):
         db.session.add(planificacion)
         db.session.commit()
         return planificacion.to_json(), 201
+    
+
+    
+    def post(self):
+        jsonplanificaciones=request.get_json()
+        planificaciones =PlanificacionModel.from_json(jsonplanificaciones)
+
+        #en esta parte del codigo compruebo si profesor se le asigna una clase al momento de darlo de alta
+        #como es opcional, si no se ingresa clase simplemente no lo asocia
+        if 'id_Clase' in jsonplanificaciones and jsonplanificaciones['id_Clase'] is not None :
+            print(jsonplanificaciones['id_Clase'])
+            clase_asociada=db.session.query(ClaseModel).get_or_404(jsonplanificaciones['id_Clase'])
+            clase_asociada.planificacionclases.append(planificaciones)
+
+        db.session.add(planificaciones)
+        db.session.commit()
+        return planificaciones.to_json(),201    

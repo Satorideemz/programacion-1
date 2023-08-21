@@ -35,6 +35,7 @@ class Clase(db.Model):
     
     id_Clase = db.Column(db.Integer, primary_key=True)
     detalles = db.Column(db.String(300), nullable=False)
+    detallesgenerales = db.Column(db.String(300), nullable=False)
     dia = db.Column(db.String(15), nullable=False)
     horaFin = db.Column(db.DateTime, nullable=False)
     horaInicio = db.Column(db.DateTime, nullable=False)

@@ -14,7 +14,7 @@ from .planificacion import Planificaciones as PlanificacionesResource
 
 #from .planificacionalumno import PlanificacionAlumno as PlanificacionAlumnoResource
 
-from .clases import ProfesorClases as ProfesorClasesResource
+from .clase import ProfesorClases as ProfesorClasesResource
 
 from .pago import Pago as PagoResource
 from .login import Login as LoginResource

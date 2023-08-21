@@ -9,8 +9,11 @@ class UsuariosAlumnos(db.Model):
     usuarios= db.relationship("Usuario", back_populates="alumno", uselist=False, single_parent=True )
     
     
-    #def __repr__(self):
-    #    return '<UsuariosAlumnos: %r >' % (self.nombre)
+    def __repr__(self):
+        return '<UsuariosAlumnos: %r >' % (self.id_Alumno)
+    
+    def get_id_clase(self):
+        return self.id_Clase
 
     #convierto objeto en json
     def to_json(self):
@@ -31,6 +34,7 @@ class UsuariosAlumnos(db.Model):
 
         }
         return usuario_json
+    
     def to_json_complete(self):
         self.usuariosalumnos = db.session.query(UsuarioModel).get_or_404(self.id_Usuario)
         usuario_json = {

@@ -3,6 +3,7 @@ from flask import request
 from flask import jsonify
 from .. import db
 from main.models import UsuariosAlumnosModel, UsuarioModel
+from main.models import ClaseModel
 from sqlalchemy import func, desc, asc
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
@@ -27,8 +28,6 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
         db.session.commit()
         return '',204
 
-
-
     #Modificar el recurso alumno / aca puedo cabiar el estado de un alumno a activo 0 suspendido, luego cuando programe hago una restrigcion para quesi no esta activo no vea su planificacion
     @role_required(roles = ["admin","profesor"])
     def put(self, id):
@@ -36,6 +35,17 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
         data = request.get_json().items()
         for key,value in data:
             setattr(usuariosalumnos,key,value)
+        db.session.add(usuariosalumnos)
+        db.session.commit()
+
+        #si se modifica un alumno y resulta ser que se le asigna una clase
+        #se realiza dicha asociacion
+        jsonalumnos = usuariosalumnos.to_json()
+        if 'id_Clase' in jsonalumnos and jsonalumnos['id_Clase'] is not None :
+
+            clase_asociada=db.session.query(ClaseModel).get_or_404(jsonalumnos['id_Clase'])
+            clase_asociada.alumnosclases.append(usuariosalumnos)
+
         db.session.add(usuariosalumnos)
         db.session.commit()
         return usuariosalumnos.to_json(),201
@@ -51,7 +61,6 @@ class UsuariosAlumnos(Resource):
 
         usuariosalumnos = db.session.query(UsuariosAlumnosModel)
 
-
         if request.args.get('page'):
             page = int(request.args.get('page'))
 
@@ -61,7 +70,6 @@ class UsuariosAlumnos(Resource):
         #traemos los 30 primeros profesores ordenados por su estado de cuenta siendo primeros los que estan al dia
         if request.args.get('get_by_status'):
             usuariosalumnos = usuariosalumnos.order_by(desc(UsuariosAlumnosModel.estado_de_la_cuenta))
-
 
         usuariosalumnos = usuariosalumnos.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
 
@@ -76,7 +84,16 @@ class UsuariosAlumnos(Resource):
     @role_required(roles = ["admin","profesor"])
     #insertar alumno
     def post(self):
-        usuariosalumnos = UsuariosAlumnosModel.from_json(request.get_json())
+        jsonalumnos = request.get_json()
+        usuariosalumnos = UsuariosAlumnosModel.from_json(jsonalumnos)
+
+        #en esta parte del codigo compruebo si alumno se le asigna una clase al momento de darlo de alta
+        #como es opcional, si no se ingresa clase simplemente no lo asocia
+        if 'id_Clase' in jsonalumnos and jsonalumnos['id_Clase'] is not None :
+            print(jsonalumnos['id_Clase'])
+            clase_asociada=db.session.query(ClaseModel).get_or_404(jsonalumnos['id_Clase'])
+            clase_asociada.alumnosclases.append(usuariosalumnos)
+
         db.session.add(usuariosalumnos)
         db.session.commit()
         return usuariosalumnos.to_json(),201

@@ -45,6 +45,13 @@ class Usuarios(Resource):
     @role_required(roles = ["admin"])
     def get(self):
         usuarios = db.session.query(UsuarioModel).all()
+
+        if request.args.get('get_full_name'):
+            full_names = [usuario.to_json_full_name() for usuario in usuarios]
+            return jsonify(full_names)
+
+
+
         return jsonify([usuario.to_json_complete() for usuario in usuarios])
     
     #insertar recurso

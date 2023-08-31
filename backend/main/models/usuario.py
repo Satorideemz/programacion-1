@@ -54,12 +54,13 @@ class Usuario(db.Model):
         }
         return usuario_json
     
-    def to_json_complete(self):
-        
-     
-    #    clases = [usuariosprofesor.to_json() for usuariosprofesor in self.profesor]
+    def to_json_view_profe(self):
+        usuario_json = {
+            'nombre' : str(self.nombre)
+        }
+        return usuario_json
 
-
+    def to_json_complete(self,full_name=False):
         usuario_json = {
             'id_Usuario' : self.id_Usuario,
             'rol' : str(self.rol),
@@ -71,11 +72,18 @@ class Usuario(db.Model):
             'password' : str(self.password),
             'edad' : self.edad,
             'sexo' : str(self.sexo),
-    #        'clase' : clases
         }
         return usuario_json
-
     
+
+    def to_json_full_name(self):
+        usuario_json = {
+            'nombre' : str(self.nombre),
+            'apellido' : str(self.apellido),   
+        }
+        return usuario_json
+    
+
     def to_json_short(self):
         usuario_json = {
             'id_Usuario' : self.id_Usuario,

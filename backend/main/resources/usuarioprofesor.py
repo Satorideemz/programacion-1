@@ -3,6 +3,7 @@ from flask import request
 from flask import jsonify
 from .. import db
 from main.models import UsuarioProfesorModel
+from main.models import UsuariosAlumnosModel
 from main.models import ClaseModel
 from sqlalchemy import func, desc, asc
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -55,9 +56,11 @@ class UsuariosProfesores(Resource):
         per_page = 10
 
         usuariosprofesores = db.session.query(UsuarioProfesorModel)
+
         
         if request.args.get('page'):
             page = int(request.args.get('page'))
+
 
         if request.args.get('per_page'):
             per_page = int(request.args.get('per_page'))
@@ -65,6 +68,41 @@ class UsuariosProfesores(Resource):
         #traemos los 10 primeros profesores ordenados por id
         if request.args.get('get_by_id'):
             usuariosprofesores = usuariosprofesores.order_by(asc(UsuarioProfesorModel.id_Profesor))
+
+        if request.args.get('view_profe'):
+            view_profes = [usuarioprofesor.to_json_view() for usuarioprofesor in usuariosprofesores]
+            return jsonify(view_profes)
+        
+
+        #filtro revisar
+        #aqui traemos las clases que dicta el profesor logueado
+        if request.args.get('view_clases_dictadas'):
+
+            view_clases_dictadas = db.session.query(ClaseModel).join(UsuarioProfesorModel, UsuarioProfesorModel.id_Clase == ClaseModel.id_Clase ).filter(UsuarioProfesorModel.id_Profesor == int(request.args.get('view_clases_dictadas')))
+
+            view_catedra_impartida = [clase.to_json() for clase in view_clases_dictadas]
+            
+            return jsonify(view_catedra_impartida)
+
+
+
+        #filtro revisar
+        #aqui traemos los alumnos de la clase seleccionada por el profe que esta logueado
+        if request.args.get('view_alumnos_clases'):
+            
+            #el primer join es para que la clase seleccionada coincida con el profe que la da y que no me traiga alumnos de clases diferentes que de ese mismo profe
+            #el segundo join es para traer los alumnos inscriptos a esa clase
+            #el filtro es para que me traiga segun el id de la clase pasada como parametro
+            
+            view_alumnos_clases = db.session.query(UsuariosAlumnosModel).join(UsuarioProfesorModel, UsuarioProfesorModel.id_Clase == ClaseModel.id_Clase ).join(ClaseModel, ClaseModel.id_Clase == UsuariosAlumnosModel.id_Clase ).filter(UsuarioProfesorModel.id_Clase == int(request.args.get('view_alumnos_clases')))
+
+            view_alumno_clase = [usuarioalumno.to_json() for usuarioalumno in view_alumnos_clases]
+            
+            return jsonify(view_alumno_clase)
+
+
+        
+
 
 
         usuariosprofesores = usuariosprofesores.paginate(page=page, per_page=per_page, error_out=True, max_per_page=10)

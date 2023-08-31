@@ -18,11 +18,6 @@ class ProfesorClase(Resource):
         
 
 
-
-
-
-
-
 #Coleccion de recurso Profesores
 class ProfesorClases(Resource):
     #obtener lista de los profesores
@@ -40,9 +35,13 @@ class ProfesorClases(Resource):
 
         clases = db.session.query(ClaseModel)
 
+        
+
+        clases = clases.paginate(page=page, per_page=per_page, error_out=True, max_per_page=10)
 
         if request.args.get('page'):
             page = int(request.args.get('page'))
+
 
         if request.args.get('per_page'):
             per_page = int(request.args.get('per_page'))
@@ -52,7 +51,21 @@ class ProfesorClases(Resource):
             clases = clases.order_by(asc(ClaseModel.horaInicio))
 
 
-        clases = clases.paginate(page=page, per_page=per_page, error_out=True, max_per_page=10)
+        if request.args.get('view_preview'):
+            preview = [clase.to_json_preview() for clase in clases]
+            return jsonify ({'clases': preview,
+                  'total': clases.total,
+                  'pages': clases.pages,
+                  'page': page
+                })
+
+        if request.args.get('view_full'):
+            full = [clase.to_json_full_view() for clase in clases]
+            return jsonify ({'clases': full,
+                  'total': clases.total,
+                  'pages': clases.pages,
+                  'page': page
+                })
 
         return jsonify ({'clases': [clase.to_json() for clase in clases],
                   'total': clases.total,
@@ -60,11 +73,11 @@ class ProfesorClases(Resource):
                   'page': page
                 })
 
+
+
+
     def post(self):
         clase = ClaseModel.from_json(request.get_json())
-        
-        db.session.add(clase)
         db.session.add(clase)
         db.session.commit()
-
         return clase.to_json(), 201

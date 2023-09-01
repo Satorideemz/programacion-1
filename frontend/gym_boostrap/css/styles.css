@@ -57,11 +57,29 @@
     border-top: 1px solid #000000;
 }
 
+
+/* Con esto le doy color rojo al texto de bienvenida */
 .main-text {
 
     color: red;
 
 }
+
+
+  /* amplio el cuadro de texto que contiene a los parrafos de bienvenida */
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1520px;
+  }
+
+
+
+/* longitud a lo ancho del texto de bienvenida */
+.col-md-8 {
+    flex: 0 0 auto;
+    width: 99.66666667%;
+  }
+
+
 
 /* tamaño del texto resaltado */
 .lead {

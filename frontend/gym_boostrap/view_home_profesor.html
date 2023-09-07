@@ -10,16 +10,28 @@
 
      <!-- font-awesome (iconos)-->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- en esta fuente se vera el titulo de la clase-->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Praise">
         
      <!-- Style propios -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles_home_profesor.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Home</a>
+                    </li>
+                </ul>
+
+            </div>
+
             <div class="collapse navbar-collapse" id="navbarNav">
 
                 <ul class="navbar-nav ml-auto">
@@ -29,6 +41,8 @@
                 </ul>
 
             </div>
+
+
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 
                 <ul class="navbar-nav">
@@ -39,6 +53,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
     <!-- Aca va el logo de la esquina --->
@@ -52,43 +67,22 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2 text-center welcome-text">
 
-                    <div class="main-text"> </p>
-                        <pSin dolor no tiene sentido. Eso es porque no se puede ganar </p>
-                        <p class="lead text">algo sin sacrificar algo a a cambio. Sin embargo, una vez que hayas</p>
-                        <p class="lead text">soportando el dolor y lo hayas superado, ganaras un corazon que es </p>
-                        <p class="lead text">mas fuerte que todo lo demas. Asi es</p>
-                        <p class="lead text-black">un corazon de acero</p>
-                    </div>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="css/historia.webp" class="rounded-circle" alt="Clase 1">
                         <div class="card-body">
-                            <h5 class="card-title">Historia</h5>
-                            <p class="card-text">Conoce sobre nuestra historia, este gym abrio sus puertas el 3 de octubre del año 11.</p>
+                            <button class="btn btn-primary btn-rounded mb-2" onclick="location.href='page1.html'">Button 1</button>
+                            <button class="btn btn-secondary btn-rounded" onclick="location.href='page2.html'">Button 2</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="css/maquinas.jpeg" class="rounded-circle" alt="Clase 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Clases</h5>
-                            <p class="card-text">Nuestro gym ofrece una gran variedad de clases para todos los gustos</p>
-                        </div>
-                    </div>
+            </div>
+                        
+
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="css/profesoresjpg" class="rounded-circle" alt="Clase 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Profesores</h5>
-                            <p class="card-text">Conoce a nuestros profesores, los mas geniales de todo Amestris</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -106,4 +100,3 @@
     </footer>
 </body>
 </html>
-

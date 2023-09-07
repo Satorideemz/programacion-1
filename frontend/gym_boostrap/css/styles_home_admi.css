@@ -24,6 +24,7 @@
     opacity: 1.0;
     border: groove;
     box-shadow: 0 4px 8px rgba(251, 247, 247, 0.1);
+    text-align: center; /* Center content within cards */
   }
   
 

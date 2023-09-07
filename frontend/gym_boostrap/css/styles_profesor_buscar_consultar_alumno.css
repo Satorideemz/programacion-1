@@ -15,14 +15,13 @@
 /* Agregar un espacio arriba,  izquierda y derecha*/
 }
 
-
 /* Ajustar estilos de los cards */
 .card {
-  margin-bottom: 20px;
-  background-color: rgb(17, 14, 14);
+  margin-bottom: 15px;
+  background-color: rgb(186, 175, 175);
   opacity: 1.0;
   border: groove;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(251, 247, 247, 0.1);
   text-align: center; /* Center content within cards */
 }
 
@@ -55,7 +54,8 @@ width: 100%;
 
 
 .h1, h1 {
-  font-size: 5.5rem;
+  font-size: 6rem;
+  color:  rgb(243, 0, 0) ;
 }
 
 /* Este es el logo de la esquina*/
@@ -70,20 +70,20 @@ width: 100%;
 }
 
 .card-img-top {
-  max-height: 200px;
+  max-height: 500px;
   object-fit: cover;
 }
 
 /* Es el titulo de la clase, con tamaño, tipo de fuente, color blanco y centrado */
 .card-title {
   font-family: 'Praise', sans-serif; 
-  font-size: 120px; 
+  font-size: 500px; 
   text-align: center;
   color: rgb(255, 255, 255);
 }
 
 .card-text {
-  color: #bbbbbb;
+  color: #fefefe;
 
 }
 

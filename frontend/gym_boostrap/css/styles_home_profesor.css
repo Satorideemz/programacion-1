@@ -26,11 +26,11 @@
   text-align: center; /* Center content within cards */
 }
 
-/* Remove button width restrictions */
+/* Remove button width restrictions 
 .card-block1 .btn,
 .card-block2 .btn {
   width: 100%;
-}
+}*/
 
 /*  le doy el borde redondo a la foto */
 .rounded-circle {
@@ -60,7 +60,6 @@ width: 100%;
 }
 
 /* Este es el logo de la esquina*/
-
 .esquina img {
   height:300px ;
   width: 300px;

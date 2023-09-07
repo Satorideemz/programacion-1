@@ -10,32 +10,38 @@
 
      <!-- font-awesome (iconos)-->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        
+   <!-- Style propios -->
+   <link rel="stylesheet" href="css/styles_alumnos_profesor.css">
 
     <!-- en esta fuente se vera el titulo de la clase-->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Praise">
-        
-     <!-- Style propios -->
-    <link rel="stylesheet" href="css/styles_home_profesor.css">
-
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Praise">
 
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+        </div>
+        <div class="container">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Ver mi perfil</a>
+                        <a class="nav-link" href="view_perfil_profesor.html">Mi Perfil</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="view_home_profesor.html">Home</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    
     <!-- Aca va el logo de la esquina --->
 
      <!-- Aca va la imagen de fondo --->
@@ -43,39 +49,35 @@
         <div class="esquina">
             <img src="css/mano-sosteniendo-mancuernas-mancuernas.png" alt="logo">
         </div>
-        <div class="container mt-5">
+        <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 text-center welcome-text">
-                    <h1>Hola roy!!</h1>
- 
+                <div class="col-md-7">
+                    <div class="title-with-image">
+                        <h1>Alumnos</h1>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="container mt-2">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center welcome-text">
 
-
+                </div>
+            </div>
             <div class="row mt-5">
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-block1">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <button class="btn btn-primary btn-block mb-2" onclick="location.href='page1.html'">Alumno</button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button class="btn btn-primary btn-block mb-2" onclick="location.href='page1.html'">Clases</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <a class="nav-link" href="view_alumnos_info_profesor.html">Info</a>
+                       </div>
                     </div>
                 </div>
-            </div>
-            
-               
-
-                </div>
-
-            </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                             <a class="nav-link" href="view_alumnos_rutina_profesor.html">Rutina</a>
+                        </div>
+                    </div>
         </div>
     </div>
     <footer class="footer py-3 bg-light fixed-bottom">

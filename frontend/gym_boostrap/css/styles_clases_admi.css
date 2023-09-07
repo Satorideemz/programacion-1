@@ -22,14 +22,29 @@
     opacity: 1.0;
     border: groove;
     box-shadow: 0 4px 8px rgba(251, 247, 247, 0.1);
-  }
-  
+  } 
   
   /*  le doy el borde redondo a la foto */
   .rounded-circle {
   border-radius: 20% !important;
   }
+
+  /* Fuente del mensaje de bienvenida*/
+
+  .h1, h1 {
+
+    font-size: 6rem;
+    color:  rgb(243, 0, 0) ;
   
+  }
+
+  /* Fuente del mensaje de bienvenida*/
+    .h1, h1 {
+      font-size: 5.5rem;
+    
+      }
+
+
   
   /*  agrando el tamaño de la tajeta*/
   .row > * {

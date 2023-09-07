@@ -12,61 +12,70 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
         
      <!-- Style propios -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles_nueva_rutina.css">
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+        </div>
 
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="contactanos.html">Contactanos</a>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="ingresar.html">
-                            <i class="fa-solid fa-user"></i> Ingresar
-                        </a>
+                        <a class="nav-link" href="view_perfil_admi.html">Home</a>
                     </li>
                 </ul>
             </div>
         </div>
+
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="view_perfil_admi.html">Mi Perfil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
     </nav>
-    <!-- Aca va el logo de la esquina --->
 
      <!-- Aca va la imagen de fondo --->
     <div class="background-image">
         <div class="esquina">
             <img src="css/mano-sosteniendo-mancuernas-mancuernas.png" alt="logo">
         </div>
-        <div class="container mt-5">
+        
+        <div class="container mt-6">
             
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-body">
-                            <h1 class="card-title text-center">Horarios</h1>
-                            <div class="d-flex justify-content-center">
-                                <img src="css/horario_definitivo.jpeg" class="img-fluid">
+                        
+                        <h1 class="card-title text-center">Crear nueva rutina</h1>
+                        
+                        <div class="row justify-content-center">
+                            <div class="toggle-container">
+                                <div class="col-md-9 mt-1 text-left">
+                                    <div class="toggle"></div>
+                                    <label for="nombre">Descripcion</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control">
+                                </div>
+
+                                
                             </div>
-                            <div class="container">
-                                <p class="card-text">
-                                    
-                                </p>
+                            <div class="col-md-12 mt-3 text-center">
+                                <button class="btn btn-danger">Guardar</button>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

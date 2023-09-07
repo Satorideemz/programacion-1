@@ -15,20 +15,16 @@
   /* Agregar un espacio arriba,  izquierda y derecha*/
 }
 
-
-.btn-danger {
-    color: #fff;
-    background-color: #d1172a;
-    border-color: #da182b;
-    width: 75%; 
-
-}
-
+.card h1{
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #000000;
+  }
 
 /* Ajustar estilos de los cards */
 .card {
     margin-bottom: 10px;
-    background-color: rgb(228, 223, 223);
+    background-color: rgb(226, 223, 223);
     opacity: 1.0;
     border: groove;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -36,7 +32,7 @@
 }
 /*  le doy el borde redondo a la foto */
 .rounded-circle {
-    border-radius: 20% !important;
+    border-radius: 100% !important;
   }
 
 /* Este es el logo de la esquina*/
@@ -47,15 +43,31 @@
   position: relative;
   top: 0;
   right: 0;
-  height: 100%;
+  height: 75%;
 }
 
+.btn-danger {
+  color: #fff;
+  background-color: #dd1b2f;
+  border-color: #d10e21;
+  width: 75%; 
+
+}
+.toggle-container label {
+
+  position: center;
+  padding-right: 20px;
+  color: #000000; 
+
+}
 .toggle-container  {
   color: #0e0a0a;
-  background-color: #cccaca;
+  background-color: #e4d9d9;
   border-color: #050000;
-  width: 90%; 
-  height: 100%;
+  width: 90%;
+  
+   
+ 
   
 }
 
@@ -66,7 +78,7 @@
 
 /* Cambiar el color del texto de las cards */
 .card-title {
-    color: #2c2828;
+    color: #666666;
 }
 
 .card-text {
@@ -79,7 +91,6 @@
     text-align: center;
     background-color: #000000;
     border-top: 1px solid #000000;
-    
 }
 
 

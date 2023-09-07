@@ -10,16 +10,28 @@
 
      <!-- font-awesome (iconos)-->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- en esta fuente se vera el titulo de la clase-->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Praise">
         
      <!-- Style propios -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles_home_profesor.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Home</a>
+                    </li>
+                </ul>
+
+            </div>
+
             <div class="collapse navbar-collapse" id="navbarNav">
 
                 <ul class="navbar-nav ml-auto">
@@ -29,6 +41,8 @@
                 </ul>
 
             </div>
+
+
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 
                 <ul class="navbar-nav">
@@ -39,6 +53,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
     <!-- Aca va el logo de la esquina --->
@@ -49,24 +64,25 @@
             <img src="css/mano-sosteniendo-mancuernas-mancuernas.png" alt="logo">
         </div>
         <div class="container mt-5">
-            
-            <div class="row justify-content-center">
-                <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center welcome-text">
+
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="card-title text-center">Historia</h1>
-                            <div class="d-flex justify-content-center">
-                                <img src="css/historia.png" class="img-fluid">
-                            </div>
-                            <div class="container">
-                                <p class="card-text">
-                                    Hace ya varios años, específicamente el 3 de octubre del año 11, nació un gimnasio que se convertiría en un faro de bienestar en la comunidad. Desde su apertura, este espacio ha ofrecido una amplia variedad de clases diseñadas para satisfacer las necesidades y los intereses de sus miembros. Sin embargo, lo que verdaderamente ha catapultado a este gimnasio a la prominencia es su calidez y amigabilidad. Los profesores no solo son expertos en sus respectivas disciplinas, sino que también se han convertido en apoyos constantes para cada individuo que cruza sus puertas. La dedicación y la pasión de estos profesionales no solo se reflejan en la calidad de las clases, sino también en el ambiente inclusivo que han creado. A lo largo de los años, este gimnasio no solo ha ayudado a sus miembros a alcanzar sus objetivos físicos, sino que también ha tejido una red de relaciones valiosas y duraderas en su comunidad.
-                                </p>
-                            </div>
-                            <p class="mt-3 text-center">¿Aún no tienes una cuenta? <a href="index.html">Regístrate aquí</a></p>
+                            <button class="btn btn-primary btn-rounded mb-2" onclick="location.href='page1.html'">Button 1</button>
+                            <button class="btn btn-secondary btn-rounded" onclick="location.href='page2.html'">Button 2</button>
                         </div>
                     </div>
                 </div>
+            </div>
+                        
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -84,6 +100,3 @@
     </footer>
 </body>
 </html>
-
-
-</body>

@@ -12,7 +12,7 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
         
      <!-- Style propios -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles_ingresar.css">
 </head>
 <body>
     
@@ -25,25 +25,31 @@
             
             <div class="row justify-content-center">
                 <div class="col-md-5">
-                    <div class="card">
-                       
-                            
-                            <div class="d-flex justify-content-center">
-                                <img src="css/mano-sosteniendo-mancuernas-mancuernas.png" class="rounded-circle">
+                    <div class="card text-center">
+                        <div class="d-flex justify-content-center mt-4">
+                            <img src="css/mano-sosteniendo-mancuernas-mancuernas.png" class="rounded-circle">
+                        </div>
+                        <h1 class="card-title mt-2">Ingresar</h1>
+                        
+                        <div class="row justify-content-center align-items-center">
+                            <div class="toggle-container">
+                                <div class="col-md-8">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control">
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="password">Contraseña</label>
+                                    <input type="password" id="password" name="password" class="form-control">
+                                </div>
                             </div>
-                            <h1 class="card-title text-center">Ingresar</h1>   
-                            
-                            <div class="row justify-content-center"
-                                <div class="toggle-container">
-                                    <input type="text" id="switch" name="theme">
-                                    <label for="switch">Nombre</label>
-                                
-                                    <input type="text" id="switch" name="theme">
-                                    <label for="switch">Apellido</label>
-                            </div>
-                    </div>
-                    
+                        </div>
+                        
+                        <div class="card-footer">
+                            <button class="btn btn-danger">Login</button>
+                        </div>
+                    </div>        
                 </div>
+                
             </div>
         </div>
     </div>

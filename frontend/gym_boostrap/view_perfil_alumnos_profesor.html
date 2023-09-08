@@ -13,9 +13,34 @@
         
      <!-- Style propios -->
     <link rel="stylesheet" href="css/styles_perfil_alumnos_profesor.css">
+
+    <!-- en esta fuente se vera el titulo de la clase-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Praise">
 </head>
 <body>
-    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="view_perfil_profesor.html">Mi Perfil</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="view_home_profesor.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- Aca va el logo de la esquina --->
 
      <!-- Aca va la imagen de fondo --->
@@ -23,51 +48,42 @@
         <div class="esquina">
             <img src="css/mano-sosteniendo-mancuernas-mancuernas.png" alt="logo">
         </div>
-        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-2 text-center welcome-text">
+                    <h1>Alumno: </h1>
+                </div>
+            </div>
         <div class="container mt-6">
-            
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                   
-                        <div class="col text-left">
-                            <div class="card1">
-                            <h1>Pepe</h1>
+                    <div class="row justify-content-center">
+                        <div class="col-md-9 mt-1 text-left">
+                            <input type="text" id="nombre" name="nombre" class="form-control" value="Pepe" readonly>
                         </div>
-                        <h1 class="card-title text-center">Alumnos</h1>
-                      
-                        
-                        <div class="row justify-content-center">
-                            <div class="col-md-9 mt-1 text-left">
-                                <input type="text" id="nombre" name="nombre" class="form-control" value="Nombre" readonly>
-                            </div>
-                            <div class="col-md-9 mt-1 text-left">
-                                <input type="text" id="apellido" name="apellido" class="form-control" value="Apellido" readonly>
-                            </div>
-                            <div class="col-md-9 mt-1 text-left">
-                                <input type="text" id="mail" name="mail" class="form-control" value="Correo Electrónico" readonly>
-                            </div>
-                            <div class="col-md-9 mt-1 text-left">
-                                <input type="text" id="telefono" name="telefono" class="form-control" value="Número de Teléfono" readonly>
-                            </div>
-                            <div class="col-md-9 mt-1 text-left">
-                                <input type="text" id="documento" name="documento" class="form-control" value="Documento" readonly>
-                            </div>
-                            <div class="col-md-9 mt-1 text-left">
-                                <input type="text" id="edad" name="edad" class="form-control" value="Edad" readonly>
-                            </div>
-                            <div class="col-md-9 mt-1 text-left">
-                                <input type="text" id="sexo" name="sexo" class="form-control" value="Sexo" readonly>
-                            </div>
-                            <div class="col-md-9 mt-1 text-left">
-                                <input type="password" id="password" name="password" class="form-control" value="Contraseña" readonly>
-                            </div>
+                        <div class="col-md-9 mt-1 text-left">
+                            <input type="text" id="apellido" name="apellido" class="form-control" value="Peperoni" readonly>
                         </div>
-                        
-                        
-                        
-                    
+                        <div class="col-md-9 mt-1 text-left">
+                            <input type="text" id="mail" name="mail" class="form-control" value="p.peroni@gmail.com" readonly>
+                        </div>
+                        <div class="col-md-9 mt-1 text-left">
+                            <input type="text" id="telefono" name="telefono" class="form-control" value="261 594 567" readonly>
+                        </div>
+                        <div class="col-md-9 mt-1 text-left">
+                            <input type="text" id="documento" name="documento" class="form-control" value="18.564.956" readonly>
+                        </div>
+                        <div class="col-md-9 mt-1 text-left">
+                            <input type="text" id="edad" name="edad" class="form-control" value="48" readonly>
+                        </div>
+                        <div class="col-md-9 mt-1 text-left">
+                            <input type="text" id="sexo" name="sexo" class="form-control" value="Masculino" readonly>
+                        </div>
+                        <div class="col-md-9 mt-1 text-left">
+                            <input type="password" id="password" name="password" class="form-control" value="Contraseña" readonly>
+                        </div>
+                    </div>
                 </div>
-                
             </div>
         </div>
     </div>

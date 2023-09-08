@@ -96,3 +96,9 @@
     -webkit-text-stroke: 1px black; /* Borde negro de 2px */
     color: transparent; /* Hace que el texto sea transparente */
 }
+
+/*Con este estilo limito la imagen a la resolucion deseada para mostrar*/
+img.rounded-circle {
+  max-width: 500px; /* Anchura */
+  max-height: 400px; /* Altura */
+}

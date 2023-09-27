@@ -1,23 +1,58 @@
+.card h1{
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #000000;
+  }
 
 /* Ajustar estilos de los cards */
 .card {
-    margin-bottom: 20px;
-    background-color: rgb(17, 14, 14);
+    margin-bottom: 10px;
+    background-color: rgb(226, 223, 223);
     opacity: 1.0;
     border: groove;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100%;
 }
+/*  le doy el borde redondo a la foto */
+.rounded-circle {
+    border-radius: 100% !important;
+  }
 
 /* Este es el logo de la esquina*/
 
-  .esquina img {
-    height:300px ;
-    width: 300px;
-    position: relative;
-    top: 0;
-    right: 0;
-    height: 100%;
-  }
+.esquina img {
+  height:200px ;
+  width: 200px;
+  position: relative;
+  top: 0;
+  right: 0;
+  height: 75%;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dd1b2f;
+  border-color: #d10e21;
+  width: 75%; 
+
+}
+.toggle-container label {
+
+  position: center;
+  padding-right: 20px;
+  color: #000000; 
+
+}
+.toggle-container  {
+  color: #0e0a0a;
+  background-color: #e4d9d9;
+  border-color: #050000;
+  width: 90%;
+  
+   
+ 
+  
+}
 
 .card-img-top {
     max-height: 200px;
@@ -48,14 +83,6 @@
     color: red;
 
 }
-
-
-/*Con este estilo limito la imagen a la resolucion deseada para mostrar*/
-img.rounded-circle {
-  max-width: 500px; /* Anchura */
-  max-height: 400px; /* Altura */
-}
-
 
 
   /* amplio el cuadro de texto que contiene a los parrafos de bienvenida */

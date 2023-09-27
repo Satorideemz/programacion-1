@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos globales */
+
+/* Establecer el fondo de imagen */
+.background-image {
+    background-image: url('assets/gym.jpg')  ; /* Reemplaza con la ruta de tu imagen de fondo */
+
+    /* le doy el efecto  de transparencia blanca*/
+    opacity: 0.8;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding-top: 0px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+    padding-left: 10px;
+  /* Agregar un espacio arriba,  izquierda y derecha*/
+}

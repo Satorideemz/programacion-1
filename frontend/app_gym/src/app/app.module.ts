@@ -21,6 +21,9 @@ import { NuevosAlumnosProfesorComponent } from './pages/profesor/nuevos-alumnos-
 import { AlumnosProfesorComponent } from './pages/profesor/alumnos-profesor/alumnos-profesor.component';
 import { RutinaABMProfesorComponent } from './pages/profesor/rutina-abm-profesor/rutina-abm-profesor.component';
 import { NuevaRutinaProfesorComponent } from './pages/profesor/nueva-rutina-profesor/nueva-rutina-profesor.component';
+import { HorariosComponent } from './pages/horarios/horarios.component';
+
+import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { NuevaRutinaProfesorComponent } from './pages/profesor/nueva-rutina-prof
      NuevosAlumnosProfesorComponent,
      AlumnosProfesorComponent,
      RutinaABMProfesorComponent,
-     NuevaRutinaProfesorComponent
+     NuevaRutinaProfesorComponent,
+     HorariosComponent,
+
+     VerClaseComponent
   ],
   imports: [
     BrowserModule,

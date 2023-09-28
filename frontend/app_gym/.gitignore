@@ -8,7 +8,7 @@
 
 # Node
 #comento la linea de node_modules para que funcione en los demas repositorios
-#/node_modules
+/node_modules
 npm-debug.log
 yarn-error.log
 

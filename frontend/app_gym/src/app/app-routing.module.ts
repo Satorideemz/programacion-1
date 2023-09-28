@@ -19,6 +19,11 @@ import { NuevosAlumnosProfesorComponent } from './pages/profesor/nuevos-alumnos-
 import { RutinaABMProfesorComponent } from './pages/profesor/rutina-abm-profesor/rutina-abm-profesor.component';
 import { AlumnosProfesorComponent } from './pages/profesor/alumnos-profesor/alumnos-profesor.component'; 
 import { NuevaRutinaProfesorComponent } from './pages/profesor/nueva-rutina-profesor/nueva-rutina-profesor.component';
+import { HorariosComponent } from './pages/horarios/horarios.component';
+
+
+//ruta temporal despues borrar
+import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -28,6 +33,7 @@ const routes: Routes = [
   {path: 'clase-puntual', component: ClasePuntualComponent},
   {path: 'contactanos', component: ContactanosComponent },
   {path: 'ingresar', component: IngresarComponent },
+  {path: 'horarios', component: HorariosComponent },
   {path: '', redirectTo: '/home' , pathMatch: 'full' }, //redirecciona al home por defecto 
 
   //routeo  de profesores
@@ -39,8 +45,19 @@ const routes: Routes = [
   {path: 'rutina-abm-profesor', component: RutinaABMProfesorComponent },
   {path: 'nueva-rutina-profesor', component: NuevaRutinaProfesorComponent },
 
+   //path temporal
+   {path: 'ver-clases', component: VerClaseComponent },
+
+
+
+
   {path: '**', redirectTo: 'home'}
   /*crear una pagina de error 404 por defecto en linea de arriba */
+
+
+  
+
+
 ];
 
 @NgModule({

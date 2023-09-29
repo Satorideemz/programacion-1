@@ -26,12 +26,18 @@ import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asist
 //ruta temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
+import { AbmComponent } from './components/rutina/abm/abm.component';
+import { AbmadminComponent } from './components/admi/profesores/abmadmin/abmadmin.component';
 
 
 
 //routeo  de admi
 import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
 import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.component';
+import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
+import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
+import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
+
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -60,11 +66,16 @@ const routes: Routes = [
    //path temporal
   {path: 'ver-clases', component: VerClaseComponent },
   {path: 'ver-alumno', component: VerAlumnoComponent },
+  {path: 'ver-rutinas', component: AbmComponent },
+  {path: 'ver-profesores', component: AbmadminComponent},
 
 
   //routeo  de admi
   {path: 'mi-perfil-admi', component: MiPerfilAdmiComponent },
   {path: 'clases-admi', component: ClasesAdmiComponent },
+  {path: 'buscar-profesor', component: BuscarProfesorComponent },
+  {path: 'nuevos-profesores', component: NuevosProfesoresComponent },
+  {path: 'profesor-abm-admin',component: AbmProfesorComponent},
 
   {path: '**', redirectTo: 'home'}
   /*crear una pagina de error 404 por defecto en linea de arriba */

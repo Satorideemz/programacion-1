@@ -33,6 +33,11 @@ import { AbmComponent } from './components/rutina/abm/abm.component';
 import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
 import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
 import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.component';
+import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
+import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
+import { AbmadminComponent } from './components/admi/profesores/abmadmin/abmadmin.component';
+import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
+
 
 @NgModule({
   declarations: [
@@ -66,7 +71,7 @@ import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.compon
 
      NavegacionAdmiComponent,
      MiPerfilAdmiComponent,     
-     ClasesAdmiComponent,
+     ClasesAdmiComponent, NuevosProfesoresComponent, BuscarProfesorComponent, AbmadminComponent, AbmProfesorComponent
      
   ],
   imports: [

@@ -27,6 +27,8 @@ import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases
 import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
 
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
+import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
+import { AbmComponent } from './components/rutina/abm/abm.component';
 
 import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
 import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
@@ -60,9 +62,7 @@ import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.compon
 
      VerClaseComponent,
 
-     NavegacionAdmiComponent,
-     MiPerfilAdmiComponent,
-     ClasesAdmiComponent,
+     VerClaseComponent
   ],
   imports: [
     BrowserModule,

@@ -20,10 +20,15 @@ import { RutinaABMProfesorComponent } from './pages/profesor/rutina-abm-profesor
 import { AlumnosProfesorComponent } from './pages/profesor/alumnos-profesor/alumnos-profesor.component'; 
 import { NuevaRutinaProfesorComponent } from './pages/profesor/nueva-rutina-profesor/nueva-rutina-profesor.component';
 import { HorariosComponent } from './pages/horarios/horarios.component';
-
+import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases-profesor.component';
+import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
 
 //ruta temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
+
+//routeo  de admi
+import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
+import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -44,19 +49,19 @@ const routes: Routes = [
   {path: 'alumnos-profesor', component: AlumnosProfesorComponent },
   {path: 'rutina-abm-profesor', component: RutinaABMProfesorComponent },
   {path: 'nueva-rutina-profesor', component: NuevaRutinaProfesorComponent },
+  {path: 'clases-profesor', component: ClasesProfesorComponent },
+  {path: 'clases-asistencia-profesor', component: ClasesAsistenciaProfesorComponent },
 
    //path temporal
    {path: 'ver-clases', component: VerClaseComponent },
 
 
-
+  //routeo  de admi
+  {path: 'mi-perfil-admi', component: MiPerfilAdmiComponent },
+  {path: 'clases-admi', component: ClasesAdmiComponent },
 
   {path: '**', redirectTo: 'home'}
   /*crear una pagina de error 404 por defecto en linea de arriba */
-
-
-  
-
 
 ];
 

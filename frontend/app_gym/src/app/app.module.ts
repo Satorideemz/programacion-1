@@ -15,6 +15,7 @@ import { ContactanosComponent } from './pages/contactanos/contactanos.component'
 import { IngresarComponent } from './pages/ingresar/ingresar.component';
 
 import { HomeprofesorComponent } from './pages/profesor/homeprofesor/homeprofesor.component';
+import { NavegacionProfesorComponent } from './components/navegacion-profesor/navegacion-profesor.component';
 import { MiPerfilProfesorComponent } from './pages/profesor/mi-perfil-profesor/mi-perfil-profesor.component';
 import { BuscarAlumnoProfesorComponent } from './pages/profesor/buscar-alumno-profesor/buscar-alumno-profesor.component';
 import { NuevosAlumnosProfesorComponent } from './pages/profesor/nuevos-alumnos-profesor/nuevos-alumnos-profesor.component';
@@ -22,8 +23,14 @@ import { AlumnosProfesorComponent } from './pages/profesor/alumnos-profesor/alum
 import { RutinaABMProfesorComponent } from './pages/profesor/rutina-abm-profesor/rutina-abm-profesor.component';
 import { NuevaRutinaProfesorComponent } from './pages/profesor/nueva-rutina-profesor/nueva-rutina-profesor.component';
 import { HorariosComponent } from './pages/horarios/horarios.component';
+import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases-profesor.component';
+import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
 
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
+
+import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
+import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
+import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +47,7 @@ import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.compo
     IngresarComponent,
 
     HomeprofesorComponent,
+    NavegacionProfesorComponent,
      MiPerfilProfesorComponent,
      BuscarAlumnoProfesorComponent,
      NuevosAlumnosProfesorComponent,
@@ -47,8 +55,14 @@ import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.compo
      RutinaABMProfesorComponent,
      NuevaRutinaProfesorComponent,
      HorariosComponent,
+     ClasesProfesorComponent,
+     ClasesAsistenciaProfesorComponent,
 
-     VerClaseComponent
+     VerClaseComponent,
+
+     NavegacionAdmiComponent,
+     MiPerfilAdmiComponent,
+     ClasesAdmiComponent,
   ],
   imports: [
     BrowserModule,

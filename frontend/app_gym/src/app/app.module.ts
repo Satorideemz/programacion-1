@@ -24,6 +24,8 @@ import { NuevaRutinaProfesorComponent } from './pages/profesor/nueva-rutina-prof
 import { HorariosComponent } from './pages/horarios/horarios.component';
 
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
+import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
+import { AbmComponent } from './components/rutina/abm/abm.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.compo
      NuevaRutinaProfesorComponent,
      HorariosComponent,
 
-     VerClaseComponent
+     VerClaseComponent,
+      VerAlumnoComponent,
+      AbmComponent
   ],
   imports: [
     BrowserModule,

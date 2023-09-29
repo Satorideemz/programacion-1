@@ -45,6 +45,8 @@
             <div class="row mt-5">
                 <div class="col-md-4">
                     <div class="card">
+
+                        
                         <div class="card-body">
                             <a class="nav-link" href="view_nuevos_alumnos_profesor.html">Nuevo Alumno</a>
                        </div>
@@ -54,12 +56,17 @@
                     <div class="input-group mb-2">
                         <input type="text" class="form-control" placeholder="Ingrese el nombre o apellido del alumno...">
                         <div class="input-group-append">
-                            <a href="view_alumnos_profesor.html"> 
-                                <button class="card btn btn-outline-secondary btn-lg" type="button">Buscar</button>
-                            </a>
+
+                            <button class="card btn btn-outline-secondary btn-lg" type="button" (click)="showVerAlumno = true">Buscar</button>
+
                         </div>
                     </div>
                 </div>
+                <div  *ngIf= "showVerAlumno">
+                    <app-ver-alumno></app-ver-alumno>
+
+                </div>
+
                      
             </div>
         </div>

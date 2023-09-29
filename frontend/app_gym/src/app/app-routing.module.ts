@@ -24,6 +24,9 @@ import { HorariosComponent } from './pages/horarios/horarios.component';
 
 //ruta temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
+import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
+
+
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -36,6 +39,7 @@ const routes: Routes = [
   {path: 'horarios', component: HorariosComponent },
   {path: '', redirectTo: '/home' , pathMatch: 'full' }, //redirecciona al home por defecto 
 
+
   //routeo  de profesores
   {path: 'homeprofesor', component: HomeprofesorComponent },
   {path: 'mi-perfil-profesor', component: MiPerfilProfesorComponent },
@@ -45,8 +49,10 @@ const routes: Routes = [
   {path: 'rutina-abm-profesor', component: RutinaABMProfesorComponent },
   {path: 'nueva-rutina-profesor', component: NuevaRutinaProfesorComponent },
 
+
    //path temporal
-   {path: 'ver-clases', component: VerClaseComponent },
+  {path: 'ver-clases', component: VerClaseComponent },
+  {path: 'ver-alumno', component: VerAlumnoComponent },
 
 
 

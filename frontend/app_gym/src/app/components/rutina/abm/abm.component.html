@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body">
+        <div class="card-block1">
+            <div class="row">
+                <!-- Content for the first card -->
+            </div>
+        </div>
+
+        <!-- Text Pane 1 -->
+        <div class="card-text">
+            <h3>Nombre:</h3>
+            <p>Pepe</p>
+        </div>
+
+        <!-- Nested List -->
+        <ul class="list-group mt-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center custom-rutina">
+                Rutina 1
+                <div>
+                    <button class="btn btn-primary btn-sm me-2" (click)="handleButtonClick()"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-danger btn-sm delete-btn" (click)="confirmDelete()"><i class="fa-solid fa-trash"></i></button>
+        
+                </div>
+            </li>
+            <!-- Content for Rutina 1 -->
+            <li class="list-group-item custom-bg-color">
+                <h5>Pesas</h5>
+                <p>x15 curl de biceps</p>
+            </li>    
+        </ul>
+        <a href="view_nueva_rutina_profesor.html"> 
+            <button class="btn btn-success mt-3" id="addRutinaBtn">Agregar nueva rutina</button>
+        </a>
+    </div>
+</div>

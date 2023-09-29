@@ -61,8 +61,13 @@ import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.compon
      ClasesAsistenciaProfesorComponent,
 
      VerClaseComponent,
+     VerAlumnoComponent,
+     AbmComponent,
 
-     VerClaseComponent
+     NavegacionAdmiComponent,
+     MiPerfilAdmiComponent,     
+     ClasesAdmiComponent,
+     
   ],
   imports: [
     BrowserModule,

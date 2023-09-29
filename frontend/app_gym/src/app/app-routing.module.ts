@@ -22,6 +22,7 @@ import { NuevaRutinaProfesorComponent } from './pages/profesor/nueva-rutina-prof
 import { HorariosComponent } from './pages/horarios/horarios.component';
 import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases-profesor.component';
 import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
+import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-profesor/perfil-alumno-profesor.component';
 
 //ruta temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
@@ -29,14 +30,20 @@ import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.c
 import { AbmComponent } from './components/rutina/abm/abm.component';
 import { AbmadminComponent } from './components/admi/profesores/abmadmin/abmadmin.component';
 
-
-
 //routeo  de admi
 import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
 import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.component';
+<<<<<<< Updated upstream
 import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
 import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
 import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
+=======
+import { ClasesAsistenciaAdmiComponent } from './pages/admi/clases-asistencia-admi/clases-asistencia-admi.component';
+import { AlumnosAdmiComponent } from './pages/admi/alumnos-admi/alumnos-admi.component'; 
+import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/buscar-alumno-admi.component';
+import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
+import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
+>>>>>>> Stashed changes
 
 
 const routes: Routes = [
@@ -61,6 +68,7 @@ const routes: Routes = [
   {path: 'nueva-rutina-profesor', component: NuevaRutinaProfesorComponent },
   {path: 'clases-profesor', component: ClasesProfesorComponent },
   {path: 'clases-asistencia-profesor', component: ClasesAsistenciaProfesorComponent },
+  {path: 'perfil-alumno-profesor', component: PerfilAlumnoProfesorComponent },
 
 
    //path temporal
@@ -73,9 +81,20 @@ const routes: Routes = [
   //routeo  de admi
   {path: 'mi-perfil-admi', component: MiPerfilAdmiComponent },
   {path: 'clases-admi', component: ClasesAdmiComponent },
+<<<<<<< Updated upstream
   {path: 'buscar-profesor', component: BuscarProfesorComponent },
   {path: 'nuevos-profesores', component: NuevosProfesoresComponent },
   {path: 'profesor-abm-admin',component: AbmProfesorComponent},
+=======
+  {path: 'clases-asistencia-admi', component: ClasesAsistenciaAdmiComponent },
+  {path: 'alumnos-admi', component: AlumnosAdmiComponent },
+  {path: 'buscar-alumno-admi', component: BuscarAlumnoAdmiComponent },
+  {path: 'nuevos-alumnos-admi', component: NuevosAlumnosAdmiComponent },
+  {path: 'homeadmi', component: HomeAdmiComponent },
+
+
+
+>>>>>>> Stashed changes
 
   {path: '**', redirectTo: 'home'}
   /*crear una pagina de error 404 por defecto en linea de arriba */

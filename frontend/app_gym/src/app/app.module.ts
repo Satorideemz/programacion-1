@@ -25,6 +25,7 @@ import { NuevaRutinaProfesorComponent } from './pages/profesor/nueva-rutina-prof
 import { HorariosComponent } from './pages/horarios/horarios.component';
 import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases-profesor.component';
 import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
+import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-profesor/perfil-alumno-profesor.component';
 
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
@@ -33,11 +34,19 @@ import { AbmComponent } from './components/rutina/abm/abm.component';
 import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
 import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
 import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.component';
+<<<<<<< Updated upstream
 import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
 import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
 import { AbmadminComponent } from './components/admi/profesores/abmadmin/abmadmin.component';
 import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
 
+=======
+import { ClasesAsistenciaAdmiComponent } from './pages/admi/clases-asistencia-admi/clases-asistencia-admi.component';
+import { AlumnosAdmiComponent } from './pages/admi/alumnos-admi/alumnos-admi.component';
+import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/buscar-alumno-admi.component';
+import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
+import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -64,6 +73,7 @@ import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.com
      HorariosComponent,
      ClasesProfesorComponent,
      ClasesAsistenciaProfesorComponent,
+     PerfilAlumnoProfesorComponent,
 
      VerClaseComponent,
      VerAlumnoComponent,
@@ -71,7 +81,16 @@ import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.com
 
      NavegacionAdmiComponent,
      MiPerfilAdmiComponent,     
+<<<<<<< Updated upstream
      ClasesAdmiComponent, NuevosProfesoresComponent, BuscarProfesorComponent, AbmadminComponent, AbmProfesorComponent
+=======
+     ClasesAdmiComponent,
+     ClasesAsistenciaAdmiComponent,
+     AlumnosAdmiComponent,
+     BuscarAlumnoAdmiComponent,
+     NuevosAlumnosAdmiComponent,
+     HomeAdmiComponent,
+>>>>>>> Stashed changes
      
   ],
   imports: [

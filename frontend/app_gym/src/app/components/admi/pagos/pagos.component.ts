@@ -31,7 +31,7 @@ export class PagosComponent {
 
   handleButtonClick(): void {
   // Navigate to the desired route when the button is clicked
-  this.router.navigate(['/alumnos-admi']); // Replace 'your-desired-route' with the actual route you want to navigate to
+  this.router.navigate(['/pagos-puntual-admi']); // Replace 'your-desired-route' with the actual route you want to navigate to
   }
 
   confirmDelete(): void {

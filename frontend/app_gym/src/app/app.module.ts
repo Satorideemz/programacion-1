@@ -59,6 +59,9 @@ import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/edita
 import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
 import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
 import { VerAlumnoAdmiComponent } from './components/alumnos/ver-alumno-admi/ver-alumno-admi.component';
+import { AbmAdmiComponent } from './components/rutina/abm-admi/abm-admi.component';
+import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
+import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm-alumno-admi.component';
 
 
 
@@ -122,6 +125,9 @@ import { VerAlumnoAdmiComponent } from './components/alumnos/ver-alumno-admi/ver
      NuevaRutinaAdmiComponent,
      NuevosProfesoresComponent,
      VerAlumnoAdmiComponent,
+     AbmAdmiComponent,
+     PerfilAlumnoAdmiComponent,
+     AbmAlumnoAdmiComponent,
 
      
   ],

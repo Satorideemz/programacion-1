@@ -31,7 +31,7 @@ import { EditarRutinaProfesorComponent } from './pages/profesor/editar-rutina-pr
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
 import { AbmComponent } from './components/rutina/abm/abm.component';
-import { AbmadminComponent } from './components/admi/profesores/abmadmin/abmadmin.component';
+import { AbmadmiComponent } from './components/admi/profesores/abmadmi/abmadmi.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
 
 //routeo  de admi
@@ -81,7 +81,7 @@ const routes: Routes = [
   {path: 'ver-clases', component: VerClaseComponent },
   {path: 'ver-alumno', component: VerAlumnoComponent },
   {path: 'ver-rutinas', component: AbmComponent },
-  {path: 'ver-profesores', component: AbmadminComponent},
+  {path: 'ver-profesores', component: AbmadmiComponent},
   {path: 'pagos', component: PagosComponent},
 
 

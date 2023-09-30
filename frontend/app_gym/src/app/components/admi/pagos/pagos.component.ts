@@ -10,18 +10,18 @@ export class PagosComponent {
   arrayAlumnos = [
     {
       alumno_id: "1",
-      nombre:"pepito",
-      apellido:"rodriguez",
+      nombre:"Roberto",
+      apellido:"Lirio",
     },
     {
       alumno_id: "2",
-      nombre:"pepito2",
-      apellido:"rodriguez2",
+      nombre:"Flor",
+      apellido:"Lirio",
     },
     {
       alumno_id: "3",
-      nombre:"pepito3",
-      apellido:"rodriguez3",
+      nombre:"Juan",
+      apellido:"Lirio",
     }
 
   ];

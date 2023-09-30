@@ -11,6 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HistoriaComponent } from './pages/historia/historia.component';
 import { ProfesoresComponent } from './pages/profesores/profesores.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
+import { NavegacionSinContactanosComponent } from './components/navegacion-sin-contactanos/navegacion-sin-contactanos.component';
 import { NavegacionConHorarioComponent } from './components/navegacion-con-horario/navegacion-con-horario.component';
 import { NavegacionhomeComponent } from './components/navegacionhome/navegacionhome.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -41,7 +42,7 @@ import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.c
 import { AbmComponent } from './components/rutina/abm/abm.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
 import { AbmAlumnoComponent } from './components/alumnos/abm-alumno/abm-alumno.component';
-import { AbmadminComponent } from './components/admi/profesores/abmadmin/abmadmin.component';
+import { AbmadmiComponent } from './components/admi/profesores/abmadmi/abmadmi.component';
 
 //Admi
 import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
@@ -77,6 +78,7 @@ import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm
     HistoriaComponent,
     ProfesoresComponent,
     NavegacionConHorarioComponent,
+    NavegacionSinContactanosComponent,
     NavegacionComponent,
     NavegacionhomeComponent,
     FooterComponent,
@@ -107,7 +109,7 @@ import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm
      AbmComponent,
      PagosComponent,
      AbmAlumnoComponent,
-     AbmadminComponent,
+     AbmadmiComponent,
      
 
      //Admi

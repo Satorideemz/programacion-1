@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './rutina-abm-admin.component.html',
   styleUrls: ['./rutina-abm-admin.component.css']
 })
-export class RutinaAbmAdminComponent {
+export class RutinaAbmAdmiComponent {
 
 }

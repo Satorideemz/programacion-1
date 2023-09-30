@@ -18,123 +18,77 @@
                     <div class="row justify-content-center">
 
                         <div class="input-group">
-                            <input type="text" id="nombre" name="nombre" class="form-control" value="Roy" readonly>
+                            <input type="text" id="nombre" name="nombre" class="form-control" value="Roy" >
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>
 
                         <div class="input-group">
-                            <input type="text" id="apellido" name="apellido" class="form-control" value="Masutangu" readonly>
+                            <input type="text" id="apellido" name="apellido" class="form-control" value="Masutangu" >
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="text" id="mail" name="mail" class="form-control" value="r.masutangu@gmail.com" readonly>
+                            <input type="text" id="mail" name="mail" class="form-control" value="r.masutangu@gmail.com" >
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="text" id="documento" name="documento" class="form-control" value="5.896.482" readonly>
+                            <input type="text" id="documento" name="documento" class="form-control" value="5.896.482" >
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="text" id="telefono" name="telefono" class="form-control" value="231 654 897" readonly>
+                            <input type="text" id="telefono" name="telefono" class="form-control" value="231 654 897">
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="password" id="password" name="password" class="form-control" value="Contraseña" readonly>
+                            <input type="password" id="password" name="password" class="form-control" value="Contraseña" >
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="text" id="edad" name="edad" class="form-control" value="30" readonly>
+                            <input type="text" id="edad" name="edad" class="form-control" value="30" >
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="text" id="sexo" name="sexo" class="form-control" value="Masculino" readonly>
+                            <input type="text" id="sexo" name="sexo" class="form-control" value="Masculino" >
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="text" id="titulo" name="titulo" class="form-control" value="Licenciado en gimnasio" readonly>
+                            <input type="text" id="titulo" name="titulo" class="form-control" value="Licenciado en gimnasio" >
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>
                         <div class="input-group">
-                            <input type="text" id="disponibilidad" name="disponibilidad" class="form-control" value="Lunes, Martes, Miercoles, Jueves y Viernes" readonly>
+                            <input type="text" id="disponibilidad" name="disponibilidad" class="form-control" value="Lunes, Martes, Miercoles, Jueves y Viernes" >
                             <div class="input-group-append">
                                 <button class="btn btn-primary btn-sm" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                         </div>   
+                            
+                        <button class="btn btn-sm btn-custom2 ml-2">Eliminar</button>
+                        <button class="btn btn-sm btn-custom1 ml-2">Guardar</button>
 
-                        <button class="btn btn-danger btn-sm ml-2" id="eliminar-button">Eliminar</button>
-                        
+
                     </div> 
                 </div>
                 
             </div>
         </div>
 
-            <!-- Script para confirmar eliminación -->
-            <script>
-                // Get all delete buttons with the "delete-btn" class
-                const deleteButtons = document.querySelectorAll('.delete-btn');
-
-                // Add a click event listener to each delete button
-                deleteButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        // Get the confirmation message from the data-confirm attribute
-                        const confirmationMessage = this.getAttribute('data-confirm');
-
-                        // Display the confirmation dialog using window.confirm()
-                        const confirmed = window.confirm(confirmationMessage);
-
-                        // Check if the user confirmed or canceled
-                        if (confirmed) {
-                            // User clicked "OK," perform the delete action here
-                            // You can add your delete logic here
-                            alert('Borrar profesor.'); // Replace with your actual delete code
-                        } else {
-                            // User clicked "Cancel" or closed the dialog
-                            // No action needed
-                        }
-                    });
-                });
-
-                // Add a click event listener for the separate "Eliminar" button
-                const eliminarButton = document.getElementById('eliminar-button');
-                eliminarButton.addEventListener('click', function() {
-                    // Display the confirmation dialog using window.confirm()
-                    const confirmed = window.confirm('¿Estás seguro de que deseas eliminar?');
-
-                    // Check if the user confirmed or canceled
-                    if (confirmed) {
-                        // User clicked "OK," perform the delete action here
-                        // You can add your delete logic here
-                        alert('Perfil borrado.'); // Replace with your actual delete code
-                    } else {
-                        // User clicked "Cancel" or closed the dialog
-                        // No action needed
-                    }
-                });
-            </script>
-
-
     </div>
-
-
-   
 </div>
 <app-footer></app-footer>

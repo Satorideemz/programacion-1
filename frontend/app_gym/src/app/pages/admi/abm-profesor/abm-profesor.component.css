@@ -5,8 +5,6 @@
     color: #000000;
   }
   
-  
-  
   /* Ajustar estilos de los cards */
   .card {
     margin-bottom: 10px;
@@ -85,11 +83,16 @@
     background-color: #000000;
     border-top: 1px solid #000000;
   }
-  
-  
-  
-  
-  
+/* Estilos personalizados para el color de fondo del botón */
+.btn-custom1 {
+  background-color: green; /* Cambia el color de fondo a verde o al que desees */
+  color: white; /* Cambia el color del texto a blanco o al que desees */
+}
+.btn-custom2 {
+  background-color: rgb(240, 72, 12); /* Cambia el color de fondo a verde o al que desees */
+  color: white; /* Cambia el color del texto a blanco o al que desees */
+}
+
   /* amplio el cuadro de texto que contiene a los parrafos de bienvenida */
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     max-width: 1520px;

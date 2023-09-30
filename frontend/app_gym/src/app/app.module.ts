@@ -54,9 +54,11 @@ import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nue
 import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
-import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
+import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admi/rutina-abm-admi.component';
 import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
 import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
+import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
+
 
 @NgModule({
   declarations: [
@@ -116,6 +118,7 @@ import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-r
      RutinaAbmAdmiComponent,
      EditarRutinaAdmiComponent,
      NuevaRutinaAdmiComponent,
+     NuevosProfesoresComponent,
      
   ],
   imports: [

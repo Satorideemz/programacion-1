@@ -44,10 +44,10 @@ import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nue
 import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
-import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
+import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admi/rutina-abm-admi.component';
 import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
 import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
-
+import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -97,7 +97,7 @@ const routes: Routes = [
   {path: 'pagos-puntual-admi', component: PagosPuntualAdmiComponent },
   {path: 'rutina-abm-admi', component: RutinaAbmAdmiComponent},
   {path: 'nueva-rutina-admi', component: NuevaRutinaAdmiComponent },
-
+  {path: 'nuevos-profesores', component: NuevosProfesoresComponent },
 
 
 

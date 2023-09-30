@@ -55,7 +55,7 @@ import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
 import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
-
+import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +113,7 @@ import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/edita
      AbmProfesorComponent,
      RutinaAbmAdmiComponent,
      EditarRutinaAdmiComponent,
+     NuevaRutinaAdmiComponent,
      
   ],
   imports: [

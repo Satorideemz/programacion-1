@@ -93,7 +93,7 @@ const routes: Routes = [
   {path: 'pagos-admi', component: PagosAdmiComponent },
   {path: 'pagos-puntual-admi', component: PagosPuntualAdmiComponent },
   {path: 'rutina-abm-admi', component: RutinaAbmAdmiComponent},
-  {path: 'nueva-rutina-profesor', component: NuevaRutinaAdmiComponent },
+  {path: 'nueva-rutina-admi', component: NuevaRutinaAdmiComponent },
 
 
 

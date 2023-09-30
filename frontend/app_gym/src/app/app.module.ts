@@ -49,6 +49,7 @@ import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.compon
 import { ClasesAsistenciaAdmiComponent } from './pages/admi/clases-asistencia-admi/clases-asistencia-admi.component';
 import { AlumnosAdmiComponent } from './pages/admi/alumnos-admi/alumnos-admi.component';
 import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/buscar-alumno-admi.component';
+import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
 import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
 import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
@@ -80,6 +81,7 @@ import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-r
     NavegacionProfesorComponent,
      MiPerfilProfesorComponent,
      BuscarAlumnoProfesorComponent,
+     BuscarProfesorComponent,
      NuevosAlumnosProfesorComponent,
      AlumnosProfesorComponent,
      RutinaABMProfesorComponent,

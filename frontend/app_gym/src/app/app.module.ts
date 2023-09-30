@@ -32,8 +32,7 @@ import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases
 import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
 import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-profesor/perfil-alumno-profesor.component';
 import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
-import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
-
+import { EditarRutinaProfesorComponent } from './pages/profesor/editar-rutina-profesor/editar-rutina-profesor.component';
 
 //Componentes temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
@@ -55,8 +54,7 @@ import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
-import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
-
+import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
 
 
 @NgModule({
@@ -90,8 +88,7 @@ import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-r
      ClasesProfesorComponent,
      ClasesAsistenciaProfesorComponent,
      PerfilAlumnoProfesorComponent,
-     BuscarProfesorComponent,
-    
+     EditarRutinaProfesorComponent,
     
      //Componentes temporal despues borrar
      VerClaseComponent,
@@ -115,7 +112,7 @@ import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-r
      PagosPuntualAdmiComponent,
      AbmProfesorComponent,
      RutinaAbmAdmiComponent,
-     NuevaRutinaAdmiComponent,
+     EditarRutinaAdmiComponent,
      
   ],
   imports: [

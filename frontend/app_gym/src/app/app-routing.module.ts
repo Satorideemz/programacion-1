@@ -24,6 +24,7 @@ import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases
 import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
 import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-profesor/perfil-alumno-profesor.component';
 import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
+import { EditarRutinaProfesorComponent } from './pages/profesor/editar-rutina-profesor/editar-rutina-profesor.component';
 
 //ruta temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
@@ -43,7 +44,7 @@ import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
-
+import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -69,7 +70,7 @@ const routes: Routes = [
   {path: 'clases-asistencia-profesor', component: ClasesAsistenciaProfesorComponent },
   {path: 'perfil-alumno-profesor', component: PerfilAlumnoProfesorComponent },
   {path: 'abm-profesor' , component: AbmProfesorComponent },
-
+  {path: 'editar-rutina-profesor', component: EditarRutinaProfesorComponent },
 
    //path temporal
   {path: 'ver-clases', component: VerClaseComponent },
@@ -91,7 +92,7 @@ const routes: Routes = [
   {path: 'pagos-admi', component: PagosAdmiComponent },
   {path: 'pagos-puntual-admi', component: PagosPuntualAdmiComponent },
   {path: 'rutina-abm-admi', component: RutinaAbmAdmiComponent},
-
+  {path: 'editar-rutina-admi', component: EditarRutinaAdmiComponent },
 
 
 

@@ -47,6 +47,7 @@ import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/busca
 import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
 import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
+import { RutinaAbmAdminComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfi
     ContactanosComponent,
     IngresarComponent,
 
+    
     HomeprofesorComponent,
     NavegacionProfesorComponent,
      MiPerfilProfesorComponent,
@@ -93,6 +95,7 @@ import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfi
      NuevosAlumnosAdmiComponent,
      HomeAdmiComponent,
      PerfilAlumnoAdmiComponent,
+     RutinaAbmAdminComponent,
      
      
   ],

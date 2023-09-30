@@ -40,6 +40,7 @@ import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/busca
 import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
 import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
+import { RutinaAbmAdminComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
 
 
 const routes: Routes = [
@@ -84,6 +85,8 @@ const routes: Routes = [
   {path: 'nuevos-alumnos-admi', component: NuevosAlumnosAdmiComponent },
   {path: 'homeadmi', component: HomeAdmiComponent },
   {path: 'perfil-alumno-admi',component:  PerfilAlumnoAdmiComponent},
+  {path: 'rutina-abm-admi', component: RutinaAbmAdminComponent  },
+  
 
 
 

@@ -30,6 +30,7 @@ import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.compo
 import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
 import { AbmComponent } from './components/rutina/abm/abm.component';
 import { AbmadminComponent } from './components/admi/profesores/abmadmin/abmadmin.component';
+import { PagosComponent } from './components/admi/pagos/pagos.component';
 
 //routeo  de admi
 import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
@@ -39,8 +40,8 @@ import { AlumnosAdmiComponent } from './pages/admi/alumnos-admi/alumnos-admi.com
 import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/buscar-alumno-admi.component';
 import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
 import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
-import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
-import { RutinaAbmAdminComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
+import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
+import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 
 
 const routes: Routes = [
@@ -74,6 +75,7 @@ const routes: Routes = [
   {path: 'ver-alumno', component: VerAlumnoComponent },
   {path: 'ver-rutinas', component: AbmComponent },
   {path: 'ver-profesores', component: AbmadminComponent},
+  {path: 'pagos', component: PagosComponent},
 
 
   //routeo  de admi
@@ -84,9 +86,10 @@ const routes: Routes = [
   {path: 'buscar-alumno-admi', component: BuscarAlumnoAdmiComponent },
   {path: 'nuevos-alumnos-admi', component: NuevosAlumnosAdmiComponent },
   {path: 'homeadmi', component: HomeAdmiComponent },
-  {path: 'perfil-alumno-admi',component:  PerfilAlumnoAdmiComponent},
-  {path: 'rutina-abm-admi', component: RutinaAbmAdminComponent  },
-  
+  {path: 'homeadmi', component: HomeAdmiComponent },
+  {path: 'pagos-admi', component: PagosAdmiComponent },
+  {path: 'pagos-puntual-admi', component: PagosPuntualAdmiComponent },
+
 
 
 

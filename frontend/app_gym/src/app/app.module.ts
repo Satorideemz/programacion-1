@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
 
+//Usuario no registrado
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -17,6 +18,7 @@ import { ClasePuntualComponent } from './pages/clase-puntual/clase-puntual.compo
 import { ContactanosComponent } from './pages/contactanos/contactanos.component';
 import { IngresarComponent } from './pages/ingresar/ingresar.component';
 
+//Profesores
 import { HomeprofesorComponent } from './pages/profesor/homeprofesor/homeprofesor.component';
 import { NavegacionProfesorComponent } from './components/navegacion-profesor/navegacion-profesor.component';
 import { MiPerfilProfesorComponent } from './pages/profesor/mi-perfil-profesor/mi-perfil-profesor.component';
@@ -32,12 +34,14 @@ import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-pr
 import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
 
 
-
+//Componentes temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
 import { AbmComponent } from './components/rutina/abm/abm.component';
+import { PagosComponent } from './components/admi/pagos/pagos.component';
 import { AbmAlumnoComponent } from './components/alumnos/abm-alumno/abm-alumno.component';
 
+//Admi
 import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
 import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
 import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.component';
@@ -46,8 +50,10 @@ import { AlumnosAdmiComponent } from './pages/admi/alumnos-admi/alumnos-admi.com
 import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/buscar-alumno-admi.component';
 import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
 import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
-import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
-import { RutinaAbmAdminComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
+import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
+import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
+
+
 
 @NgModule({
   declarations: [
@@ -55,6 +61,8 @@ import { RutinaAbmAdminComponent } from './pages/admi/rutina-abm-admin/rutina-ab
 
     AppComponent,
     HomeComponent,
+
+    //Usuario no registrado
     HistoriaComponent,
     ProfesoresComponent,
     NavegacionComponent,
@@ -65,7 +73,7 @@ import { RutinaAbmAdminComponent } from './pages/admi/rutina-abm-admin/rutina-ab
     ContactanosComponent,
     IngresarComponent,
 
-    
+    //Profesores
     HomeprofesorComponent,
     NavegacionProfesorComponent,
      MiPerfilProfesorComponent,
@@ -79,13 +87,15 @@ import { RutinaAbmAdminComponent } from './pages/admi/rutina-abm-admin/rutina-ab
      ClasesAsistenciaProfesorComponent,
      PerfilAlumnoProfesorComponent,
     
-     AbmProfesorComponent,
-     AbmAlumnoComponent,
-
+   
+     //Componentes temporal despues borrar
      VerClaseComponent,
      VerAlumnoComponent,
      AbmComponent,
+     PagosComponent,
+     AbmAlumnoComponent,
 
+     //Admi
      NavegacionAdmiComponent,
      MiPerfilAdmiComponent,     
      ClasesAdmiComponent,
@@ -94,9 +104,9 @@ import { RutinaAbmAdminComponent } from './pages/admi/rutina-abm-admin/rutina-ab
      BuscarAlumnoAdmiComponent,
      NuevosAlumnosAdmiComponent,
      HomeAdmiComponent,
-     PerfilAlumnoAdmiComponent,
-     RutinaAbmAdminComponent,
-     
+     PagosAdmiComponent,
+     PagosPuntualAdmiComponent,
+     AbmProfesorComponent,
      
   ],
   imports: [

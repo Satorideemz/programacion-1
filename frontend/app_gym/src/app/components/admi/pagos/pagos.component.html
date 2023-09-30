@@ -1,0 +1,8 @@
+<ul class="list-group mt-3">
+    <li class="list-group-item d-flex justify-content-between align-items-center custom-rutina"  *ngFor="let alumno of arrayAlumnos" >
+        {{alumno.alumno_id}}. {{alumno.nombre}} , {{alumno.apellido}}
+        <div> 
+            <button class="btn btn-danger btn-sm me-2" (click)="handleButtonClick()">Abrir</button>
+        </div> 
+    </li>
+</ul>    

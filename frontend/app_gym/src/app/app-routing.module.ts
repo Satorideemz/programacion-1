@@ -48,6 +48,8 @@ import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admi/rutina-abm-
 import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
 import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
 import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
+import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
+import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -98,6 +100,8 @@ const routes: Routes = [
   {path: 'rutina-abm-admi', component: RutinaAbmAdmiComponent},
   {path: 'nueva-rutina-admi', component: NuevaRutinaAdmiComponent },
   {path: 'nuevos-profesores', component: NuevosProfesoresComponent },
+  {path: 'editar-rutina-admi', component:  EditarRutinaAdmiComponent},
+  {path: 'perfil-alumno-admi', component:  PerfilAlumnoAdmiComponent},
 
 
 

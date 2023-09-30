@@ -34,7 +34,7 @@ export class AbmadminComponent {
  
   handleButtonClick(): void {
   // Navigate to the desired route when the button is clicked
-  this.router.navigate(['/profesor-abm-admin']); // Replace 'your-desired-route' with the actual route you want to navigate to
+  this.router.navigate(['/abm-profesor']); // Replace 'your-desired-route' with the actual route you want to navigate to
   }
 
   confirmDelete(): void {

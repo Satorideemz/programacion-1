@@ -58,6 +58,11 @@ import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admi/rutina-abm-
 import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
 import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
 import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
+import { VerAlumnoAdmiComponent } from './components/alumnos/ver-alumno-admi/ver-alumno-admi.component';
+import { AbmAdmiComponent } from './components/rutina/abm-admi/abm-admi.component';
+import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
+import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm-alumno-admi.component';
+
 
 
 @NgModule({
@@ -119,6 +124,11 @@ import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos
      EditarRutinaAdmiComponent,
      NuevaRutinaAdmiComponent,
      NuevosProfesoresComponent,
+     VerAlumnoAdmiComponent,
+     AbmAdmiComponent,
+     PerfilAlumnoAdmiComponent,
+     AbmAlumnoAdmiComponent,
+
      
   ],
   imports: [

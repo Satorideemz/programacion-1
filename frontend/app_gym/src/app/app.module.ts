@@ -32,6 +32,7 @@ import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases
 import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
 import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-profesor/perfil-alumno-profesor.component';
 import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
+import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
 
 
 //Componentes temporal despues borrar
@@ -40,6 +41,7 @@ import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.c
 import { AbmComponent } from './components/rutina/abm/abm.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
 import { AbmAlumnoComponent } from './components/alumnos/abm-alumno/abm-alumno.component';
+import { AbmadminComponent } from './components/admi/profesores/abmadmin/abmadmin.component';
 
 //Admi
 import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
@@ -53,6 +55,7 @@ import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
+import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
 
 
 
@@ -87,14 +90,17 @@ import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admin/rutina-abm
      ClasesProfesorComponent,
      ClasesAsistenciaProfesorComponent,
      PerfilAlumnoProfesorComponent,
+     BuscarProfesorComponent,
     
-   
+    
      //Componentes temporal despues borrar
      VerClaseComponent,
      VerAlumnoComponent,
      AbmComponent,
      PagosComponent,
      AbmAlumnoComponent,
+     AbmadminComponent,
+     
 
      //Admi
      NavegacionAdmiComponent,
@@ -109,6 +115,7 @@ import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admin/rutina-abm
      PagosPuntualAdmiComponent,
      AbmProfesorComponent,
      RutinaAbmAdmiComponent,
+     NuevaRutinaAdmiComponent,
      
   ],
   imports: [

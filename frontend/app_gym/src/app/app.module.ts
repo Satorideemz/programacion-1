@@ -34,12 +34,12 @@ import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-pr
 import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
 
 
-
 //Componentes temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
 import { AbmComponent } from './components/rutina/abm/abm.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
+import { AbmAlumnoComponent } from './components/alumnos/abm-alumno/abm-alumno.component';
 
 //Admi
 import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
@@ -87,14 +87,13 @@ import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos
      ClasesAsistenciaProfesorComponent,
      PerfilAlumnoProfesorComponent,
     
-     AbmProfesorComponent,
-     AbmAlumnoComponent,
-
+   
      //Componentes temporal despues borrar
      VerClaseComponent,
      VerAlumnoComponent,
      AbmComponent,
      PagosComponent,
+     AbmAlumnoComponent,
 
      //Admi
      NavegacionAdmiComponent,
@@ -107,6 +106,7 @@ import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos
      HomeAdmiComponent,
      PagosAdmiComponent,
      PagosPuntualAdmiComponent,
+     AbmProfesorComponent,
      
   ],
   imports: [

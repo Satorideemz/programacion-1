@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,10 +29,14 @@ import { HorariosComponent } from './pages/horarios/horarios.component';
 import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases-profesor.component';
 import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
 import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-profesor/perfil-alumno-profesor.component';
+import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
+
+
 
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
 import { AbmComponent } from './components/rutina/abm/abm.component';
+import { AbmAlumnoComponent } from './components/alumnos/abm-alumno/abm-alumno.component';
 
 import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
 import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
@@ -39,9 +46,12 @@ import { AlumnosAdmiComponent } from './pages/admi/alumnos-admi/alumnos-admi.com
 import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/buscar-alumno-admi.component';
 import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
 import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
+import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
 
 @NgModule({
   declarations: [
+
+
     AppComponent,
     HomeComponent,
     HistoriaComponent,
@@ -66,6 +76,9 @@ import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
      ClasesProfesorComponent,
      ClasesAsistenciaProfesorComponent,
      PerfilAlumnoProfesorComponent,
+    
+     AbmProfesorComponent,
+     AbmAlumnoComponent,
 
      VerClaseComponent,
      VerAlumnoComponent,
@@ -79,9 +92,12 @@ import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
      BuscarAlumnoAdmiComponent,
      NuevosAlumnosAdmiComponent,
      HomeAdmiComponent,
+     PerfilAlumnoAdmiComponent,
+     
      
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule
   ],
@@ -89,3 +105,4 @@ import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class YourModule { }

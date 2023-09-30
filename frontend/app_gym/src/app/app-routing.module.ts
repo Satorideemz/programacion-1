@@ -89,7 +89,7 @@ const routes: Routes = [
   {path: 'alumnos-admi', component: AlumnosAdmiComponent },
   {path: 'buscar-alumno-admi', component: BuscarAlumnoAdmiComponent },
   {path: 'nuevos-alumnos-admi', component: NuevosAlumnosAdmiComponent },
-  {path: 'buscar-profesor-admi', component: BuscarProfesorComponent},
+  {path: 'buscar-profesor', component: BuscarProfesorComponent},
   {path: 'homeadmi', component: HomeAdmiComponent },
   {path: 'homeadmi', component: HomeAdmiComponent },
   {path: 'pagos-admi', component: PagosAdmiComponent },

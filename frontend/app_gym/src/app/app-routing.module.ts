@@ -26,6 +26,7 @@ import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-pr
 import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
 import { EditarRutinaProfesorComponent } from './pages/profesor/editar-rutina-profesor/editar-rutina-profesor.component';
 
+
 //ruta temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';

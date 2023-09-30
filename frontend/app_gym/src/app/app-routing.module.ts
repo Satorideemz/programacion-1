@@ -44,7 +44,8 @@ import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admin/rutina-abm-admin.component';
-import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
+import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
+
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -92,7 +93,8 @@ const routes: Routes = [
   {path: 'pagos-admi', component: PagosAdmiComponent },
   {path: 'pagos-puntual-admi', component: PagosPuntualAdmiComponent },
   {path: 'rutina-abm-admi', component: RutinaAbmAdmiComponent},
-  {path: 'editar-rutina-admi', component: EditarRutinaAdmiComponent },
+  {path: 'nueva-rutina-profesor', component: NuevaRutinaAdmiComponent },
+
 
 
 

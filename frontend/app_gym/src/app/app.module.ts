@@ -11,9 +11,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { HistoriaComponent } from './pages/historia/historia.component';
 import { ProfesoresComponent } from './pages/profesores/profesores.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
-import { NavegacionSinContactanosComponent } from './components/navegacion-sin-contactanos/navegacion-sin-contactanos.component';
-import { NavegacionConHorarioComponent } from './components/navegacion-con-horario/navegacion-con-horario.component';
-import { NavegacionhomeComponent } from './components/navegacionhome/navegacionhome.component';
+
+
 import { FooterComponent } from './components/footer/footer.component';
 import { ClasesComponent } from './pages/clases/clases.component';
 import { ClasePuntualComponent } from './pages/clase-puntual/clase-puntual.component';
@@ -77,10 +76,8 @@ import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm
     //Usuario no registrado
     HistoriaComponent,
     ProfesoresComponent,
-    NavegacionConHorarioComponent,
-    NavegacionSinContactanosComponent,
     NavegacionComponent,
-    NavegacionhomeComponent,
+
     FooterComponent,
     ClasesComponent,
     ClasePuntualComponent,

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-
 import { BrowserModule } from '@angular/platform-browser';
+
+import { HttpClientModule } from '@angular/common/http';
 
 //Usuario no registrado
 import { AppRoutingModule } from './app-routing.module';
@@ -135,7 +136,8 @@ import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

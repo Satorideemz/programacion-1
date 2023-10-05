@@ -1,40 +1,40 @@
 <app-navegacion></app-navegacion>
- <!-- Aca va la imagen de fondo --->
 <div class="background-image">
     <div class="esquina">
-        <!-- Aca va el logo de la esquina --->
         <img src="assets/mano-sosteniendo-mancuernas-mancuernas.png" alt="logo">
     </div>
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2 text-center welcome-text">
-                <h1>Pagos:</h1>
+                <h1>!Hola!</h1>
             </div>
         </div>
         <div class="container mt-2">
             <div class="row">
                 <div class="col-md-8 offset-md-2 text-center welcome-text">
-
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-md-4">
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="Ingrese el nombre o apellido del alumno...">
-                        <div class="input-group-append">
-
-                            <button class="card btn btn-outline-secondary btn-lg" type="button" (click)="showVerAlumno = true">Buscar</button>
-
+                    <div class="card">
+                        <div class="card-body">
+                            <a class="nav-link" routerLink="/nuevo-usuario">Nuevo Usuario </a>                   
                         </div>
                     </div>
                 </div>
-                <div  *ngIf= "showVerAlumno">
-                    <app-pagos></app-pagos>
-
-                </div>     
+                <div class="col-md-4">
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Ingrese el nombre o apellido del usuario...">
+                        <div class="input-group-append">
+                            <button class="card btn btn-outline-secondary btn-lg" type="button" (click)="showVerProfesor = true">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+                <div  *ngIf= "showVerProfesor">
+                    <app-ver-usuario></app-ver-usuario>
+                </div>
             </div>
         </div>
-     
     </div>
 </div>
 <app-footer></app-footer>

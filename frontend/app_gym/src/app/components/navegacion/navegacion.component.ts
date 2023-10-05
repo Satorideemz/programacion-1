@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navegacion',
@@ -12,9 +13,11 @@ export class NavegacionComponent {
   verHome = true;
   verHorario = false;
   verIngresar = true;
+  verMiPerfil = true;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
   ngOnInit(): void {
     // Me fijo si la ruta es login y oculto funcionalidad
@@ -35,6 +38,17 @@ export class NavegacionComponent {
       this.verIngresar = false;
     }
 
+    if(this.router.url === '/abm-usuario') {
+      this.verMiPerfil = false;
+    }
+
+  }
+  get isToken(){
+    return localStorage.getItem('token');
+  }
+  cerrarSesion(){
+    this.authService.logout();
+    this.router.navigateByUrl('home')
   }
 }
 

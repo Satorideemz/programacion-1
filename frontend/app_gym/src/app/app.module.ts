@@ -20,52 +20,28 @@ import { ClasePuntualComponent } from './pages/clase-puntual/clase-puntual.compo
 import { ContactanosComponent } from './pages/contactanos/contactanos.component';
 import { IngresarComponent } from './pages/ingresar/ingresar.component';
 
-//Profesores
-import { HomeprofesorComponent } from './pages/profesor/homeprofesor/homeprofesor.component';
-import { NavegacionProfesorComponent } from './components/navegacion-profesor/navegacion-profesor.component';
-import { MiPerfilProfesorComponent } from './pages/profesor/mi-perfil-profesor/mi-perfil-profesor.component';
-import { BuscarAlumnoProfesorComponent } from './pages/profesor/buscar-alumno-profesor/buscar-alumno-profesor.component';
-import { NuevosAlumnosProfesorComponent } from './pages/profesor/nuevos-alumnos-profesor/nuevos-alumnos-profesor.component';
-import { AlumnosProfesorComponent } from './pages/profesor/alumnos-profesor/alumnos-profesor.component';
-import { RutinaABMProfesorComponent } from './pages/profesor/rutina-abm-profesor/rutina-abm-profesor.component';
-import { NuevaRutinaProfesorComponent } from './pages/profesor/nueva-rutina-profesor/nueva-rutina-profesor.component';
-import { HorariosComponent } from './pages/horarios/horarios.component';
-import { ClasesProfesorComponent } from './pages/profesor/clases-profesor/clases-profesor.component';
-import { ClasesAsistenciaProfesorComponent } from './pages/profesor/clases-asistencia-profesor/clases-asistencia-profesor.component';
-import { PerfilAlumnoProfesorComponent } from './pages/profesor/perfil-alumno-profesor/perfil-alumno-profesor.component';
-import { AbmProfesorComponent } from './pages/admi/abm-profesor/abm-profesor.component';
-import { EditarRutinaProfesorComponent } from './pages/profesor/editar-rutina-profesor/editar-rutina-profesor.component';
-
 //Componentes temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
-import { VerAlumnoComponent } from './components/alumnos/ver-alumno/ver-alumno.component';
+import { VerUsuarioComponent } from './components/Usuario/ver-usuario/ver-usuario.component';
 import { AbmComponent } from './components/rutina/abm/abm.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
-import { AbmAlumnoComponent } from './components/alumnos/abm-alumno/abm-alumno.component';
-import { AbmadmiComponent } from './components/admi/profesores/abmadmi/abmadmi.component';
+import { AbmUsuarioComponent } from './components/Usuario/abm-usuario/abm-usuario.component';
 
 //Admi
-import { NavegacionAdmiComponent } from './components/navegacion-admi/navegacion-admi.component';
-import { MiPerfilAdmiComponent } from './pages/admi/mi-perfil-admi/mi-perfil-admi.component';
-import { ClasesAdmiComponent } from './pages/admi/clases-admi/clases-admi.component';
+import { HorariosComponent } from './pages/horarios/horarios.component';
+import { ClasesTodasComponent } from './pages/admi/clases-todas/clases-todas.component';
 import { ClasesAsistenciaAdmiComponent } from './pages/admi/clases-asistencia-admi/clases-asistencia-admi.component';
-import { AlumnosAdmiComponent } from './pages/admi/alumnos-admi/alumnos-admi.component';
-import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/buscar-alumno-admi.component';
-import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
-import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
+import { AlumnosComponent } from './pages/admi/alumnos/alumnos.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admi/rutina-abm-admi.component';
 import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
 import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
-import { NuevosProfesoresComponent } from './pages/admi/nuevos-profesores/nuevos-profesores.component';
-import { VerAlumnoAdmiComponent } from './components/alumnos/ver-alumno-admi/ver-alumno-admi.component';
 import { AbmAdmiComponent } from './components/rutina/abm-admi/abm-admi.component';
-import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
-import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm-alumno-admi.component';
-import { MainmenuComponent } from './components/mainmenu/mainmenu.component';
-import { LoggedinComponent } from './components/loggedin/loggedin.component';
-
+import { BuscarUsuarioComponent } from './pages/admi/buscar-usuario/buscar-usuario.component';
+import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.component';
+import {LoggedinComponent } from './components/loggedin/loggedin.component'
+import {MainmenuComponent} from './components/mainmenu/mainmenu.component'
 
 
 @NgModule({
@@ -85,53 +61,30 @@ import { LoggedinComponent } from './components/loggedin/loggedin.component';
     ClasePuntualComponent,
     ContactanosComponent,
     IngresarComponent,
-
-    //Profesores
-    HomeprofesorComponent,
-    NavegacionProfesorComponent,
-     MiPerfilProfesorComponent,
-     BuscarAlumnoProfesorComponent,
-     BuscarProfesorComponent,
-     NuevosAlumnosProfesorComponent,
-     AlumnosProfesorComponent,
-     RutinaABMProfesorComponent,
-     NuevaRutinaProfesorComponent,
-     HorariosComponent,
-     ClasesProfesorComponent,
-     ClasesAsistenciaProfesorComponent,
-     PerfilAlumnoProfesorComponent,
-     EditarRutinaProfesorComponent,
     
      //Componentes temporal despues borrar
      VerClaseComponent,
-     VerAlumnoComponent,
      AbmComponent,
+     VerUsuarioComponent,
      PagosComponent,
-     AbmAlumnoComponent,
-     AbmadmiComponent,
+     AbmUsuarioComponent,
      
 
      //Admi
-     NavegacionAdmiComponent,
-     MiPerfilAdmiComponent,     
-     ClasesAdmiComponent,
+     HorariosComponent, 
+     ClasesTodasComponent,
      ClasesAsistenciaAdmiComponent,
-     AlumnosAdmiComponent,
-     BuscarAlumnoAdmiComponent,
-     NuevosAlumnosAdmiComponent,
+     AlumnosComponent,
      PagosAdmiComponent,
      PagosPuntualAdmiComponent,
-     AbmProfesorComponent,
      RutinaAbmAdmiComponent,
      EditarRutinaAdmiComponent,
      NuevaRutinaAdmiComponent,
-     NuevosProfesoresComponent,
-     VerAlumnoAdmiComponent,
      AbmAdmiComponent,
-     PerfilAlumnoAdmiComponent,
-     AbmAlumnoAdmiComponent,
-     MainmenuComponent,
+     BuscarUsuarioComponent,
+     NuevoUsuarioComponent,
      LoggedinComponent,
+     MainmenuComponent,
 
      
   ],

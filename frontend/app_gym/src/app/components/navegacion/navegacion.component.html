@@ -5,12 +5,13 @@
         </button>
 
         <div *ngIf="verContactanos"  class="collapse navbar-collapse" id="navbarNav">
-
+            <div *ngIf="!isToken">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/contactanos">Contactanos</a>
                 </li>
             </ul>
+            </div>
         </div>
         <div *ngIf="verHome" class="collapse navbar-collapse" id="navbarNav">
 
@@ -22,7 +23,6 @@
         </div>
 
         <div *ngIf="verHorario" class="collapse navbar-collapse" id="navbarNav">
-
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/horarios">Horarios</a>
@@ -31,12 +31,29 @@
         </div>
  
         <div *ngIf="verIngresar" class="collapse navbar-collapse justify-content-end" id="navbarNav">
-
+        <div *ngIf="!isToken">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/ingresar">
                         <i class="fa-solid fa-user"></i> Ingresar
                     </a>
+                </li>
+            </ul>
+        </div>
+        </div>
+        <div *ngIf="isToken" class="collapse navbar-collapse" id="navbarNav">
+            <div *ngIf="verMiPerfil">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/abm-usuario">Mi Perfil</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div *ngIf="isToken" class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link"(click)="cerrarSesion()">Cerrar sesion</a>
                 </li>
             </ul>
         </div>

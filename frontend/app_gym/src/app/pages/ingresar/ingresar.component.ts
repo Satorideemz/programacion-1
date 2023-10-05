@@ -22,7 +22,7 @@ export class IngresarComponent {
         alert('Login exitoso');
         console.log ('Respuesta login:',rta.access_token);
         localStorage.setItem('token',rta.access_token);
-        this.router.navigateByUrl('homeadmi')
+        this.router.navigateByUrl('home')
       }, 
       error:(error) => {
         alert('Credenciales invalidas');

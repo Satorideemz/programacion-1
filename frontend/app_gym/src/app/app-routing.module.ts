@@ -41,7 +41,6 @@ import { ClasesAsistenciaAdmiComponent } from './pages/admi/clases-asistencia-ad
 import { AlumnosAdmiComponent } from './pages/admi/alumnos-admi/alumnos-admi.component'; 
 import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/buscar-alumno-admi.component';
 import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
-import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admi/rutina-abm-admi.component';
@@ -93,8 +92,6 @@ const routes: Routes = [
   {path: 'buscar-alumno-admi', component: BuscarAlumnoAdmiComponent },
   {path: 'nuevos-alumnos-admi', component: NuevosAlumnosAdmiComponent },
   {path: 'buscar-profesor', component: BuscarProfesorComponent},
-  {path: 'homeadmi', component: HomeAdmiComponent },
-  {path: 'homeadmi', component: HomeAdmiComponent },
   {path: 'pagos-admi', component: PagosAdmiComponent },
   {path: 'pagos-puntual-admi', component: PagosPuntualAdmiComponent },
   {path: 'rutina-abm-admi', component: RutinaAbmAdmiComponent},

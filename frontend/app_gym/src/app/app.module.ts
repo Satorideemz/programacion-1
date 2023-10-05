@@ -53,7 +53,6 @@ import { AlumnosAdmiComponent } from './pages/admi/alumnos-admi/alumnos-admi.com
 import { BuscarAlumnoAdmiComponent } from './pages/admi/buscar-alumno-admi/buscar-alumno-admi.component';
 import { BuscarProfesorComponent } from './pages/admi/buscar-profesor/buscar-profesor.component';
 import { NuevosAlumnosAdmiComponent } from './pages/admi/nuevos-alumnos-admi/nuevos-alumnos-admi.component';
-import { HomeAdmiComponent } from './pages/admi/homeadmi/homeadmi.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admi/rutina-abm-admi.component';
@@ -64,6 +63,8 @@ import { VerAlumnoAdmiComponent } from './components/alumnos/ver-alumno-admi/ver
 import { AbmAdmiComponent } from './components/rutina/abm-admi/abm-admi.component';
 import { PerfilAlumnoAdmiComponent } from './pages/admi/perfil-alumno-admi/perfil-alumno-admi.component';
 import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm-alumno-admi.component';
+import { MainmenuComponent } from './components/mainmenu/mainmenu.component';
+import { LoggedinComponent } from './components/loggedin/loggedin.component';
 
 
 
@@ -118,7 +119,6 @@ import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm
      AlumnosAdmiComponent,
      BuscarAlumnoAdmiComponent,
      NuevosAlumnosAdmiComponent,
-     HomeAdmiComponent,
      PagosAdmiComponent,
      PagosPuntualAdmiComponent,
      AbmProfesorComponent,
@@ -130,6 +130,8 @@ import { AbmAlumnoAdmiComponent } from './components/alumnos/abm-alumno-admi/abm
      AbmAdmiComponent,
      PerfilAlumnoAdmiComponent,
      AbmAlumnoAdmiComponent,
+     MainmenuComponent,
+     LoggedinComponent,
 
      
   ],

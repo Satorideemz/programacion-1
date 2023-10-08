@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./abm.component.css']
 })
 export class AbmComponent {
+
   arrayRutinas = [
     {
       id_rutina: "1",
@@ -30,7 +31,7 @@ export class AbmComponent {
 
   handleButtonClick(): void {
     // Navigate to the desired route when the button is clicked
-    this.router.navigate(['/editar-rutina-profesor']); // Replace 'your-desired-route' with the actual route you want to navigate to
+    this.router.navigate(['/editar-rutina']); // Replace 'your-desired-route' with the actual route you want to navigate to
     }
   
   confirmDelete(): void {
@@ -44,4 +45,5 @@ export class AbmComponent {
       // No action needed
     }
   }
+
 }

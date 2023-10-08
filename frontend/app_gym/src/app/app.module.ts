@@ -23,7 +23,7 @@ import { IngresarComponent } from './pages/ingresar/ingresar.component';
 //Componentes temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { VerUsuarioComponent } from './components/Usuario/ver-usuario/ver-usuario.component';
-import { AbmComponent } from './components/rutina/abm/abm.component';
+
 import { PagosComponent } from './components/admi/pagos/pagos.component';
 import { AbmUsuarioComponent } from './components/Usuario/abm-usuario/abm-usuario.component';
 
@@ -34,10 +34,10 @@ import { ClasesAsistenciaAdmiComponent } from './pages/admi/clases-asistencia-ad
 import { AlumnosComponent } from './pages/admi/alumnos/alumnos.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
-import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admi/rutina-abm-admi.component';
-import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
-import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
-import { AbmAdmiComponent } from './components/rutina/abm-admi/abm-admi.component';
+import { RutinaAbmComponent } from './pages/rutina-abm/rutina-abm.component';
+import { EditarRutinaComponent } from './pages/editar-rutina/editar-rutina.component';
+import { NuevaRutinaComponent } from './pages/nueva-rutina/nueva-rutina.component';
+import { AbmComponent } from './components/rutina/abm/abm.component';
 import { BuscarUsuarioComponent } from './pages/admi/buscar-usuario/buscar-usuario.component';
 import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.component';
 import {LoggedinComponent } from './components/loggedin/loggedin.component'
@@ -77,10 +77,10 @@ import {MainmenuComponent} from './components/mainmenu/mainmenu.component'
      AlumnosComponent,
      PagosAdmiComponent,
      PagosPuntualAdmiComponent,
-     RutinaAbmAdmiComponent,
-     EditarRutinaAdmiComponent,
-     NuevaRutinaAdmiComponent,
-     AbmAdmiComponent,
+     RutinaAbmComponent,
+     EditarRutinaComponent,
+     NuevaRutinaComponent,
+     AbmComponent,
      BuscarUsuarioComponent,
      NuevoUsuarioComponent,
      LoggedinComponent,

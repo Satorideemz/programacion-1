@@ -1,0 +1,38 @@
+<app-navegacion></app-navegacion>
+ <!-- Aca va la imagen de fondo --->
+<div class="background-image">
+    <div class="esquina">
+        <img src="assets/mano-sosteniendo-mancuernas-mancuernas.png" alt="logo">
+    </div>
+    
+    <div class="container mt-6">
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    
+                    <h1 class="card-title text-center">Crear nueva rutina</h1>
+                    
+                    <div class="row justify-content-center">
+                        <div class="toggle-container">
+                            <div class="col-md-9 mt-1 text-left">
+                                <div class="toggle"></div>
+                                <label for="nombre">Descripcion</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control">
+                            </div>
+
+                            
+                        </div>
+                        <div class="col-md-12 mt-3 text-center">
+                            <a routerLink="/rutina-abm">  
+                                <button class="btn btn-danger">Guardar</button> 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { BrowserModule } from '@angular/platform-browser';
-
 import { HttpClientModule } from '@angular/common/http';
+
 
 //Usuario no registrado
 import { AppRoutingModule } from './app-routing.module';
@@ -12,8 +11,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { HistoriaComponent } from './pages/historia/historia.component';
 import { ProfesoresComponent } from './pages/profesores/profesores.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
-
-
 import { FooterComponent } from './components/footer/footer.component';
 import { ClasesComponent } from './pages/clases/clases.component';
 import { ClasePuntualComponent } from './pages/clase-puntual/clase-puntual.component';
@@ -23,7 +20,7 @@ import { IngresarComponent } from './pages/ingresar/ingresar.component';
 //Componentes temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { VerUsuarioComponent } from './components/Usuario/ver-usuario/ver-usuario.component';
-
+import { AbmComponent } from './components/rutina/abm/abm.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
 import { AbmUsuarioComponent } from './components/Usuario/abm-usuario/abm-usuario.component';
 
@@ -34,10 +31,9 @@ import { ClasesAsistenciaAdmiComponent } from './pages/admi/clases-asistencia-ad
 import { AlumnosComponent } from './pages/admi/alumnos/alumnos.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
-import { RutinaAbmComponent } from './pages/rutina-abm/rutina-abm.component';
-import { EditarRutinaComponent } from './pages/editar-rutina/editar-rutina.component';
-import { NuevaRutinaComponent } from './pages/nueva-rutina/nueva-rutina.component';
-import { AbmComponent } from './components/rutina/abm/abm.component';
+import { RutinaAbmComponent } from './pages/admi/rutina-abm/rutina-abm.component';
+import { EditarRutinaComponent } from './pages/admi/editar-rutina/editar-rutina.component';
+import { NuevaRutinaComponent } from './pages/admi/nueva-rutina/nueva-rutina.component';
 import { BuscarUsuarioComponent } from './pages/admi/buscar-usuario/buscar-usuario.component';
 import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.component';
 import {LoggedinComponent } from './components/loggedin/loggedin.component'
@@ -47,7 +43,6 @@ import {MainmenuComponent} from './components/mainmenu/mainmenu.component'
 @NgModule({
   declarations: [
 
-
     AppComponent,
     HomeComponent,
 
@@ -55,21 +50,19 @@ import {MainmenuComponent} from './components/mainmenu/mainmenu.component'
     HistoriaComponent,
     ProfesoresComponent,
     NavegacionComponent,
-
     FooterComponent,
     ClasesComponent,
     ClasePuntualComponent,
     ContactanosComponent,
     IngresarComponent,
     
-     //Componentes temporal despues borrar
+    //Componentes temporal despues borrar
      VerClaseComponent,
      AbmComponent,
      VerUsuarioComponent,
      PagosComponent,
      AbmUsuarioComponent,
      
-
      //Admi
      HorariosComponent, 
      ClasesTodasComponent,
@@ -80,7 +73,6 @@ import {MainmenuComponent} from './components/mainmenu/mainmenu.component'
      RutinaAbmComponent,
      EditarRutinaComponent,
      NuevaRutinaComponent,
-     AbmComponent,
      BuscarUsuarioComponent,
      NuevoUsuarioComponent,
      LoggedinComponent,
@@ -99,3 +91,4 @@ import {MainmenuComponent} from './components/mainmenu/mainmenu.component'
 })
 export class AppModule { }
 export class YourModule { }
+

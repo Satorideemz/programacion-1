@@ -28,9 +28,9 @@ import { ClasesAsistenciaAdmiComponent } from './pages/admi/clases-asistencia-ad
 import { AlumnosComponent } from './pages/admi/alumnos/alumnos.component'; 
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
-import { RutinaAbmAdmiComponent } from './pages/admi/rutina-abm-admi/rutina-abm-admi.component';
-import { NuevaRutinaAdmiComponent } from './pages/admi/nueva-rutina-admi/nueva-rutina-admi.component';
-import { EditarRutinaAdmiComponent } from './pages/admi/editar-rutina-admi/editar-rutina-admi.component';
+import { RutinaAbmComponent } from './pages/admi/rutina-abm/rutina-abm.component';
+import { NuevaRutinaComponent } from './pages/admi/nueva-rutina/nueva-rutina.component';
+import { EditarRutinaComponent } from './pages/admi/editar-rutina/editar-rutina.component';
 import { BuscarUsuarioComponent } from './pages/admi/buscar-usuario/buscar-usuario.component';
 import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.component';
 
@@ -59,9 +59,9 @@ const routes: Routes = [
   {path: 'alumnos', component: AlumnosComponent },
   {path: 'pagos-admi', component: PagosAdmiComponent },
   {path: 'pagos-puntual-admi', component: PagosPuntualAdmiComponent },
-  {path: 'rutina-abm-admi', component: RutinaAbmAdmiComponent},
-  {path: 'nueva-rutina-admi', component: NuevaRutinaAdmiComponent },
-  {path: 'editar-rutina-admi', component:  EditarRutinaAdmiComponent},
+  {path: 'rutina-abm', component: RutinaAbmComponent},
+  {path: 'nueva-rutina', component: NuevaRutinaComponent },
+  {path: 'editar-rutina', component:  EditarRutinaComponent},
   {path: 'buscar-usuario', component: BuscarUsuarioComponent},
   {path: 'nuevo-usuario', component: NuevoUsuarioComponent},
 

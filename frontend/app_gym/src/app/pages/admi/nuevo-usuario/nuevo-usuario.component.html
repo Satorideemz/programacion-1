@@ -12,64 +12,91 @@
             <div class="col-md-6">
                 <div class="card">
                     <h1 class="card-title text-center">Crear nuevo usuario</h1>
+                    <form [formGroup]="nuevousuarioForm">
                     <div class="row justify-content-center">
                         <div class="toggle-container">
                             <div class="col-md-9 mt-1 text-left">
                                 <div class="toggle"></div>
-                                <label for="nombre">Nombre</label>
-                                <input type="text" id="nombre" name="nombre" class="form-control">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="nombre" id="nombre" name="nombre" class="form-control" formControlName="nombre" placeholder="Nombre">
+                                <!--<div *ngIf="nuevousuarioFrom.get('nombre').hasError('required')">
+                                    Nombre es un campo requerido.
+                                </div> --->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="apellido">Apellido</label>
-                                <input type="text" id="apellido" name="apellido" class="form-control">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="apellido" id="apellido" name="apellido" class="form-control" formControlName="apellido" placeholder="Apellido">
+                                <!--<div *ngIf="nuevousuarioFrom.get('apellido').hasError('required')">
+                                    Apellido es un campo requerido.
+                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="mail">Correo Electrónico</label>
-                                <input type="email" id="mail" name="mail" class="form-control">
+                                <label for="mail" class="form-label">Correo Electrónico</label>
+                                <input type="mail" id="mail" name="mail" class="form-control" formControlName="mail" placeholder="Mail">
+                                <!--<div *ngIf="nuevousuarioFrom.get('mail').hasError('required')">
+                                    Correo electrónico es un campo requerido.
+                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="telefono">Número de Teléfono</label>
-                                <input type="tel" id="telefono" name="telefono" class="form-control">
+                                <label for="telefono" class="form-label">Número de Teléfono</label>
+                                <input type="telefono" id="telefono" name="telefono" class="form-control" formControlName="telefono" placeholder="Telefono">
+                                <!--<div *ngIf="nuevousuarioFrom.get('telefono').hasError('required') && nuevousuarioFrom.get('telefono').hasError('length')">
+                                    Número de teléfono es un campo requerido.
+                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="documento">Documento</label>
-                                <input type="text" id="documento" name="documento" class="form-control">
+                                <label for="documento" class="form-label">Documento</label>
+                                <input type="documento" id="documento" name="documento" class="form-control" formControlName="documento" placeholder="Documento">
+                                <!--<div *ngIf="nuevousuarioFrom.get('documento').hasError('required') && nuevousuarioFrom.get('documento').hasError('length')">
+                                    Documento es un campo requerido.
+                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="edad">Edad</label>
-                                <input type="number" id="edad" name="edad" class="form-control">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="edad" id="edad" name="edad" class="form-control" formControlName="edad" placeholder="Edad">
+                                <!--<div *ngIf="nuevousuarioFrom.get('edad').hasError('required') && nuevousuarioFrom.get('edad').hasError('length')">
+                                    Edad es un campo requerido.
+                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="sexo">Sexo</label>
-                                <select id="sexo" name="sexo" class="form-control">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <select id="sexo" name="sexo" class="form-control" formControlName="sexo" placeholder="Sexo">
                                     <option value="masculino">Masculino</option>
                                     <option value="femenino">Femenino</option>
                                     <option value="otro">Otro</option>
                                 </select>
+                                <!--<div *ngIf="nuevousuarioFrom.get('sexo').hasError('required')">
+                                    Sexo es un campo requerido.
+                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="titulo">titulo</label>
-                                <input type="text" id="Titulo" name="titulo" class="form-control">
+                                <label for="titulo" class="form-label">Título</label>
+                                <input type="titulo" id="titulo" name="titulo" class="form-control" formControlName="titulo" placeholder="Título">
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="disponibilidad">Disponibilidad</label>
-                                <input type="text" id="disponibilidad" name="disponibilidad" class="form-control">
+                                <label for="disponibilidad" class="form-label">Disponibilidad</label>
+                                <input type="disponibilidad" id="disponibilidad" name="disponibilidad" class="form-control" formControlName="disponibilidad" placeholder="Disponibilidad">
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="password">Contraseña</label>
-                                <input type="password" id="password" name="password" class="form-control">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" id="password" name="password" class="form-control" formControlName="password" placeholder="Password">
+                                <!--<div *ngIf="nuevousuarioFrom.get('password').hasError('required')">
+                                    Contraseña es un campo requerido.
+                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="confirm-password">Confirmar Contraseña</label>
-                                <input type="password" id="confirm-password" name="confirm-password" class="form-control">
+                                <label for="confirmpassword" class="form-label">Confirmar Contraseña</label>
+                                <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" formControlName="confirmpassword" placeholder="Confirm Password">
+                               <!-- <div *ngIf="nuevousuarioFrom.get('confirmpassword').hasError('required')">
+                                    Confirmar Contraseña es un campo requerido.
+                                </div>--->
                             </div>
-                        </div>
-                        <div class="col-md-12 mt-3 text-center">
-                            <a routerLink="/buscar-profesor">  
-                                <button class="btn btn-danger">Guardar</button>
-                            </a>
+                        </div>                        
+                        <div class="col-md-12 mt-3 text-center"> 
+                            <button class="btn btn-danger"(click)="submit()">Guardar</button>
                         </div>
                     </div>
+                </form>
                 </div>
             </div>
         </div>

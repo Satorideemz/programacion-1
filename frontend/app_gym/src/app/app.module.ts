@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+import { JwtModule } from "@auth0/angular-jwt";
+
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,7 +22,7 @@ import { IngresarComponent } from './pages/ingresar/ingresar.component';
 
 //Componentes temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
-import { VerUsuarioComponent } from './components/Usuario/ver-usuario/ver-usuario.component';
+
 import { AbmComponent } from './components/rutina/abm/abm.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
 import { AbmUsuarioComponent } from './components/Usuario/abm-usuario/abm-usuario.component';
@@ -37,12 +40,21 @@ import { NuevaRutinaComponent } from './pages/admi/nueva-rutina/nueva-rutina.com
 import { BuscarUsuarioComponent } from './pages/admi/buscar-usuario/buscar-usuario.component';
 import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.component';
 import {LoggedinComponent } from './components/loggedin/loggedin.component'
-import {MainmenuComponent} from './components/mainmenu/mainmenu.component'
+import {MainmenuComponent} from './components/mainmenu/mainmenu.component';
+import { VerAlumnosComponent } from './components/Usuario/ver-alumnos/ver-alumnos.component';
+import { VerProfesoresComponent } from './components/Usuario/ver-profesores/ver-profesores.component';
+
+
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 
 @NgModule({
   declarations: [
 
+    
     AppComponent,
     HomeComponent,
 
@@ -59,7 +71,6 @@ import {MainmenuComponent} from './components/mainmenu/mainmenu.component'
     //Componentes temporal despues borrar
      VerClaseComponent,
      AbmComponent,
-     VerUsuarioComponent,
      PagosComponent,
      AbmUsuarioComponent,
      
@@ -77,14 +88,25 @@ import {MainmenuComponent} from './components/mainmenu/mainmenu.component'
      NuevoUsuarioComponent,
      LoggedinComponent,
      MainmenuComponent,
+     VerAlumnosComponent,
+     VerProfesoresComponent,
 
      
   ],
+  
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["example.com"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

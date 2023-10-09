@@ -6,7 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2 text-center welcome-text">
-                <h1>!Hola!</h1>
+
+                <h1>!Hola! {{mybuttonId}}</h1>
             </div>
         </div>
         <div class="container mt-2">
@@ -22,17 +23,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                
+                <div *ngIf="mybuttonId == 1" class="col-md-4">
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="Ingrese el nombre o apellido del usuario...">
+                        <input type="text" class="form-control" placeholder="Ingrese el nombre o apellido del alumno...">
                         <div class="input-group-append">
-                            <button class="card btn btn-outline-secondary btn-lg" type="button" (click)="showVerProfesor = true">Buscar</button>
+                            <button  class="card btn btn-outline-secondary btn-lg" type="button" (click)="showVerAlumnos = true">Buscar</button>
                         </div>
                     </div>
                 </div>
-                <div  *ngIf= "showVerProfesor">
-                    <app-ver-usuario></app-ver-usuario>
+
+                <div *ngIf="mybuttonId == 2" class="col-md-4">
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Ingrese el nombre o apellido del profesor...">
+                        <div class="input-group-append">
+                            <button  class="card btn btn-outline-secondary btn-lg" type="button" (click)="showVerProfesor = true">Buscar</button>
+                        </div>
+                    </div>
                 </div>
+
+                <div  *ngIf= "showVerAlumnos">
+                    <app-ver-alumnos></app-ver-alumnos>
+                </div>
+                
+                <div  *ngIf= "showVerProfesor">
+                    <app-ver-profesores></app-ver-profesores>
+                </div>
+
+
             </div>
         </div>
     </div>

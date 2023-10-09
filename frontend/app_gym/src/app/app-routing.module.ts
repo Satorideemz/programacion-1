@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 //routeo de usuario no registrado
 import { HomeComponent } from './pages/home/home.component';
 import { HistoriaComponent } from './pages/historia/historia.component';
@@ -19,8 +20,8 @@ import { HorariosComponent } from './pages/horarios/horarios.component';
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { AbmComponent } from './components/rutina/abm/abm.component';
 import { AbmUsuarioComponent } from './components/Usuario/abm-usuario/abm-usuario.component';
-import { VerUsuarioComponent } from './components/Usuario/ver-usuario/ver-usuario.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
+
 
 //routeo  de admi
 import { ClasesTodasComponent } from './pages/admi/clases-todas/clases-todas.component';
@@ -33,6 +34,7 @@ import { NuevaRutinaComponent } from './pages/admi/nueva-rutina/nueva-rutina.com
 import { EditarRutinaComponent } from './pages/admi/editar-rutina/editar-rutina.component';
 import { BuscarUsuarioComponent } from './pages/admi/buscar-usuario/buscar-usuario.component';
 import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.component';
+
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
@@ -47,7 +49,6 @@ const routes: Routes = [
 
   //path temporal
   {path: 'ver-clases', component: VerClaseComponent },
-  {path: 'ver-usuario', component: VerUsuarioComponent },
   {path: 'abm-usuario', component: AbmUsuarioComponent },
   {path: 'ver-rutinas', component: AbmComponent },
   {path: 'pagos', component: PagosComponent},

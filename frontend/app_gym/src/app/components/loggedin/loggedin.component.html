@@ -19,7 +19,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <a class="nav-link" routerLink="/buscar-usuario">Alumnos</a>
+                    <a class="nav-link" (click)="redirectToAlumnos()">Alumnos</a>
                </div>
             </div>
         </div>
@@ -32,14 +32,14 @@
 </div>
 <div class="container mt-2">
         </div>
-        <div class="col-md-4">
+        <div *ngIf="decodeToken() === 'admin'" class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <a class="nav-link" routerLink="/buscar-usuario">Profesores</a>
+                    <a class="nav-link" (click)="redirectToProfesores()">Profesores</a>
                </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div *ngIf="decodeToken() === 'admin'" class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <a class="nav-link" routerLink="/pagos-admi">Pagos</a>

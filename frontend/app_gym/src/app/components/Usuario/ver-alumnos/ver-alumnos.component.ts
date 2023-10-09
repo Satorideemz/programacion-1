@@ -2,32 +2,32 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-ver-usuario',
-  templateUrl: './ver-usuario.component.html',
-  styleUrls: ['./ver-usuario.component.css']
+  selector: 'app-ver-alumnos',
+  templateUrl: './ver-alumnos.component.html',
+  styleUrls: ['./ver-alumnos.component.css']
 })
-export class VerUsuarioComponent {
+export class VerAlumnosComponent {
   arrayUsuario = [
     {
       usuario_id: "1",
-      nombre:"pepito",
+      nombre:"pepito alumno",
       apellido:"rodriguez",
     },
     {
       usuario_id: "2",
-      nombre:"pepito2",
+      nombre:"pepito2 alumno",
       apellido:"rodriguez2",
     },
     {
       usuario_id: "3",
-      nombre:"pepito3",
+      nombre:"pepito3 alumno",
       apellido:"rodriguez3",
     }
   ];
   constructor(private router: Router) { }
   handleButtonClick(): void {
   // Navigate to the desired route when the button is clicked
-  this.router.navigate(['/abm-usuario']); // Replace 'your-desired-route' with the actual route you want to navigate to
+  this.router.navigate(['/alumnos']); // Replace 'your-desired-route' with the actual route you want to navigate to
   }
   confirmDelete(): void {
     const confirmed = window.confirm('Estas seguro de que deseas borrar este usuario');

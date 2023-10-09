@@ -22,7 +22,7 @@ export class IngresarComponent {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      mail: ['', Validators.required],
       password: ['', Validators.required]
     })
   }

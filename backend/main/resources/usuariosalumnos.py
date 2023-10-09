@@ -4,7 +4,7 @@ from flask import jsonify
 from .. import db
 from main.models import UsuariosAlumnosModel, UsuarioModel
 from main.models import ClaseModel
-from sqlalchemy import func, desc, asc
+from sqlalchemy import func, desc, asc, or_
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
 
@@ -72,6 +72,37 @@ class UsuariosAlumnos(Resource):
             usuariosalumnos = usuariosalumnos.order_by(desc(UsuariosAlumnosModel.estado_de_la_cuenta))
 
         usuariosalumnos = usuariosalumnos.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
+
+        if request.args.get('search'):
+            
+            #defino la variable de busqueda
+            search_param=request.args.get('search')
+            usuarios_query_search = (
+                db.session.query(UsuarioModel)
+                .join(UsuariosAlumnosModel , UsuariosAlumnosModel.id_Usuario == UsuarioModel.id_Usuario)
+                .filter(
+                or_(
+                    UsuarioModel.nombre.like(f'%{search_param}%'),
+                    UsuarioModel.apellido.like(f'%{search_param}%')  )
+                           
+                )
+            )
+            
+            #consulta original
+            #SELECT usuario.nombre,usuario.apellido FROM usuario 
+            #JOIN alumno ON (usuario.id = alumnno=id)
+            #AND ( alumno.nombre LIKE '%sdfsd%' OR alumno.apellido LIKE '%sdfsd%'  )
+
+            #search_result = [usuario.to_json_full_name() for usuario in usuarios_query_search]
+            
+        
+            return jsonify ({'alumnos': [usuario.to_json_full_name() for usuario in usuarios_query_search],
+                  'total': usuariosalumnos.total,
+                  'pages': usuariosalumnos.pages,
+                  'page': page
+                })
+     
+
 
         return jsonify ({'alumnos': [usuarioalumno.to_json() for usuarioalumno in usuariosalumnos],
                   'total': usuariosalumnos.total,

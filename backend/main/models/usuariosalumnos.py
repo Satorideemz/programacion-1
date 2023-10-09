@@ -47,6 +47,8 @@ class UsuariosAlumnos(db.Model):
         return usuario_json
     
     
+
+    
     @staticmethod
     #convertir json a objeto
     def from_json(usuario_json):

@@ -78,11 +78,13 @@ class Usuario(db.Model):
 
     def to_json_full_name(self):
         usuario_json = {
+            'id_Usuario' : self.id_Usuario,
             'nombre' : str(self.nombre),
             'apellido' : str(self.apellido),   
         }
         return usuario_json
     
+
 
     def to_json_short(self):
         usuario_json = {
@@ -92,6 +94,7 @@ class Usuario(db.Model):
 
         }
         return usuario_json
+    
     
     @staticmethod
     #convertir json a objeto

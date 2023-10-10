@@ -43,7 +43,7 @@ export class NuevoUsuarioComponent {
       password: ['', Validators.required],
       confirmpassword: ['', Validators.required],
     }, {
-      validator: passwordMatchValidator(),
+      validators: passwordMatchValidator(),
     });
   }
 

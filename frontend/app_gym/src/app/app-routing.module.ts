@@ -26,7 +26,7 @@ import { PagosComponent } from './components/admi/pagos/pagos.component';
 //routeo  de admi
 import { ClasesTodasComponent } from './pages/admi/clases-todas/clases-todas.component';
 import { ClasesAsistenciaAdmiComponent } from './pages/admi/clases-asistencia-admi/clases-asistencia-admi.component';
-import { AlumnosComponent } from './pages/admi/alumnos/alumnos.component'; 
+import { AlumnosComponent } from './pages/admi/alumnos/alumnos.component';
 import { PagosAdmiComponent } from './pages/admi/pagos-admi/pagos-admi.component';
 import { PagosPuntualAdmiComponent } from './pages/admi/pagos-puntual-admi/pagos-puntual-admi.component';
 import { RutinaAbmComponent } from './pages/admi/rutina-abm/rutina-abm.component';
@@ -45,7 +45,7 @@ const routes: Routes = [
   {path: 'contactanos', component: ContactanosComponent },
   {path: 'ingresar', component: IngresarComponent },
   {path: 'horarios', component: HorariosComponent },
-  {path: '', redirectTo: '/home' , pathMatch: 'full' }, //redirecciona al home por defecto 
+  {path: '', redirectTo: '/home' , pathMatch: 'full' }, //redirecciona al home por defecto
 
   //path temporal
   {path: 'ver-clases', component: VerClaseComponent },

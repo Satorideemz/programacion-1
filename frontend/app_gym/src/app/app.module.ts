@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 //Usuario no registrado
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -63,15 +64,15 @@ export function tokenGetter() {
     ClasePuntualComponent,
     ContactanosComponent,
     IngresarComponent,
-    
+
     //Componentes temporal despues borrar
      VerClaseComponent,
      AbmComponent,
      PagosComponent,
      AbmUsuarioComponent,
-     
+
      //Admi
-     HorariosComponent, 
+     HorariosComponent,
      ClasesTodasComponent,
      ClasesAsistenciaAdmiComponent,
      AlumnosComponent,
@@ -87,9 +88,9 @@ export function tokenGetter() {
      VerAlumnosComponent,
      VerProfesoresComponent,
 
-     
+
   ],
-  
+
   imports: [
     FormsModule,
     BrowserModule,

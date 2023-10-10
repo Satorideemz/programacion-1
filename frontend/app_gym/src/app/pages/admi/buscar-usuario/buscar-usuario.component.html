@@ -26,12 +26,14 @@
                 
                 <div *ngIf="mybuttonId == 1" class="col-md-4">
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="Ingrese el nombre o apellido del alumno...">
+                        <input type="text" class="form-control" [(ngModel)]="search_value"  placeholder="Ingrese el nombre o apellido del alumno...">
                         <div class="input-group-append">
-                            <button  class="card btn btn-outline-secondary btn-lg" type="button" (click)="showVerAlumnos = true">Buscar</button>
+                            <button  class="card btn btn-outline-secondary btn-lg" type="button" (click)="capture_search_value(search_value)">Buscar</button>
                         </div>
                     </div>
                 </div>
+
+                  
 
                 <div *ngIf="mybuttonId == 2" class="col-md-4">
                     <div class="input-group mb-2">

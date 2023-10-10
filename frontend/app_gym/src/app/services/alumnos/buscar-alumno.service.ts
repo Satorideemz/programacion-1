@@ -6,10 +6,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class BuscarAlumnoService {
   url='/api';
+  search_value=''
   constructor(
     private httpClient: HttpClient
   ) {}
 
+    //metodo que me permite asignar el string del valor a buscar en el backend
+    retrieve_search_value(search: string){
+      console.log('Response from service:', search);
+      this.search_value= search;
+    }
+    
     getUsers() {
       let auth_token = localStorage.getItem('token')
 
@@ -17,7 +24,8 @@ export class BuscarAlumnoService {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${auth_token}`
       })
+      //Envio la query a buscar por nombre o apellido del alumno
+      return this.httpClient.get(this.url + '/usuariosalumnos?search='+this.search_value, {headers: headers});
 
-      return this.httpClient.get(this.url + '/usuariosalumnos?search=juan', {headers: headers});
     };
 }

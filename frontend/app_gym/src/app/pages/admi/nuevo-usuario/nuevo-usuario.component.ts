@@ -42,13 +42,15 @@ export class NuevoUsuarioComponent {
       disponibilidad : [''],
       password: ['', Validators.required],
       confirmpassword: ['', Validators.required],
-    })
+    }, {
+      validator: passwordMatchValidator(),
+    });
   }
 
   submit() {
     if(this.nuevousuarioForm.valid) {
       console.log('Form nuevo usario: ',this.nuevousuarioForm.value);
-      this.router.navigateByUrl('abm-usuarios')
+      this.router.navigateByUrl('abm-usuario')
       //this.login(this.nuevousuarioForm.value)
     } else {
       alert('Formulario no completo');
@@ -61,5 +63,20 @@ export function nameValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const valid = /^[a-zA-Z]+$/.test(control.value); // Patrón de validación para nombres de usuario
     return valid ? null : { invalidName: { value: control.value } };
+  };
+}
+
+
+// Función de validación personalizada para comparar contraseña y confirmar contraseña
+export function passwordMatchValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmpassword');
+
+    if (password && confirmPassword && password.value !== confirmPassword.value) {
+      return { passwordMismatch: true };
+    }
+
+    return null;
   };
 }

@@ -2,7 +2,7 @@ from flask_restful import Resource
 from flask import request
 from flask import jsonify
 from .. import db
-from main.models import UsuarioModel, UsuariosAlumnosModel
+from main.models import UsuarioModel #UsuariosAlumnosModel
 from sqlalchemy import func, desc, or_
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
@@ -54,27 +54,23 @@ class Usuarios(Resource):
 
 
         #no se si esto deberia quedar en admin o directamente en alumno
-        if request.args.get('search'):
+        #if request.args.get('search'):
             
             #defino la variable de busqueda
-            search_param=request.args.get('search')
-            usuarios_query_search = (
-                db.session.query(UsuarioModel)
-                .join(UsuariosAlumnosModel , UsuariosAlumnosModel.id_Usuario == UsuarioModel.id_Usuario)
-                .filter(
-                or_(
-                    UsuarioModel.nombre.like(f'%{search_param}%'),
-                    UsuarioModel.apellido.like(f'%{search_param}%')  )
+            #search_param=request.args.get('search')
+            #usuarios_query_search = (
+                #db.session.query(UsuarioModel)
+                #.join(UsuariosAlumnosModel , UsuariosAlumnosModel.id_Usuario == UsuarioModel.id_Usuario)
+                #.filter(
+                #or_(
+                    #UsuarioModel.nombre.like(f'%{search_param}%'),
+                    #UsuarioModel.apellido.like(f'%{search_param}%')  )
                            
-                )
-            )
+                #)
+            #)
 
-            search_result = [usuario.to_json_full_name() for usuario in usuarios_query_search]
-            return jsonify(search_result)
-
-
-
-
+            #search_result = [usuario.to_json_full_name() for usuario in usuarios_query_search]
+            #return jsonify(search_result)
 
         return jsonify([usuario.to_json_complete() for usuario in usuarios])
     

@@ -2,10 +2,10 @@ from flask_restful import Resource
 from flask import request
 from flask import jsonify
 from .. import db
-from main.models import UsuarioProfesorModel
+from main.models import UsuarioProfesorModel, UsuarioModel
 from main.models import UsuariosAlumnosModel
 from main.models import ClaseModel
-from sqlalchemy import func, desc, asc
+from sqlalchemy import func, desc, asc, or_
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import role_required
 
@@ -100,12 +100,30 @@ class UsuariosProfesores(Resource):
             
             return jsonify(view_alumno_clase)
 
-
-        
-
-
-
         usuariosprofesores = usuariosprofesores.paginate(page=page, per_page=per_page, error_out=True, max_per_page=10)
+
+        #Consulta par la lupita de busqueda
+        if request.args.get('search'):
+            
+            #defino la variable de busqueda
+            search_param = request.args.get('search')
+            usuarios_query_search = (
+                db.session.query(UsuarioModel)
+                .join(UsuarioProfesorModel , UsuarioProfesorModel.id_Usuario == UsuarioModel.id_Usuario)
+                .filter(
+                or_(
+                    UsuarioModel.nombre.like(f'%{search_param}%'),
+                    UsuarioModel.apellido.like(f'%{search_param}%')  )
+                           
+                )
+            )
+
+            return jsonify ({'profesores': [usuarioprofesor.to_json_full_name() for usuarioprofesor in usuarios_query_search],
+                  'total': usuariosprofesores.total,
+                  'pages': usuariosprofesores.pages,
+                  'page': page
+                })
+       
 
         return jsonify ({'profesores': [usuarioprofesor.to_json() for usuarioprofesor in usuariosprofesores],
                   'total': usuariosprofesores.total,
@@ -113,10 +131,7 @@ class UsuariosProfesores(Resource):
                   'page': page
                 })
 
-
-
-
-    #insertar alumno
+    #insertar profesor
     @role_required(roles = ["admin"])
     def post(self):
         jsonprofesores=request.get_json()

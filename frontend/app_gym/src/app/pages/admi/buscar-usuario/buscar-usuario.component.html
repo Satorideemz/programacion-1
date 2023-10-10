@@ -37,9 +37,9 @@
 
                 <div *ngIf="mybuttonId == 2" class="col-md-4">
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="Ingrese el nombre o apellido del profesor...">
+                        <input type="text" class="form-control" [(ngModel)]="search_value" placeholder="Ingrese el nombre o apellido del profesor...">
                         <div class="input-group-append">
-                            <button  class="card btn btn-outline-secondary btn-lg" type="button" (click)="showVerProfesor = true">Buscar</button>
+                            <button  class="card btn btn-outline-secondary btn-lg" type="button" (click)="captura_search_value(search_value)">Buscar</button>
                         </div>
                     </div>
                 </div>

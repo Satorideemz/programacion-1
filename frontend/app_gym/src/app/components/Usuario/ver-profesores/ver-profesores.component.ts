@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { BuscarProfesorService } from 'src/app/services/profesores/buscar-profesor.service';
 
 @Component({
   selector: 'app-ver-profesores',
@@ -8,24 +9,19 @@ import { Router } from '@angular/router';
 })
 export class VerProfesoresComponent {
 
-  arrayUsuario = [
-    {
-      usuario_id: "1",
-      nombre:"pepito profesor",
-      apellido:"rodriguez",
-    },
-    {
-      usuario_id: "2",
-      nombre:"pepito2 profesor",
-      apellido:"rodriguez2",
-    },
-    {
-      usuario_id: "3",
-      nombre:"pepito3 profesor",
-      apellido:"rodriguez3",
-    }
-  ];
-  constructor(private router: Router) { }
+  arrayUsuario:any;
+  
+  constructor(private router: Router,
+
+  //lupita de buscqueda
+  private buscarprofesorservice : BuscarProfesorService ) { }
+  ngOnInit() {
+    this.buscarprofesorservice.getUsers().subscribe((data:any) =>{
+      console.log('JSON data', data);
+      this.arrayUsuario = data.profesor
+    })
+  }
+
   handleButtonClick(): void {
   // Navigate to the desired route when the button is clicked
   this.router.navigate(['/abm-usuario']); // Replace 'your-desired-route' with the actual route you want to navigate to

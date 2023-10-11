@@ -18,7 +18,7 @@ export class VerProfesoresComponent {
   ngOnInit() {
     this.buscarprofesorservice.getUsers().subscribe((data:any) =>{
       console.log('JSON data', data);
-      this.arrayUsuario = data.profesor
+      this.arrayUsuario = data.profesores
     })
   }
 

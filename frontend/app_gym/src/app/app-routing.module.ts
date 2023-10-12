@@ -19,7 +19,6 @@ import { HorariosComponent } from './pages/horarios/horarios.component';
 //ruta temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { AbmComponent } from './components/rutina/abm/abm.component';
-import { UsuarioAbmComponent } from './pages/admi/usuario-abm/usuario-abm.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
 
 
@@ -51,7 +50,6 @@ const routes: Routes = [
 
   //path temporal
   {path: 'ver-clases', component: VerClaseComponent, canActivate: [profesessionGuard] },
-  {path: 'usuario-abm', component: UsuarioAbmComponent, canActivate: [profesessionGuard] },
   {path: 'ver-rutinas', component: AbmComponent, canActivate: [profesessionGuard] },
   {path: 'pagos', component: PagosComponent, canActivate:[ adminsessionGuard] },
   

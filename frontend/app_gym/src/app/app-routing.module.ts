@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { authsessionGuard } from './guard/authsession.guard';
 
 //routeo de usuario no registrado
 import { HomeComponent } from './pages/home/home.component';
@@ -19,7 +19,7 @@ import { HorariosComponent } from './pages/horarios/horarios.component';
 //ruta temporal despues borrar
 import { VerClaseComponent } from './components/clases/ver-clase/ver-clase.component';
 import { AbmComponent } from './components/rutina/abm/abm.component';
-import { AbmUsuarioComponent } from './components/Usuario/abm-usuario/abm-usuario.component';
+import { UsuarioAbmComponent } from './pages/admi/usuario-abm/usuario-abm.component';
 import { PagosComponent } from './components/admi/pagos/pagos.component';
 
 
@@ -34,11 +34,13 @@ import { NuevaRutinaComponent } from './pages/admi/nueva-rutina/nueva-rutina.com
 import { EditarRutinaComponent } from './pages/admi/editar-rutina/editar-rutina.component';
 import { BuscarUsuarioComponent } from './pages/admi/buscar-usuario/buscar-usuario.component';
 import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.component';
+import { adminsessionGuard } from './guard/adminsession.guard';
+import { profesessionGuard } from './guard/profesession.guard';
 
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
-  {path: 'historia', component: HistoriaComponent },
+  {path: 'historia', component: HistoriaComponent},
   {path: 'profesores', component: ProfesoresComponent },
   {path: 'clases', component: ClasesComponent},
   {path: 'clase-puntual', component: ClasePuntualComponent},
@@ -48,23 +50,25 @@ const routes: Routes = [
   {path: '', redirectTo: '/home' , pathMatch: 'full' }, //redirecciona al home por defecto
 
   //path temporal
-  {path: 'ver-clases', component: VerClaseComponent },
-  {path: 'abm-usuario', component: AbmUsuarioComponent },
-  {path: 'ver-rutinas', component: AbmComponent },
-  {path: 'pagos', component: PagosComponent},
+  {path: 'ver-clases', component: VerClaseComponent, canActivate: [profesessionGuard] },
+  {path: 'usuario-abm', component: UsuarioAbmComponent, canActivate: [profesessionGuard] },
+  {path: 'ver-rutinas', component: AbmComponent, canActivate: [profesessionGuard] },
+  {path: 'pagos', component: PagosComponent, canActivate:[ adminsessionGuard] },
+  
+
 
 
   //routeo  de admi
-  {path: 'clases-todas', component: ClasesTodasComponent },
-  {path: 'clases-asistencia-admi', component: ClasesAsistenciaAdmiComponent },
-  {path: 'alumnos', component: AlumnosComponent },
-  {path: 'pagos-admi', component: PagosAdmiComponent },
-  {path: 'pagos-puntual-admi', component: PagosPuntualAdmiComponent },
-  {path: 'rutina-abm', component: RutinaAbmComponent},
-  {path: 'nueva-rutina', component: NuevaRutinaComponent },
-  {path: 'editar-rutina', component:  EditarRutinaComponent},
-  {path: 'buscar-usuario', component: BuscarUsuarioComponent},
-  {path: 'nuevo-usuario', component: NuevoUsuarioComponent},
+  {path: 'clases-todas', component: ClasesTodasComponent, canActivate: [profesessionGuard] },
+  {path: 'clases-asistencia-admi', component: ClasesAsistenciaAdmiComponent, canActivate: [profesessionGuard]  },
+  {path: 'alumnos', component: AlumnosComponent , canActivate: [profesessionGuard]  },
+  {path: 'pagos-admi', component: PagosAdmiComponent, canActivate:[ adminsessionGuard] },
+  {path: 'pagos-puntual-admi', component: PagosPuntualAdmiComponent, canActivate:[ adminsessionGuard] },
+  {path: 'rutina-abm', component: RutinaAbmComponent, canActivate: [profesessionGuard] },
+  {path: 'nueva-rutina', component: NuevaRutinaComponent,canActivate: [profesessionGuard]  },
+  {path: 'editar-rutina', component:  EditarRutinaComponent,canActivate: [profesessionGuard]  },
+  {path: 'buscar-usuario', component: BuscarUsuarioComponent, canActivate: [profesessionGuard] }, //compartidoo
+  {path: 'nuevo-usuario', component: NuevoUsuarioComponent, canActivate: [profesessionGuard] },
 
   {path: '**', redirectTo: 'home'}
   /*crear una pagina de error 404 por defecto en linea de arriba */

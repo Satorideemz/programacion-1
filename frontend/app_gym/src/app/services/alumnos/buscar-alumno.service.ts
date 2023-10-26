@@ -25,7 +25,11 @@ export class BuscarAlumnoService {
         'Authorization': `Bearer ${auth_token}`
       })
       //Envio la query a buscar por nombre o apellido del alumno
+      
       return this.httpClient.get(this.url + '/usuariosalumnos?search='+this.search_value, {headers: headers});
 
     };
+
+
+
 }

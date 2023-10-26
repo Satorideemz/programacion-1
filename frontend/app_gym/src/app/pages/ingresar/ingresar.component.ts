@@ -53,6 +53,7 @@ export class IngresarComponent {
       }
     })
   }
+  
   submit() {
     if(this.loginForm.valid) {
       console.log('Form login: ',this.loginForm.value);

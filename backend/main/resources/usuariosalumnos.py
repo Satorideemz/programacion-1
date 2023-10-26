@@ -48,6 +48,7 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
 
         db.session.add(usuariosalumnos)
         db.session.commit()
+
         return usuariosalumnos.to_json(),201
        
 
@@ -70,6 +71,9 @@ class UsuariosAlumnos(Resource):
         #traemos los 30 primeros profesores ordenados por su estado de cuenta siendo primeros los que estan al dia
         if request.args.get('get_by_status'):
             usuariosalumnos = usuariosalumnos.order_by(desc(UsuariosAlumnosModel.estado_de_la_cuenta))
+
+        if request.args.get('user_abm'):
+            usuariosalumnos= usuariosalumnos.filter(UsuariosAlumnosModel.id_Usuario == request.args.get('user_abm'))
 
         usuariosalumnos = usuariosalumnos.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
 

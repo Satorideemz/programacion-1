@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-loggedin',
   templateUrl: './loggedin.component.html',
@@ -40,7 +42,7 @@ export class LoggedinComponent {
   
   redirectToAlumnos() {
     const buttonId = 1; // Id para buscar alumnos
-    this.router.navigate(['/buscar-usuario'], { queryParams: { id: buttonId } });
+    this.router.navigate(['/buscar-usuario'] , { queryParams: { id: buttonId } });
   }
 
   redirectToProfesores() {

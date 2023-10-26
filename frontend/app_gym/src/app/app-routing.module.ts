@@ -33,8 +33,10 @@ import { NuevaRutinaComponent } from './pages/admi/nueva-rutina/nueva-rutina.com
 import { EditarRutinaComponent } from './pages/admi/editar-rutina/editar-rutina.component';
 import { BuscarUsuarioComponent } from './pages/admi/buscar-usuario/buscar-usuario.component';
 import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.component';
+import { UsuarioAbmComponent } from './pages/admi/usuario-abm/usuario-abm.component';
 import { adminsessionGuard } from './guard/adminsession.guard';
 import { profesessionGuard } from './guard/profesession.guard';
+
 
 
 const routes: Routes = [
@@ -67,6 +69,7 @@ const routes: Routes = [
   {path: 'editar-rutina', component:  EditarRutinaComponent,canActivate: [profesessionGuard]  },
   {path: 'buscar-usuario', component: BuscarUsuarioComponent, canActivate: [profesessionGuard] }, //compartidoo
   {path: 'nuevo-usuario', component: NuevoUsuarioComponent, canActivate: [profesessionGuard] },
+  {path: 'usuario-abm', component: UsuarioAbmComponent, canActivate: [profesessionGuard] },
 
   {path: '**', redirectTo: 'home'}
   /*crear una pagina de error 404 por defecto en linea de arriba */

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BuscarAlumnoService } from 'src/app/services/alumnos/buscar-alumno.service';
+import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service';
 
 @Component({
   selector: 'app-ver-alumnos',
@@ -28,7 +29,8 @@ export class VerAlumnosComponent {
   //   }
   // ];
   constructor(private router: Router,
-    private buscaralumnoservice : BuscarAlumnoService ) { }
+    private buscaralumnoservice : BuscarAlumnoService,
+    private abmalumnoservice : AbmAlumnosService ) { }
   
   ngOnInit() {
     this.buscaralumnoservice.getUsers().subscribe((data:any) =>{
@@ -37,9 +39,12 @@ export class VerAlumnosComponent {
     })
   }
 
-  handleButtonClick(): void {
-  // Navigate to the desired route when the button is clicked
-  this.router.navigate(['/alumnos']); // Replace 'your-desired-route' with the actual route you want to navigate to
+  handleButtonClick(alumnoid:any): void {
+    // Navigate to the desired route when the button is clicked
+    this.abmalumnoservice.retrieve_alumno_id(alumnoid);
+    console.log(alumnoid)
+    this.router.navigate(['/alumnos']); // Replace 'your-desired-route' with the actual route you want to navigate to
+
   }
   confirmDelete(): void {
     const confirmed = window.confirm('Estas seguro de que deseas borrar este usuario');

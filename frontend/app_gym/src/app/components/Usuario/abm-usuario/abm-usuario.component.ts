@@ -58,10 +58,11 @@ export class AbmUsuarioComponent {
 
 
   ngOnInit() {
+    //Traigo los datos del usuario que deseo editar
     this.abm_alumnos.getUsers().subscribe((data: any) => {
       console.log('JSON data', data);
       this.arrayUsuario = data.alumnos;
-  
+      //Coloco sus atributos en los campos del formulario
       this.abmalumno = this.formBuilder.group({
         nombre: [this.arrayUsuario[0].alumno_detalle.nombre, [Validators.required]],     //Validators.pattern('/^[A-Za-z\s']+$/')
         apellido: [this.arrayUsuario[0].alumno_detalle.apellido, [Validators.required]],
@@ -78,11 +79,11 @@ export class AbmUsuarioComponent {
   confirmDelete(userId: number): void {
     const confirmed = window.confirm('Estás seguro de que deseas borrar este usuario?');
     if (confirmed) {
-      // Call the service method to delete the user
+      // Si confirma el borrado, invoco al servicio de borrar usuario
       this.abm_alumnos.deleteUser(userId).subscribe({
         next: () => {
           console.log('Usuario eliminado con éxito.');
-          this.router.navigate(['/buscar-usuario']); // Redirect to the desired route after deletion
+          this.router.navigate(['/buscar-usuario']); // Redirecciono a buscar usuario
         },
         error: (error) => {
           console.error('Error al eliminar el usuario:', error);
@@ -93,23 +94,12 @@ export class AbmUsuarioComponent {
         }
       });
     } else {
-      // User clicked Cancel or closed the dialog
-      // No action needed
+      // Se cancela la confirmacion de borrar usuario y regresa al formulario
     }
   }
-
-
-  
-
-
-  savebutton(): void {
-    // Navigate to the desired route when the button is clicked
-    this.router.navigate(['/abm-usuario']); // Replace 'your-desired-route' with the actual route you want to navigate to
-    
-
-    }
-
+    //Boton de guardar cambios
     submit(userId: number): void {
+      //Me aseguro antes que el formulario tenga valores validos antes de enviar
       if (this.abmalumno.valid) {
         console.log('Form login: ', this.abmalumno.value);
         this.edituser(this.abmalumno.value, userId);
@@ -117,13 +107,14 @@ export class AbmUsuarioComponent {
         alert('Formulario inválido');
       }
     }
-    
+    //Traigo al servicio que invocara el PUT
     edituser(dataUser: any = {}, userId: number): void {
       console.log('Comprobando credenciales');
       this.abm_alumnos.editUser(userId, dataUser).subscribe({
         next: () => {
           console.log(dataUser);
           this.router.navigateByUrl('/abm-usuario');
+          //Navego a la ruta abm-usuario luego de hacer la modificacion
         },
         error: (error) => {
           alert('Credenciales inválidas');

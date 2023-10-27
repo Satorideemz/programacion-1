@@ -9,17 +9,22 @@ import { BuscarProfesorService } from 'src/app/services/profesores/buscar-profes
   styleUrls: ['./buscar-usuario.component.css']
 })
 export class BuscarUsuarioComponent {
+  //variable que utiliza el servicio para traer los resultados del query de busqueda
   search_value: string = "";
+  //variables para mostrar profesor o alumno segun sea el caso de lo seleccionado
   showVerProfesor: boolean = false;
   showVerAlumnos: boolean = false;
-  
+  //variable que comparte el componente padre e hijo para saber si tuvo cambios el campo de busqueda
+  changingValue: string="";
+
+
   buttonId: number = 0;
   
     constructor(
       private route: ActivatedRoute,
       private buscarProfesorService: BuscarProfesorService,
       private buscarAlumnoService: BuscarAlumnoService) 
-      {   //el sieguiente metodo aplica a todo lo que esta en el constructur
+      {   //Este constructor me da el parametro del boton, 1 para buscar alumnos y 2 para profesor 
       this.route.queryParams.subscribe(params => { 
         this.buttonId = params['id'];
       });
@@ -33,15 +38,20 @@ export class BuscarUsuarioComponent {
 
     //Al apretar el boton de buscar capturo el input ingresado y lo envio al servicio de buscar alumnos
     capture_search_value(search_value: string) {
+      //muestro la tabla de alumnos encontrados
       this.showVerAlumnos = true
       console.log('Response from service:', search_value);
       this.buscarAlumnoService.retrieve_search_value(search_value);
+      this.changingValue= search_value;
+
     }
 
      //Al apretar el boton de buscar capturo el input ingresado y lo envio al servicio de buscar profesor
     captura_search_value(search_value: string) {
+      //muestro la tabla de profesores encontrados
       this.showVerProfesor = true
       console.log('Response from service:', search_value);
       this.buscarProfesorService.retrieve_search_value(search_value);
+      this.changingValue = search_value;
     }
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { Router } from '@angular/router';
 import { BuscarAlumnoService } from 'src/app/services/alumnos/buscar-alumno.service';
 import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service';
@@ -8,8 +8,10 @@ import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service'
   templateUrl: './ver-alumnos.component.html',
   styleUrls: ['./ver-alumnos.component.css']
 })
-export class VerAlumnosComponent {
-  
+export class VerAlumnosComponent implements OnChanges {
+  //Este input lo uso como variable para saber si debo refrescar el resultado de busqueda
+  @Input() someInput!: string ;
+
   arrayUsuario:any;
   // arrayUsuario = [
   //   {
@@ -28,11 +30,14 @@ export class VerAlumnosComponent {
   //     apellido:"rodriguez3",
   //   }
   // ];
+
+  //Inicio los servicios que voy a usar para traer la informacion del backend
   constructor(private router: Router,
     private buscaralumnoservice : BuscarAlumnoService,
     private abmalumnoservice : AbmAlumnosService ) { }
   
   ngOnInit() {
+    // Traigo los alumnos resultantes de la barra de busqueda
     this.buscaralumnoservice.getUsers().subscribe((data:any) =>{
       console.log('JSON data', data);
       this.arrayUsuario = data.alumnos
@@ -40,22 +45,32 @@ export class VerAlumnosComponent {
   }
 
   handleButtonClick(alumnoid:any): void {
-    // Navigate to the desired route when the button is clicked
-    this.abmalumnoservice.retrieve_alumno_id(alumnoid);
-    console.log(alumnoid)
-    this.router.navigate(['/alumnos']); // Replace 'your-desired-route' with the actual route you want to navigate to
+    // Clikc de boton de editar,
+    this.abmalumnoservice.retrieve_alumno_id(alumnoid); //guardo el id del alumno para posteriormente saber a que alumno debo traer en las querys
+    console.log(alumnoid) 
+    this.router.navigate(['/alumnos']); //  te lleva a visualizar el abm de alumnos y el correspondiente abm de rutinas
 
   }
   confirmDelete(): void {
     const confirmed = window.confirm('Estas seguro de que deseas borrar este usuario');
     if (confirmed) {
-      // User clicked OK, perform the delete action here
-      // You can add your delete logic here
-      console.log('Item deleted.'); // Replace with your actual delete code
+      // Boton de confirmacion de borrado, por ahora sin uso
+
+      console.log('Item deleted.'); 
       this.router.navigate(['/home']);
     } else {
-      // User clicked Cancel or closed the dialog
-      // No action needed
+      // Cancela la accion de borrar
     }
   }
+
+    ngOnChanges(changes: SimpleChanges): void {
+      //Si la variable de busqueda tuvo cambios, se refrescara con nuevos resultados
+      console.log(this.someInput);
+      this.buscaralumnoservice.getUsers().subscribe((data:any) =>{
+        console.log('JSON data', data);
+        this.arrayUsuario = data.alumnos
+      })
+    }
+
+
   }

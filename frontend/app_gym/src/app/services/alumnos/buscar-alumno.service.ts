@@ -16,7 +16,8 @@ export class BuscarAlumnoService {
       console.log('Response from service:', search);
       this.search_value= search;
     }
-    
+
+    //metodo que me conecta el backend para traer el listado de alumnos
     getUsers() {
       let auth_token = localStorage.getItem('token')
 

@@ -33,17 +33,18 @@ export class AbmAlumnosService {
   
       };
 
-
+      //Metodo que me permite usar el recurso PUT para editar el alumno segun los valores cambiados del formulario
       editUser(userId: number, dataUser: any): Observable<any> {
         let auth_token = localStorage.getItem('token');
         const headers = new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${auth_token}`
         });
+        //Edita el alumno segun el id especificado
         return this.httpClient.put(`${this.url}/usuario/${userId}`, dataUser, { headers: headers }).pipe(take(1));
       }
       
-
+      //Metodo que me permite borrar 
       deleteUser(userId: number): Observable<any> {
         let auth_token = localStorage.getItem('token');
         const headers = new HttpHeaders({
@@ -51,7 +52,7 @@ export class AbmAlumnosService {
           'Authorization': `Bearer ${auth_token}`
         });
       
-        // Send DELETE request to delete the user with specific ID
+        //Borra el alumno segun el id especificado
         return this.httpClient.delete(`${this.url}/usuario/${userId}`, { headers: headers }).pipe(take(1));
       }
       

@@ -18,6 +18,7 @@ export class BuscarProfesorService {
       this.search_value= search;
     }
     
+     //metodo que me conecta el backend para traer el listado de profesores
     getUsers() {
       let auth_token = localStorage.getItem('token')
 

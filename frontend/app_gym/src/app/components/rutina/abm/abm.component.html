@@ -8,26 +8,26 @@
 
         <!-- Text Pane 1 -->
         <div class="card-text">
-            <h3>Nombre:</h3>
-            <p>Pepe</p>
+            <h3>Rutinas del alumno:</h3>
         </div>
 
         <!-- Nested List -->
-        <ul class="list-group mt-3" *ngFor="let rutina of arrayRutinas">
-            <li class="list-group-item d-flex justify-content-between align-items-center custom-rutina">
-                Rutina {{rutina.id_rutina}}
+        <ul class="list-group mt-3">
+            <!-- <ng-container *ngFor="let planificaciones of hashRutinas"> -->
+              <li class="list-group-item d-flex justify-content-between align-items-center custom-rutina">
+                Rutina {{ hashRutinas.id_planificacion }}
                 <div>
-                    <button class="btn btn-primary btn-sm me-2" (click)="handleButtonClick()"><i class="fa-solid fa-pen-to-square"></i></button>
-                    <button class="btn btn-danger btn-sm delete-btn" (click)="confirmDelete()"><i class="fa-solid fa-trash"></i></button>
-        
+                  <button class="btn btn-primary btn-sm me-2" (click)="handleButtonClick()"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="btn btn-danger btn-sm delete-btn" (click)="confirmDelete(hashRutinas.id_planificacion)"><i class="fa-solid fa-trash"></i></button>
                 </div>
-            </li>
-            <!-- Content for Rutina 1 -->
-            <li class="list-group-item custom-bg-color">
-                <h5>{{rutina.nombre}}</h5>
-                <p>{{rutina.detalles}}</p>
-            </li>    
-        </ul>
+              </li>
+              <!-- Content for each Rutina -->
+              <li class="list-group-rutina custom-bg-color">
+                <p>{{ hashRutinas.estado }}</p>
+                <p>{{ hashRutinas.detalles }}</p>
+              </li>
+            <!-- </ng-container> -->
+          </ul>
         <a routerLink="/nueva-rutina"> 
             <button class="btn btn-success mt-3" id="addRutinaBtn">Agregar nueva rutina</button>
         </a>

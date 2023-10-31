@@ -63,7 +63,7 @@ class Planificaciones(Resource):
     @role_required(roles = ["admin","profesor","alumno"])
     def get(self):
         page = 1
-        per_page = 1
+        per_page = 3
         planificaciones = db.session.query(PlanificacionModel)
 
 

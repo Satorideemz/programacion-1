@@ -40,7 +40,7 @@
 .toggle-container label {
 
   position: center;
-  padding-right: 20px;
+  padding-right: 0px;
   color: #000000; 
 
 }
@@ -52,9 +52,23 @@
    
 }
 
+.card1 {
+  margin-bottom: 10px;
+  background-color: rgb(207, 63, 63);
+  opacity: 1.0;
+  border: groove;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  width: 15%;
+  }
 .card-img-top {
     max-height: 200px;
     object-fit: cover;
+}
+
+.small-input {
+ /* Cambia el ancho según tus necesidades */
+  height: 10px;
 }
 
 /* Cambiar el color del texto de las cards */
@@ -73,10 +87,14 @@
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     max-width: 1520px;
   }
-
-
-
-
+  /* longitud a lo ancho del texto de bienvenida */
+  .col-md-8 {
+    flex: 0 0 auto;
+    width: 99.66666667%;
+    color: rgba(186, 175, 175);
+    margin-bottom: 20px;
+  }
+  
 
 
 .form-control {

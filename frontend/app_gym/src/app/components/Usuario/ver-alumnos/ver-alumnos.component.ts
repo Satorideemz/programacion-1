@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { BuscarAlumnoService } from 'src/app/services/alumnos/buscar-alumno.service';
 import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service';
 
+
 @Component({
   selector: 'app-ver-alumnos',
   templateUrl: './ver-alumnos.component.html',

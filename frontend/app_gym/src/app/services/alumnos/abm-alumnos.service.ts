@@ -55,5 +55,28 @@ export class AbmAlumnosService {
         //Borra el alumno segun el id especificado
         return this.httpClient.delete(`${this.url}/usuario/${userId}`, { headers: headers }).pipe(take(1));
       }
+
+      createUser(dataLogin:any): Observable<any>{
+
+        let auth_token = localStorage.getItem('token');
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth_token}`
+        });
+        //Da de alta un alumno
+        return this.httpClient.post(this.url + '/usuarios',dataLogin, { headers: headers }).pipe(take(1));
+      }
       
+      createStudent(dataLogin:any): Observable<any>{
+
+        let auth_token = localStorage.getItem('token');
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth_token}`
+
+        });
+        //Da de alta con los datos propios del alumno
+        return this.httpClient.post(this.url + '/usuariosalumnos',dataLogin, { headers: headers }).pipe(take(1));
+
+      }
 }

@@ -11,8 +11,11 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <h1 class="card-title text-center">Crear nuevo usuario</h1>
-                    <form [formGroup]="nuevousuarioForm">
+                    
+                        <h1 *ngIf="mybuttonId == 1" class="card-title text-center">Crear nuevo Alumno</h1>
+                        <h1 *ngIf="mybuttonId == 2" class="card-title text-center">Crear nuevo Profesor</h1>
+
+                    <form [formGroup]="abmalumno">
                     <div class="row justify-content-center">
                         <div class="toggle-container">
                             <div class="col-md-9 mt-1 text-left">
@@ -45,8 +48,8 @@
                                 </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
-                                <label for="documento" class="form-label">Documento</label>
-                                <input type="documento" id="documento" name="documento" class="form-control" formControlName="documento" placeholder="Documento">
+                                <label for="dni" class="form-label">Documento</label>
+                                <input type="dni" id="dni" name="dni" class="form-control" formControlName="dni" placeholder="dni">
                                 <!--<div *ngIf="nuevousuarioFrom.get('documento').hasError('required') && nuevousuarioFrom.get('documento').hasError('length')">
                                     Documento es un campo requerido.
                                 </div>--->
@@ -69,11 +72,11 @@
                                     Sexo es un campo requerido.
                                 </div>--->
                             </div>
-                            <div class="col-md-9 mt-1 text-left">
+                            <div *ngIf="mybuttonId == 2" class="col-md-9 mt-1 text-left">
                                 <label for="titulo" class="form-label">Título</label>
                                 <input type="titulo" id="titulo" name="titulo" class="form-control" formControlName="titulo" placeholder="Título">
                             </div>
-                            <div class="col-md-9 mt-1 text-left">
+                            <div *ngIf="mybuttonId == 2" class="col-md-9 mt-1 text-left">
                                 <label for="disponibilidad" class="form-label">Disponibilidad</label>
                                 <input type="disponibilidad" id="disponibilidad" name="disponibilidad" class="form-control" formControlName="disponibilidad" placeholder="Disponibilidad">
                             </div>

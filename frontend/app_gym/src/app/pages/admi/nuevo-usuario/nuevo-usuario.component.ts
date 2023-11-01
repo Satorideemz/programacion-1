@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, Route } from '@angular/router';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service';
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -14,13 +15,36 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 
 export class NuevoUsuarioComponent {
-  nuevousuarioForm!: FormGroup;
+  abmalumno! : FormGroup;
+  arrayUsuario:any;
+  buttonId: number = 0;
 
   constructor (
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-  ) {}
+    private abm_alumnos: AbmAlumnosService
+  )
+  {   //Este constructor me da el parametro del boton, 1 para buscar alumnos y 2 para profesor 
+    this.route.queryParams.subscribe(params => { 
+      this.buttonId = params['id'];
+      this.abmalumno = this.formBuilder.group({
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        mail: ['', [Validators.required, Validators.email]],
+        dni: ['', Validators.required],
+        telefono: ['', Validators.required],
+        password: ['', Validators.required],
+        edad: ['', Validators.required],
+        sexo: ['', Validators.required],
+      });
+    });
+    }
 
+      //Obtengo el id del boton para saber que debo mostrar, si alumnos o si profesor
+    get mybuttonId(){
+        return this.buttonId
+    }
 
 
 
@@ -30,33 +54,79 @@ export class NuevoUsuarioComponent {
   //--------------------------------------------------------
 
   ngOnInit() {
-    this.nuevousuarioForm = this.formBuilder.group({
-      nombre : ['', [Validators.required, nameValidator()]],       //Validators.pattern('/^[A-Za-z\s']+$/')
-      apellido: ['', [Validators.required, nameValidator()]],
-      mail : ['', [Validators.required,Validators.email]],         //Validators.email
-      telefono : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],     //Validators.pattern('/^\d{10}$/')
-      documento : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],    //Validators.pattern('/^\d{10}$/')
-      edad : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(5)]],         //Validators.pattern('/^\d{10}$/')
-      sexo : ['', Validators.required],
-      titulo : [''],
-      disponibilidad : [''],
-      password: ['', Validators.required],
-      confirmpassword: ['', Validators.required],
-    }, {
-      validators: passwordMatchValidator(),
-    });
+    //Traigo los datos del usuario que deseo editar
+
+        this.abmalumno= this.formBuilder.group({
+          nombre: ['', [Validators.required]],     //Validators.pattern('/^[A-Za-z\s']+$/')
+          apellido: ['', [Validators.required]],
+          mail : ['', [Validators.required,Validators.email]],         //Validators.email
+          telefono : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],          //Validators.pattern('/^\d{10}$/')
+          dni : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],    //Validators.pattern('/^\d{10}$/')
+          edad : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(5)]],         //Validators.pattern('/^\d{10}$/')
+          sexo : ['', Validators.required],        
+
+          //titulo : [''],
+          //disponibilidad : [''],
+          password: ['', Validators.required],
+          //confirmpassword: ['', Validators.required],
+        }, {
+          validators: passwordMatchValidator(),
+        });
+ 
+  
   }
 
   submit() {
-    if(this.nuevousuarioForm.valid) {
-      console.log('Form nuevo usario: ',this.nuevousuarioForm.value);
-      this.router.navigateByUrl('abm-usuario')
-      //this.login(this.nuevousuarioForm.value)
+     //Me aseguro antes que el formulario tenga valores validos antes de enviar
+    if(this.abmalumno.valid) {
+      console.log('Form nuevo usario: ',this.abmalumno.value);
+      this.createUser(this.abmalumno.value);
+
+      this.createStudent({ "estado_de_la_cuenta" : "al dia"})
     } else {
-      alert('Formulario no completo');
+      alert('Formulario inválido');
     }
   }
+    createUser(dataUser: any = {} ): void {
+      console.log('Comprobando credenciales');
+      this.abm_alumnos.createUser( dataUser).subscribe({
+        next: () => {
+          console.log(dataUser);
+          this.router.navigateByUrl('/home');
+          //Navego a la ruta abm-usuario luego de hacer la modificacion
+        },
+        error: (error) => {
+          alert('Error al crear usuario');
+        },
+        complete: () => {
+          console.log('Operación de alta completa');
+        }
+      });
+    }
+
+    createStudent(dataUser: any = {} ): void {
+      console.log('Comprobando credenciales');      
+      this.abm_alumnos.createUser( dataUser).subscribe({
+        next: () => {
+          console.log(dataUser);
+        },
+        error: (error) => {
+          alert('Error al crear datos propios del alumno');
+        },
+        complete: () => {
+          console.log('Operación de alta completa');
+        }
+      });
+    }
+    
 }
+
+  
+
+
+
+
+
 
 // Función de validación personalizada para nombres de usuario
 export function nameValidator(): ValidatorFn {
@@ -79,4 +149,9 @@ export function passwordMatchValidator(): ValidatorFn {
 
     return null;
   };
+
+
+
+
+  
 }

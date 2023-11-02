@@ -19,7 +19,7 @@ class Planificacion(db.Model):
             'id_Clase' : self.id_Clase ,
             'detalles' : str(self.detalles),
             'estado' : str(self.estado),
-            'fecha' : str(self.fecha.strftime("%d-%m-%Y")),
+            'fecha' : str(self.fecha.strftime("%d-%m-%Y"))
         }
         return planificacion_json
     
@@ -29,7 +29,7 @@ class Planificacion(db.Model):
             'id_Clase' : self.id_Clase ,
             'detalles' : str(self.detalles),
             'estado' : str(self.estado),
-            'fecha' : str(self.fecha.strftime("%d-%m-%Y")),
+            'fecha' : str(self.fecha.strftime("%d-%m-%Y"))
         }
         return planificacion_json
     

@@ -2,8 +2,9 @@ from flask_restful import Resource
 from flask import request
 from flask import jsonify
 from .. import db
-from main.models import ClaseModel
+from main.models import ClaseModel, UsuarioModel,UsuarioProfesorModel,UsuariosAlumnosModel
 
+from sqlalchemy.orm import aliased
 
 from sqlalchemy import func, desc, asc
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -27,6 +28,25 @@ class ProfesorClases(Resource):
     #    return jsonify([profesor.to_json() for profesor in profesores])
     #metodo antiguo duplicado
 
+    @role_required(roles= ["admin","profesor"])
+    def get(self):
+        # Crear alias para las tablas
+            
+
+            if request.args.get('id_alumno'):
+            # Define el parámetro de búsqueda
+                UsuariosAlumnosModel.id_Alumno = request.args.get('id_alumno')
+
+                # Consulta para obtener planificaciones relacionadas con el alumno
+                alumnos_query = (
+                    db.session.query(ClaseModel)
+                    .join(ClaseModel.alumnoclases, alumnos.id_Alumno == UsuariosAlumnosModel.id_Usuario)
+                    .join(ClaseModel, ClaseModel.id_Clase == UsuariosAlumnosModel.id_Clases)
+                    .join(ClaseModel.alumnoclases, ClaseModel.alumnoclases.id_Clases == ClaseModel.id_Clases)
+                    .filter(ClaseModel.alumnoclases.id_alumno == UsuariosAlumnosModel.id_Alumno)
+                )
+
+    
 
     @role_required(roles = ["admin","profesor","alumno"])
     def get(self):

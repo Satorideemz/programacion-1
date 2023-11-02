@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BuscarAlumnoService } from 'src/app/services/alumnos/buscar-alumno.service';
 import { BuscarProfesorService } from 'src/app/services/profesores/buscar-profesor.service';
 
@@ -23,7 +23,8 @@ export class BuscarUsuarioComponent {
     constructor(
       private route: ActivatedRoute,
       private buscarProfesorService: BuscarProfesorService,
-      private buscarAlumnoService: BuscarAlumnoService) 
+      private buscarAlumnoService: BuscarAlumnoService,
+      private router: Router) 
       {   //Este constructor me da el parametro del boton, 1 para buscar alumnos y 2 para profesor 
       this.route.queryParams.subscribe(params => { 
         this.buttonId = params['id'];
@@ -54,4 +55,18 @@ export class BuscarUsuarioComponent {
       this.buscarProfesorService.retrieve_search_value(search_value);
       this.changingValue = search_value;
     }
+
+    //Boton para dar de alta un alumno
+    redirectToNuevoAlumno() {
+      const buttonId = 1; // Id para buscar alumnos
+      this.router.navigate(['/nuevo-usuario'] , { queryParams: { id: buttonId } });
+    }
+
+    //Boton para dar de alta un profesor
+    redirectToNuevoProfesor() {
+      const buttonId = 2; // Id para buscar alumnos
+      this.router.navigate(['/nuevo-usuario'] , { queryParams: { id: buttonId } });
+    }
+
+
   }

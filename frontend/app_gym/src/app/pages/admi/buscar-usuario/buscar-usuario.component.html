@@ -15,16 +15,16 @@
                 <div class="col-md-8 offset-md-2 text-center welcome-text">
                 </div>
             </div>
-            <div class="row mt-5">
+            <div *ngIf="mybuttonId == 1" class="row mt-5">
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <a class="nav-link" routerLink="/nuevo-usuario">Nuevo Usuario </a>                   
+                            <a class="nav-link" (click)="redirectToNuevoAlumno()" >Nuevo Alumno </a>                   
                         </div>
                     </div>
                 </div>
                 
-                <div *ngIf="mybuttonId == 1" class="col-md-4">
+                <div  class="col-md-4">
                     <div class="input-group mb-2">
                         <input type="text" class="form-control" [(ngModel)]="search_value"  placeholder="Ingrese el nombre o apellido del alumno...">
                         <div class="input-group-append">
@@ -32,10 +32,23 @@
                         </div>
                     </div>
                 </div>
+  
+                <div  *ngIf= "showVerAlumnos">
+                    <app-ver-alumnos [someInput]="changingValue"></app-ver-alumnos>
+                </div>
 
-                  
 
-                <div *ngIf="mybuttonId == 2" class="col-md-4">
+            </div>
+            <div *ngIf="mybuttonId == 2" class="row mt-5">
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <a class="nav-link" (click)="redirectToNuevoProfesor()">Nuevo Profesor </a>                   
+                        </div>
+                    </div>
+                </div>
+                <div  class="col-md-4">
                     <div class="input-group mb-2">
                         <input type="text" class="form-control" [(ngModel)]="search_value" placeholder="Ingrese el nombre o apellido del profesor...">
                         <div class="input-group-append">
@@ -43,15 +56,10 @@
                         </div>
                     </div>
                 </div>
-                    
-                <div  *ngIf= "showVerAlumnos">
-                    <app-ver-alumnos [someInput]="changingValue"></app-ver-alumnos>
-                </div>
 
                 <div  *ngIf= "showVerProfesor">
-                    <app-ver-profesores></app-ver-profesores>
+                    <app-ver-profesores [someInput]="changingValue"></app-ver-profesores>
                 </div>
-
 
             </div>
         </div>

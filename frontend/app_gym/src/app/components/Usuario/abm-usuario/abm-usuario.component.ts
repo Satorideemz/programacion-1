@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Route, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service';
+import { AbmProfesoresService } from 'src/app/services/profesores/abm-profesores.service';
 
 @Component({
   selector: 'app-abm-usuario',
@@ -10,12 +11,20 @@ import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service'
 })
 export class AbmUsuarioComponent {
   abmalumno! : FormGroup;
-  arrayUsuario:any;
+  abmprofesor!: FormGroup;
+  arrayAlumno:any;
+  arrayProfesor:any;
+  buttonId: number = 0;
 
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private abm_alumnos: AbmAlumnosService ) { 
-                
+              private abm_alumnos: AbmAlumnosService,
+              private abm_profesores: AbmProfesoresService ) {
+                this.route.queryParams.subscribe(params => { 
+                  this.buttonId = params['id'];
+                });
+              
                   this.abmalumno = this.formBuilder.group({
                     nombre: ['', Validators.required],
                     apellido: ['', Validators.required],
@@ -26,12 +35,22 @@ export class AbmUsuarioComponent {
                     edad: ['', Validators.required],
                     sexo: ['', Validators.required],
                   });
-                
-              
+
+                  this.abmprofesor = this.formBuilder.group({
+                    nombre: ['', Validators.required],
+                    apellido: ['', Validators.required],
+                    mail: ['', [Validators.required, Validators.email]],
+                    documento: ['', Validators.required],
+                    telefono: ['', Validators.required],
+                    password: ['', Validators.required],
+                    edad: ['', Validators.required],
+                    sexo: ['', Validators.required],
+                    titulo : ['', Validators.required],
+                    disponibilidad : ['', Validators.required],
+                  });
+
               }
 
-
-          
 
   // ngOnInit() {
   //   this.abm_alumnos.getUsers().subscribe((data:any) =>{
@@ -59,23 +78,53 @@ export class AbmUsuarioComponent {
 
   ngOnInit() {
     //Traigo los datos del usuario que deseo editar
-    this.abm_alumnos.getUsers().subscribe((data: any) => {
-      console.log('JSON data', data);
-      this.arrayUsuario = data.alumnos;
-      //Coloco sus atributos en los campos del formulario
-      this.abmalumno = this.formBuilder.group({
-        nombre: [this.arrayUsuario[0].alumno_detalle.nombre, [Validators.required]],     //Validators.pattern('/^[A-Za-z\s']+$/')
-        apellido: [this.arrayUsuario[0].alumno_detalle.apellido, [Validators.required]],
-        mail : [this.arrayUsuario[0].alumno_detalle.mail, [Validators.required,Validators.email]],         //Validators.email
-        telefono : [this.arrayUsuario[0].alumno_detalle.telefono, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],          //Validators.pattern('/^\d{10}$/')
-        documento : [this.arrayUsuario[0].alumno_detalle.dni, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],    //Validators.pattern('/^\d{10}$/')
-        edad : [this.arrayUsuario[0].alumno_detalle.edad, [Validators.required,Validators.minLength(1), Validators.maxLength(5)]],         //Validators.pattern('/^\d{10}$/')
-        sexo : [this.arrayUsuario[0].alumno_detalle.sexo, Validators.required],        
+    if (this.mybuttonId== 1){
+      this.abm_alumnos.getUsers().subscribe((data: any) => {
+        console.log('JSON data', data);
+        this.arrayAlumno = data.alumnos;
+        //Coloco sus atributos en los campos del formulario
+        this.abmalumno = this.formBuilder.group({
+          nombre: [this.arrayAlumno[0].alumno_detalle.nombre, [Validators.required]],     //Validators.pattern('/^[A-Za-z\s']+$/')
+          apellido: [this.arrayAlumno[0].alumno_detalle.apellido, [Validators.required]],
+          mail : [this.arrayAlumno[0].alumno_detalle.mail, [Validators.required,Validators.email]],         //Validators.email
+          telefono : [this.arrayAlumno[0].alumno_detalle.telefono, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],          //Validators.pattern('/^\d{10}$/')
+          documento : [this.arrayAlumno[0].alumno_detalle.dni, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],    //Validators.pattern('/^\d{10}$/')
+          edad : [this.arrayAlumno[0].alumno_detalle.edad, [Validators.required,Validators.minLength(1), Validators.maxLength(5)]],         //Validators.pattern('/^\d{10}$/')
+          sexo : [this.arrayAlumno[0].alumno_detalle.sexo, Validators.required],        
 
+        });
       });
-    });
+    }
+
+    if (this.mybuttonId== 2){
+      this.abm_profesores.getUsers().subscribe((data: any) => {
+        console.log('JSON data', data);
+        this.arrayProfesor = data.profesores;
+        //Coloco sus atributos en los campos del formulario
+        this.abmprofesor = this.formBuilder.group({
+          nombre: [this.arrayProfesor[0].profesor_detalle.nombre, [Validators.required]],     //Validators.pattern('/^[A-Za-z\s']+$/')
+          apellido: [this.arrayProfesor[0].profesor_detalle.apellido, [Validators.required]],
+          mail : [this.arrayProfesor[0].profesor_detalle.mail, [Validators.required,Validators.email]],         //Validators.email
+          telefono : [this.arrayProfesor[0].profesor_detalle.telefono, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],          //Validators.pattern('/^\d{10}$/')
+          documento : [this.arrayProfesor[0].profesor_detalle.dni, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],    //Validators.pattern('/^\d{10}$/')
+          edad : [this.arrayProfesor[0].profesor_detalle.edad, [Validators.required,Validators.minLength(1), Validators.maxLength(5)]],         //Validators.pattern('/^\d{10}$/')
+          sexo : [this.arrayProfesor[0].profesor_detalle.sexo, Validators.required], 
+          titulo : [this.arrayProfesor[0].titulo, Validators.required],
+          disponibilidad : [this.arrayProfesor[0].disponibilidad, Validators.required]
+
+        });
+      });
+    }  
+  
+
   }
   
+  get mybuttonId(){
+    return this.buttonId
+  }
+
+
+
   confirmDelete(userId: number): void {
     const confirmed = window.confirm('Estás seguro de que deseas borrar este usuario?');
     if (confirmed) {

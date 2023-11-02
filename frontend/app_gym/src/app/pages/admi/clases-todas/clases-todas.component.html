@@ -16,52 +16,12 @@
         </div>
     </div>
     <div class="container mt-2">
-        <div class="row">
-            <div class="col-md-8 offset-md-2 text-center welcome-text">
-
-            </div>
-        </div>
         <div class="row mt-5">
-            <div class="col-md-4">
+            <div class="col-md-4" *ngFor="let clase of arrayClases">
                 <div class="card">
                     <div class="card-body">
-                        <a class="nav-link" routerLink="/clases-asistencia-admi">Yoga</a>
                         
-                   </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                         <a class="nav-link" routerLink="/clases-asistencia-admi">Crotfis</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <a class="nav-link" routerLink="/clases-asistencia-admi">Funcional</a> 
-                   </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <a class="nav-link" routerLink="/clases-asistencia-admi">Zumba</a> 
-                   </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <a class="nav-link" routerLink="/clases-asistencia-admi">Pesas</a> 
-                   </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <a class="nav-link" routerLink="/clases-asistencia-admi">Ciclismo</a> 
+                        <a class="nav-link" routerLink="/clases-asistencia-admi"> {{clase.clase_id}} {{clase.detalles}}</a> 
                    </div>
                 </div>
             </div>

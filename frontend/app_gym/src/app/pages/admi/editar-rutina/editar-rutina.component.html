@@ -17,24 +17,24 @@
                                 <div class="col-md-8 mt-3 text-left">
                                   <div class="toggle"></div>
                                   <label for="estado">Estado</label>
-                                  <input type="text" id="estado" name="estado" class="form-control small-input" [(ngModel)]="rutinaForm">
+                                  <input type="text" id="estado" formControlName="estado" class="form-control small-input" >
                                 </div>
                                 <div class="col-md-8 mt-3 text-left">
                                   <div class="toggle"></div>
                                   <label for="fecha">Fecha</label>
-                                  <input type="date" id="fecha" name="fecha" class="form-control small-input"  [(ngModel)]="rutinaForm">
+                                  <input type="date" id="fecha" formControlName="fecha" class="form-control small-input"  >
                                 </div>
                                 <div class="col-md-8 mt-3 text-left">
                                   <div class="toggle"></div>
                                   <label for="descripcion">Descripción</label>
-                                  <input type="text" id="descripcion" name="descripcion" class="form-control" [(ngModel)]="rutinaForm">
+                                  <input type="text" id="descripcion" formControlName="descripcion" class="form-control" >
                                 </div>
                             </form>
                               
                         </div>
                         <div class="col-md-12 mt-3 text-center">
                             <a class="nav-link" routerLink="/rutina-abm"> 
-                                <button class="btn btn-danger" (click)="guardado(hashRutinas.id_planificacion)">Guardar</button> 
+                                <button class="btn btn-danger" (click)="guardado()">Guardar</button> 
                             </a>
                         </div>
                     </div>

@@ -10,37 +10,50 @@ import { AbmRutinaService } from 'src/app/services/rutina/abm-rutina.service';
 })
 export class EditarRutinaComponent implements OnInit {
   hashRutinas: any;
-  rutinaForm: FormGroup = new FormGroup({
-    estado: new FormControl('', Validators.required),
-    fecha: new FormControl('', Validators.required),
-    descripcion: new FormControl('', Validators.required)
-  });
+  // rutinaForm: FormGroup = new FormGroup({
+  //   estado: new FormControl('', Validators.required),
+  //   fecha: new FormControl('', Validators.required),
+  //   descripcion: new FormControl('', Validators.required)
+
+  //  });
+
+  rutinaForm!: FormGroup;
 
   constructor(
     private router: Router,
-    private abm_rutina: AbmRutinaService
+    private abm_rutina: AbmRutinaService,
+    private formBuilder: FormBuilder
+
   ) {}
 
   ngOnInit() {
     // Traigo las rutinas
+    this.rutinaForm = this.formBuilder.group({
+      estado: [null],
+      fecha: [null],
+      descripcion: [null]
+    })
     this.abm_rutina.getRutina().subscribe((data: any) => {
       console.log('JSON data', data);
       console.log(data.planificaciones[0]);
       this.hashRutinas = data.planificaciones[0];
-      // Actualiza los valores del formulario con los datos obtenidos
+      //Actualiza los valores del formulario con los datos obtenidos
       this.rutinaForm.setValue({
         estado: this.hashRutinas.estado,
         fecha: this.hashRutinas.fecha,
         descripcion: this.hashRutinas.detalles
       });
+     
     });
   }
 
   // Boton de guardar cambios
-  guardado(rutinaid: number): void {
+  
+  guardado(): void {
+    console.log("formulario:",this.rutinaForm.value)
     if (this.rutinaForm.valid) {
       // El formulario es válido, puedes proceder con la solicitud PUT
-      this.putRutina(this.rutinaForm.value, rutinaid);
+      this.putRutina(this.rutinaForm.value, this.hashRutinas.id_planificacion);
     } else {
       // El formulario no es válido, muestra un mensaje de error o realiza una acción apropiada
       alert('Formulario inválido. Asegúrate de completar todos los campos.');

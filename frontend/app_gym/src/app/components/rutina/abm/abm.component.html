@@ -15,7 +15,7 @@
         <ul class="list-group mt-3">
             <!-- <ng-container *ngFor="let planificaciones of hashRutinas"> -->
               <li class="list-group-item d-flex justify-content-between align-items-center custom-rutina">
-                Rutina {{ hashRutinas.id_planificacion }}
+                Rutina {{ hashRutinas?.id_planificacion }}
                 <div>
                   <button class="btn btn-primary btn-sm me-2" (click)="handleButtonClick()"><i class="fa-solid fa-pen-to-square"></i></button>
                   <button class="btn btn-danger btn-sm delete-btn" (click)="confirmDelete(hashRutinas.id_planificacion)"><i class="fa-solid fa-trash"></i></button>
@@ -23,8 +23,8 @@
               </li>
               <!-- Content for each Rutina -->
               <li class="list-group-rutina custom-bg-color">
-                <p>{{ hashRutinas.estado }}</p>
-                <p>{{ hashRutinas.detalles }}</p>
+                <p>{{ hashRutinas?.estado }}</p>
+                <p>{{ hashRutinas?.detalles }}</p>
               </li>
             <!-- </ng-container> -->
           </ul>

@@ -7,3 +7,12 @@
   .custom-bg-color {
     background-color: rgb(107, 107, 107); /* You can change "lightgreen" to any color you prefer */
   }
+
+  .pagination-buttons {
+    display: flex;
+  }
+  
+  .pagination-buttons button {
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+  

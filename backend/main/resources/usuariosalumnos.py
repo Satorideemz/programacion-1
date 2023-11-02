@@ -58,7 +58,7 @@ class UsuariosAlumnos(Resource):
     @role_required(roles = ["admin","profesor"])
     def get(self):
         page = 1
-        per_page = 30
+        per_page = 2
 
         usuariosalumnos = db.session.query(UsuariosAlumnosModel)
 
@@ -75,37 +75,46 @@ class UsuariosAlumnos(Resource):
         if request.args.get('user_abm'):
             usuariosalumnos= usuariosalumnos.filter(UsuariosAlumnosModel.id_Usuario == request.args.get('user_abm'))
 
-        usuariosalumnos = usuariosalumnos.paginate(page=page, per_page=per_page, error_out=True, max_per_page=30)
+        usuariosalumnos = usuariosalumnos.paginate(page=page, per_page=per_page, error_out=True, max_per_page=2)
 
+        # Barra de busqueda
         if request.args.get('search'):
-            
-            #defino la variable de busqueda
-            search_param=request.args.get('search')
+            search_param = request.args.get('search')
+            page = int(request.args.get('page', 1))
+            per_page = int(request.args.get('per_page', 4))  
+
+            # Filtro por nombre o por apellido usando paginacion
             usuarios_query_search = (
                 db.session.query(UsuarioModel)
-                .join(UsuariosAlumnosModel , UsuariosAlumnosModel.id_Usuario == UsuarioModel.id_Usuario)
+                .join(UsuariosAlumnosModel, UsuariosAlumnosModel.id_Usuario == UsuarioModel.id_Usuario)
                 .filter(
-                or_(
-                    UsuarioModel.nombre.like(f'%{search_param}%'),
-                    UsuarioModel.apellido.like(f'%{search_param}%')  )
-                           
+                    or_(
+                        UsuarioModel.nombre.like(f'%{search_param}%'),
+                        UsuarioModel.apellido.like(f'%{search_param}%')
+                    )
                 )
+                .paginate(page=page, per_page=per_page)
             )
-            
+
+            # Fetch paginated search results
+            search_results = usuarios_query_search.items
+
+            # Return paginated search results along with total count, total pages, and current page number
+            return jsonify({
+                'alumnos': [usuario.to_json_full_name() for usuario in search_results],
+                'total': usuarios_query_search.total,  # Total count of search results (not the total count of all users)
+                'pages': usuarios_query_search.pages,  # Total number of pages based on total results and items per page
+                'page': usuarios_query_search.page  # Current page number
+            })
+
             #consulta original
             #SELECT usuario.nombre,usuario.apellido FROM usuario 
             #JOIN alumno ON (usuario.id = alumnno=id)
             #AND ( alumno.nombre LIKE '%sdfsd%' OR alumno.apellido LIKE '%sdfsd%'  )
 
             #search_result = [usuario.to_json_full_name() for usuario in usuarios_query_search]
-            
-        
-            return jsonify ({'alumnos': [usuario.to_json_full_name() for usuario in usuarios_query_search],
-                  'total': usuariosalumnos.total,
-                  'pages': usuariosalumnos.pages,
-                  'page': page
-                })
-     
+
+            #Aplico el filtro de busqueda con paginacion
 
 
         return jsonify ({'alumnos': [usuarioalumno.to_json() for usuarioalumno in usuariosalumnos],

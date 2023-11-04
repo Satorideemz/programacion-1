@@ -9,6 +9,7 @@ import { Observable, take } from 'rxjs';
 export class AbmAlumnosService {
   url='/api';
   student_id=''
+  user_id=0
 
   constructor(
     private httpClient: HttpClient
@@ -20,6 +21,18 @@ export class AbmAlumnosService {
         this.student_id= search;
       }
       
+      getmaxid(){
+        let auth_token = localStorage.getItem('token')
+        
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth_token}`
+        })
+        //Busco el maximo id de usuario que exista
+        return this.httpClient.get(this.url + '/usuarios?get_max_id=0', {headers: headers});
+  
+      }
+
       getUsers() {
         let auth_token = localStorage.getItem('token')
   
@@ -32,6 +45,7 @@ export class AbmAlumnosService {
         return this.httpClient.get(this.url + '/usuariosalumnos?user_abm='+this.student_id, {headers: headers});
   
       };
+
 
       //Metodo que me permite usar el recurso PUT para editar el alumno segun los valores cambiados del formulario
       editUser(userId: number, dataUser: any): Observable<any> {

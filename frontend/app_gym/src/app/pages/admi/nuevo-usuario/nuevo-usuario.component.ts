@@ -48,11 +48,6 @@ export class NuevoUsuarioComponent {
 
 
 
-  // ------------------------VALIDACION DE PASSWORD -------------------------------
-  //Validators.minLength(8),  // Longitud mínima de 8 caracteres
-  //Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/),  // Requiere al menos una letra mayúscula, una letra minúscula, un número y un carácter especial
-  //--------------------------------------------------------
-
   ngOnInit() {
     //Traigo los datos del usuario que deseo editar
 
@@ -77,63 +72,57 @@ export class NuevoUsuarioComponent {
   }
 
   submit() {
-     //Me aseguro antes que el formulario tenga valores validos antes de enviar
-    if(this.abmalumno.valid) {
-      console.log('Form nuevo usario: ',this.abmalumno.value);
-      this.createUser(this.abmalumno.value);
-
-      this.createStudent({ "estado_de_la_cuenta" : "al dia"})
+    // Me aseguro antes que el formulario tenga valores válidos antes de enviar
+    if (this.abmalumno.valid) {
+      console.log('Form nuevo usuario: ', this.abmalumno.value);
+      
+      // Get the maximum ID synchronously
+      this.abm_alumnos.getmaxid().subscribe((maxId: any) => {
+        // Create student with the obtained ID
+        const studentData = { "id_Usuario": maxId+1, "estado_de_la_cuenta": "Al dia" };
+  
+        // Create user and student
+        this.createUser(this.abmalumno.value, studentData);
+      });
     } else {
       alert('Formulario inválido');
     }
   }
-    createUser(dataUser: any = {} ): void {
-      console.log('Comprobando credenciales');
-      this.abm_alumnos.createUser( dataUser).subscribe({
-        next: () => {
-          console.log(dataUser);
-          this.router.navigateByUrl('/home');
-          //Navego a la ruta abm-usuario luego de hacer la modificacion
-        },
-        error: (error) => {
-          alert('Error al crear usuario');
-        },
-        complete: () => {
-          console.log('Operación de alta completa');
-        }
-      });
-    }
-
-    createStudent(dataUser: any = {} ): void {
-      console.log('Comprobando credenciales');      
-      this.abm_alumnos.createUser( dataUser).subscribe({
-        next: () => {
-          console.log(dataUser);
-        },
-        error: (error) => {
-          alert('Error al crear datos propios del alumno');
-        },
-        complete: () => {
-          console.log('Operación de alta completa');
-        }
-      });
-    }
-    
-}
-
   
-
-
-
-
-
-
-// Función de validación personalizada para nombres de usuario
-export function nameValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const valid = /^[a-zA-Z]+$/.test(control.value); // Patrón de validación para nombres de usuario
-    return valid ? null : { invalidName: { value: control.value } };
-  };
+  createUser(dataUser: any = {}, studentData: any = {}): void {
+    console.log('Comprobando credenciales');
+    
+    this.abm_alumnos.createUser(dataUser).subscribe({
+      next: () => {
+        console.log(dataUser);
+        // Crea el estudiante luego de que se crea el usuario
+        this.createStudent(studentData);
+      },
+      error: (error) => {
+        alert('Error al crear usuario');
+      },
+      complete: () => {
+        console.log('Operación de alta completa');
+      }
+    });
+  }
+  
+  createStudent(dataUser: any = {}): void {
+    console.log('Comprobando credenciales');
+    this.abm_alumnos.createStudent(dataUser).subscribe({
+      next: () => {
+        console.log(dataUser);
+        this.router.navigateByUrl('/home');
+      },
+      error: (error) => {
+        alert('Error al crear datos propios del alumno');
+      },
+      complete: () => {
+        console.log('Operación de alta completa');
+      }
+    });
+  }
+    
 }
 
 

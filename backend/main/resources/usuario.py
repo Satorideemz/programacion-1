@@ -51,6 +51,10 @@ class Usuarios(Resource):
             return jsonify(full_names)
 
 
+        if request.args.get('get_max_id'):
+            max_id = db.session.query(func.max(UsuarioModel.id_Usuario)).scalar()
+            return max_id
+
 
 
         #no se si esto deberia quedar en admin o directamente en alumno

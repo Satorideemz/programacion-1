@@ -91,7 +91,6 @@ export class NuevoUsuarioComponent {
     // Me aseguro antes que el formulario tenga valores válidos antes de enviar
       if (this.abmusuario.valid) {
         console.log('Form nuevo usuario: ', this.abmusuario.value);
-        
         // Get the maximum ID synchronously
         this.abm_alumnos.getmaxid().subscribe((maxId: any) => {
           // Create student with the obtained ID
@@ -104,48 +103,43 @@ export class NuevoUsuarioComponent {
         alert('Formulario inválido');
       }
     }
-    if (this.mybuttonId == 2){
-         
-    if (this.abmprofesor.valid) {
-      console.log('Form nuevo profesor: ', this.abmprofesor.value);
-
-      // Get the maximum ID for the teacher synchronously
-      this.abm_profesores.getmaxid().subscribe((maxId: any) => {
+    if (this.mybuttonId == 2){         
+      if (this.abmprofesor.valid) {
+        console.log('Form nuevo profesor: ', this.abmprofesor.value);
+        // Get the maximum ID for the teacher synchronously
+        this.abm_profesores.getmaxid().subscribe((maxId: any) => {
         // Add the obtained ID to the teacher data
-        this.abmprofesor.value.id_Usuario = maxId ;
-
+        this.abmprofesor.value.id_Usuario = maxId;
         // Create teacher data first
-        this.abm_profesores.createTeacher(this.abmprofesor.value).subscribe(
-          () => {
-            console.log('Teacher data created successfully');
-            this.router.navigateByUrl('/home');
-          },
-          error => {
-            alert('Error creating teacher data');
-          }
-        );
-      });
-    } else {
-      alert('Formulario inválido');
-    }
+        this.createUser(this.abmusuario.value,this.abmprofesor.value)
+
+
+        });
+      } else {
+        alert('Formulario inválido');
+        }
   
       }
   }
 
     
-  createTeacher(dataUser: any = {}): void {
-    //Insert teacher logic here
-  }
-    
+
   
-  createUser(dataUser: any = {}, studentData: any = {}): void {
-    console.log('Comprobando credenciales');
-    
+  createUser(dataUser: any = {}, ownData: any = {}): void {
+
+      console.log('Comprobando credenciales');
       this.abm_alumnos.createUser(dataUser).subscribe({
         next: () => {
-          console.log(dataUser);
-          // Crea el estudiante luego de que se crea el usuario
-              this.createStudent(studentData);
+          if (this.mybuttonId == 1){
+            console.log(dataUser);
+            // Crea el estudiante luego de que se crea el usuario
+            this.createStudent(ownData);
+          }
+          if (this.mybuttonId == 2){
+            console.log(dataUser);
+            // Crea el profesor, luego de que se crea el usuario
+            this.createTeacher(ownData);  
+          }
         },
         error: (error) => {
           alert('Error al crear usuario');
@@ -172,4 +166,20 @@ export class NuevoUsuarioComponent {
     });
   }
 
+  createTeacher(dataUser: any = {}): void {
+    console.log('Comprobando credenciales');
+    this.abm_profesores.createTeacher(dataUser).subscribe
+    ({
+      next: () => {
+        console.log(dataUser);
+        this.router.navigateByUrl('/home');
+      },
+      error: (error) => {
+        alert('Error al crear datos propios del profesor');
+      },
+      complete: () => {
+        console.log('Operación de alta completa');
+      }
+    });
+  }      
 }

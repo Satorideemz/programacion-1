@@ -17,6 +17,18 @@ export class AbmProfesoresService {
     this.teacher_id= search;
   }
 
+  getmaxid(){
+    let auth_token = localStorage.getItem('token')
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+    //Busco el maximo id de usuario que exista
+    return this.httpClient.get(this.url + '/usuarios?get_max_id=0', {headers: headers});
+
+  }
+  
   getUsers() {
     let auth_token = localStorage.getItem('token')
     
@@ -30,6 +42,28 @@ export class AbmProfesoresService {
 
   };
 
+  createUser(dataLogin:any): Observable<any>{
+
+    let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    //Da de alta un profesor
+    return this.httpClient.post(this.url + '/usuarios',dataLogin, { headers: headers }).pipe(take(1));
+  }
+
+  createTeacher(dataTeacher: any): Observable<any> {
+    let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    // Create teacher data (specific to teachers)
+    return this.httpClient.post(`${this.url}/profesores`, dataTeacher, { headers: headers }).pipe(take(1));
+  }  
+
   //Metodo que me permite usar el recurso PUT para editar el profesor segun los valores cambiados del formulario
   editUser(userId: number, dataUser: any): Observable<any> {
     let auth_token = localStorage.getItem('token');
@@ -39,7 +73,8 @@ export class AbmProfesoresService {
     });
     //Edita el profesor segun el id especificado
     return this.httpClient.put(`${this.url}/usuario/${userId}`, dataUser, { headers: headers }).pipe(take(1));
-  }  
+  }
+    
   
 
 }

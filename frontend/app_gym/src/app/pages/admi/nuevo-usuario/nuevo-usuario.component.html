@@ -15,51 +15,33 @@
                         <h1 *ngIf="mybuttonId == 1" class="card-title text-center">Crear nuevo Alumno</h1>
                         <h1 *ngIf="mybuttonId == 2" class="card-title text-center">Crear nuevo Profesor</h1>
 
-                    <form [formGroup]="abmalumno">
+                <form [formGroup]="abmusuario" *ngIf="mybuttonId == 1">
                     <div class="row justify-content-center">
                         <div class="toggle-container">
                             <div class="col-md-9 mt-1 text-left">
                                 <div class="toggle"></div>
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="nombre" id="nombre" name="nombre" class="form-control" formControlName="nombre" placeholder="Nombre">
-                                <!--<div *ngIf="nuevousuarioFrom.get('nombre').hasError('required')">
-                                    Nombre es un campo requerido.
-                                </div> --->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
                                 <label for="apellido" class="form-label">Apellido</label>
                                 <input type="apellido" id="apellido" name="apellido" class="form-control" formControlName="apellido" placeholder="Apellido">
-                                <!--<div *ngIf="nuevousuarioFrom.get('apellido').hasError('required')">
-                                    Apellido es un campo requerido.
-                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
                                 <label for="mail" class="form-label">Correo Electrónico</label>
                                 <input type="mail" id="mail" name="mail" class="form-control" formControlName="mail" placeholder="Mail">
-                                <!--<div *ngIf="nuevousuarioFrom.get('mail').hasError('required')">
-                                    Correo electrónico es un campo requerido.
-                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
                                 <label for="telefono" class="form-label">Número de Teléfono</label>
                                 <input type="telefono" id="telefono" name="telefono" class="form-control" formControlName="telefono" placeholder="Telefono">
-                                <!--<div *ngIf="nuevousuarioFrom.get('telefono').hasError('required') && nuevousuarioFrom.get('telefono').hasError('length')">
-                                    Número de teléfono es un campo requerido.
-                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
                                 <label for="dni" class="form-label">Documento</label>
                                 <input type="dni" id="dni" name="dni" class="form-control" formControlName="dni" placeholder="dni">
-                                <!--<div *ngIf="nuevousuarioFrom.get('documento').hasError('required') && nuevousuarioFrom.get('documento').hasError('length')">
-                                    Documento es un campo requerido.
-                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
                                 <label for="edad" class="form-label">Edad</label>
                                 <input type="edad" id="edad" name="edad" class="form-control" formControlName="edad" placeholder="Edad">
-                                <!--<div *ngIf="nuevousuarioFrom.get('edad').hasError('required') && nuevousuarioFrom.get('edad').hasError('length')">
-                                    Edad es un campo requerido.
-                                </div>--->
                             </div>
                             <div class="col-md-9 mt-1 text-left">
                                 <label for="sexo" class="form-label">Sexo</label>
@@ -68,31 +50,64 @@
                                     <option value="femenino">Femenino</option>
                                     <option value="otro">Otro</option>
                                 </select>
-                                <!--<div *ngIf="nuevousuarioFrom.get('sexo').hasError('required')">
-                                    Sexo es un campo requerido.
-                                </div>--->
                             </div>
-                            <div *ngIf="mybuttonId == 2" class="col-md-9 mt-1 text-left">
+                            <div class="col-md-9 mt-1 text-left">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" id="password" name="password" class="form-control" formControlName="password" placeholder="Password">
+                            </div>
+                        </div>                        
+                        <div class="col-md-12 mt-3 text-center"> 
+                            <button class="btn btn-danger"(click)="submit()">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="abmprofesor" *ngIf="mybuttonId == 2">
+                    <div class="row justify-content-center">
+                        <div class="toggle-container">
+                            <div class="col-md-9 mt-1 text-left">
+                                <div class="toggle"></div>
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="nombre" id="nombre" name="nombre" class="form-control" formControlName="nombre" placeholder="Nombre">
+                            </div>
+                            <div class="col-md-9 mt-1 text-left">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="apellido" id="apellido" name="apellido" class="form-control" formControlName="apellido" placeholder="Apellido">
+                            </div>
+                            <div class="col-md-9 mt-1 text-left">
+                                <label for="mail" class="form-label">Correo Electrónico</label>
+                                <input type="mail" id="mail" name="mail" class="form-control" formControlName="mail" placeholder="Mail">
+                            </div>
+                            <div class="col-md-9 mt-1 text-left">
+                                <label for="telefono" class="form-label">Número de Teléfono</label>
+                                <input type="telefono" id="telefono" name="telefono" class="form-control" formControlName="telefono" placeholder="Telefono">
+                            </div>
+                            <div class="col-md-9 mt-1 text-left">
+                                <label for="dni" class="form-label">Documento</label>
+                                <input type="dni" id="dni" name="dni" class="form-control" formControlName="dni" placeholder="dni">
+                            </div>
+                            <div class="col-md-9 mt-1 text-left">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="edad" id="edad" name="edad" class="form-control" formControlName="edad" placeholder="Edad">
+                            </div>
+                            <div class="col-md-9 mt-1 text-left">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <select id="sexo" name="sexo" class="form-control" formControlName="sexo" placeholder="Sexo">
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="col-md-9 mt-1 text-left">
                                 <label for="titulo" class="form-label">Título</label>
                                 <input type="titulo" id="titulo" name="titulo" class="form-control" formControlName="titulo" placeholder="Título">
                             </div>
-                            <div *ngIf="mybuttonId == 2" class="col-md-9 mt-1 text-left">
+                            <div class="col-md-9 mt-1 text-left">
                                 <label for="disponibilidad" class="form-label">Disponibilidad</label>
                                 <input type="disponibilidad" id="disponibilidad" name="disponibilidad" class="form-control" formControlName="disponibilidad" placeholder="Disponibilidad">
                             </div>
                             <div class="col-md-9 mt-1 text-left">
                                 <label for="password" class="form-label">Contraseña</label>
                                 <input type="password" id="password" name="password" class="form-control" formControlName="password" placeholder="Password">
-                                <!--<div *ngIf="nuevousuarioFrom.get('password').hasError('required')">
-                                    Contraseña es un campo requerido.
-                                </div>--->
-                            </div>
-                            <div class="col-md-9 mt-1 text-left">
-                                <label for="confirmpassword" class="form-label">Confirmar Contraseña</label>
-                                <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" formControlName="confirmpassword" placeholder="Confirm Password">
-                               <!-- <div *ngIf="nuevousuarioFrom.get('confirmpassword').hasError('required')">
-                                    Confirmar Contraseña es un campo requerido.
-                                </div>--->
                             </div>
                         </div>                        
                         <div class="col-md-12 mt-3 text-center"> 

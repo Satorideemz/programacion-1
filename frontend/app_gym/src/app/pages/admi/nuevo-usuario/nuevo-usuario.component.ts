@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Route } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service';
+import { AbmProfesoresService } from 'src/app/services/profesores/abm-profesores.service';
 
 @Component({
   selector: 'app-nuevo-usuario',
@@ -11,47 +12,54 @@ import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service'
 })
 
 
-
-
-
 export class NuevoUsuarioComponent {
-  abmalumno! : FormGroup;
-  arrayUsuario:any;
+  abmusuario! : FormGroup;
+  abmprofesor! : FormGroup;
+  arrayAlumno:any;
+  arrayProfesor:any;
   buttonId: number = 0;
 
   constructor (
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private abm_alumnos: AbmAlumnosService
-  )
-  {   //Este constructor me da el parametro del boton, 1 para buscar alumnos y 2 para profesor 
-    this.route.queryParams.subscribe(params => { 
-      this.buttonId = params['id'];
-      this.abmalumno = this.formBuilder.group({
-        nombre: ['', Validators.required],
-        apellido: ['', Validators.required],
-        mail: ['', [Validators.required, Validators.email]],
-        dni: ['', Validators.required],
-        telefono: ['', Validators.required],
-        password: ['', Validators.required],
-        edad: ['', Validators.required],
-        sexo: ['', Validators.required],
-      });
-    });
+    private abm_alumnos: AbmAlumnosService,
+    private abm_profesores: AbmProfesoresService)
+     //Este constructor me da el parametro del boton, 1 para buscar alumnos y 2 para profesor 
+     {
+      this.route.queryParams.subscribe(params => { 
+        this.buttonId = params['id'];
+      });    
+        this.abmusuario = this.formBuilder.group({
+          nombre: ['', Validators.required],
+          apellido: ['', Validators.required],
+          mail: ['', [Validators.required, Validators.email]],
+          documento: ['', Validators.required],
+          telefono: ['', Validators.required],
+          password: ['', Validators.required],
+          edad: ['', Validators.required],
+          sexo: ['', Validators.required],
+        });
+
+        this.abmprofesor = this.formBuilder.group({
+          nombre: ['', Validators.required],
+          apellido: ['', Validators.required],
+          mail: ['', [Validators.required, Validators.email]],
+          documento: ['', Validators.required],
+          telefono: ['', Validators.required],
+          password: ['', Validators.required],
+          edad: ['', Validators.required],
+          sexo: ['', Validators.required],
+          titulo : ['', Validators.required],
+          disponibilidad : ['', Validators.required],
+        });
     }
-
-      //Obtengo el id del boton para saber que debo mostrar, si alumnos o si profesor
-    get mybuttonId(){
-        return this.buttonId
-    }
-
-
+    //Obtengo el id del boton para saber que debo mostrar, si alumnos o si profesor
 
   ngOnInit() {
     //Traigo los datos del usuario que deseo editar
 
-        this.abmalumno= this.formBuilder.group({
+        this.abmusuario= this.formBuilder.group({
           nombre: ['', [Validators.required]],     //Validators.pattern('/^[A-Za-z\s']+$/')
           apellido: ['', [Validators.required]],
           mail : ['', [Validators.required,Validators.email]],         //Validators.email
@@ -59,52 +67,93 @@ export class NuevoUsuarioComponent {
           dni : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],    //Validators.pattern('/^\d{10}$/')
           edad : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(5)]],         //Validators.pattern('/^\d{10}$/')
           sexo : ['', Validators.required],        
-
-          //titulo : [''],
-          //disponibilidad : [''],
           password: ['', Validators.required],
           //confirmpassword: ['', Validators.required],
-        }, {
-          validators: passwordMatchValidator(),
         });
  
-  
+    
+    if (this.mybuttonId== 2){
+      this.abmprofesor= this.formBuilder.group({   
+        titulo : [''],
+        disponibilidad : [''],
+        //confirmpassword: ['', Validators.required],
+      });
+
+    }
+  }
+
+  get mybuttonId(){
+    return this.buttonId
   }
 
   submit() {
+    if (this.mybuttonId== 1){
     // Me aseguro antes que el formulario tenga valores válidos antes de enviar
-    if (this.abmalumno.valid) {
-      console.log('Form nuevo usuario: ', this.abmalumno.value);
-      
-      // Get the maximum ID synchronously
-      this.abm_alumnos.getmaxid().subscribe((maxId: any) => {
-        // Create student with the obtained ID
-        const studentData = { "id_Usuario": maxId+1, "estado_de_la_cuenta": "Al dia" };
-  
-        // Create user and student
-        this.createUser(this.abmalumno.value, studentData);
+      if (this.abmusuario.valid) {
+        console.log('Form nuevo usuario: ', this.abmusuario.value);
+        
+        // Get the maximum ID synchronously
+        this.abm_alumnos.getmaxid().subscribe((maxId: any) => {
+          // Create student with the obtained ID
+          const studentData = { "id_Usuario": maxId+1, "estado_de_la_cuenta": "Al dia" };
+    
+          // Create user and student
+          this.createUser(this.abmusuario.value, studentData);
+        });
+      } else {
+        alert('Formulario inválido');
+      }
+    }
+    if (this.mybuttonId == 2){
+         
+    if (this.abmprofesor.valid) {
+      console.log('Form nuevo profesor: ', this.abmprofesor.value);
+
+      // Get the maximum ID for the teacher synchronously
+      this.abm_profesores.getmaxid().subscribe((maxId: any) => {
+        // Add the obtained ID to the teacher data
+        this.abmprofesor.value.id_Usuario = maxId ;
+
+        // Create teacher data first
+        this.abm_profesores.createTeacher(this.abmprofesor.value).subscribe(
+          () => {
+            console.log('Teacher data created successfully');
+            this.router.navigateByUrl('/home');
+          },
+          error => {
+            alert('Error creating teacher data');
+          }
+        );
       });
     } else {
       alert('Formulario inválido');
     }
+  
+      }
   }
+
+    
+  createTeacher(dataUser: any = {}): void {
+    //Insert teacher logic here
+  }
+    
   
   createUser(dataUser: any = {}, studentData: any = {}): void {
     console.log('Comprobando credenciales');
     
-    this.abm_alumnos.createUser(dataUser).subscribe({
-      next: () => {
-        console.log(dataUser);
-        // Crea el estudiante luego de que se crea el usuario
-        this.createStudent(studentData);
-      },
-      error: (error) => {
-        alert('Error al crear usuario');
-      },
-      complete: () => {
-        console.log('Operación de alta completa');
-      }
-    });
+      this.abm_alumnos.createUser(dataUser).subscribe({
+        next: () => {
+          console.log(dataUser);
+          // Crea el estudiante luego de que se crea el usuario
+              this.createStudent(studentData);
+        },
+        error: (error) => {
+          alert('Error al crear usuario');
+        },
+        complete: () => {
+          console.log('Operación de alta completa');
+        }
+      });
   }
   
   createStudent(dataUser: any = {}): void {
@@ -122,25 +171,5 @@ export class NuevoUsuarioComponent {
       }
     });
   }
-    
-}
 
-
-// Función de validación personalizada para comparar contraseña y confirmar contraseña
-export function passwordMatchValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmpassword');
-
-    if (password && confirmPassword && password.value !== confirmPassword.value) {
-      return { passwordMismatch: true };
-    }
-
-    return null;
-  };
-
-
-
-
-  
 }

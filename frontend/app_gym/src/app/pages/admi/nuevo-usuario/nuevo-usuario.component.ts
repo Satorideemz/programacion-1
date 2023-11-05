@@ -42,14 +42,6 @@ export class NuevoUsuarioComponent {
         });
 
         this.abmprofesor = this.formBuilder.group({
-          nombre: ['', Validators.required],
-          apellido: ['', Validators.required],
-          mail: ['', [Validators.required, Validators.email]],
-          documento: ['', Validators.required],
-          telefono: ['', Validators.required],
-          password: ['', Validators.required],
-          edad: ['', Validators.required],
-          sexo: ['', Validators.required],
           titulo : ['', Validators.required],
           disponibilidad : ['', Validators.required],
         });
@@ -95,7 +87,8 @@ export class NuevoUsuarioComponent {
         this.abm_alumnos.getmaxid().subscribe((maxId: any) => {
           // Create student with the obtained ID
           const studentData = { "id_Usuario": maxId+1, "estado_de_la_cuenta": "Al dia" };
-    
+          //asigno rol del alumno a mi abm usuario
+          this.abmusuario.value["rol"] = "alumno";
           // Create user and student
           this.createUser(this.abmusuario.value, studentData);
         });
@@ -103,13 +96,16 @@ export class NuevoUsuarioComponent {
         alert('Formulario inválido');
       }
     }
+
     if (this.mybuttonId == 2){         
       if (this.abmprofesor.valid) {
         console.log('Form nuevo profesor: ', this.abmprofesor.value);
         // Get the maximum ID for the teacher synchronously
         this.abm_profesores.getmaxid().subscribe((maxId: any) => {
+        //asigno rol del profesor a mi abm usuario
+        this.abmusuario.value["rol"] = "profesor";
         // Add the obtained ID to the teacher data
-        this.abmprofesor.value.id_Usuario = maxId;
+        this.abmprofesor.value.id_Usuario = maxId+1;
         // Create teacher data first
         this.createUser(this.abmusuario.value,this.abmprofesor.value)
 
@@ -121,10 +117,6 @@ export class NuevoUsuarioComponent {
   
       }
   }
-
-    
-
-  
   createUser(dataUser: any = {}, ownData: any = {}): void {
 
       console.log('Comprobando credenciales');

@@ -19,7 +19,7 @@ export class ClasesTodasComponent {
       this.verclase.getallClases().subscribe((data:any)=>{
         console.log('JSON data', data.clases);
         this.arrayClases = data.clases
-        
+
 
 
 
@@ -27,10 +27,10 @@ export class ClasesTodasComponent {
     }
 
     seleccionarclase(claseid:any): void {
-      
+
       this.verclase.retrieve_clase_id(claseid); //guardo el id del alumno para posteriormente saber a que alumno debo traer en las querys
       console.log(claseid)
       this.router.navigate(['/home'] );  //  te lleva a visualizar
-    
+
     }
 }

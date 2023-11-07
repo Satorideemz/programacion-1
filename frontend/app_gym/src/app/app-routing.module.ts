@@ -54,7 +54,7 @@ const routes: Routes = [
   {path: 'ver-clases', component: VerClaseComponent, canActivate: [profesessionGuard] },
   {path: 'ver-rutinas', component: AbmComponent, canActivate: [profesessionGuard] },
   {path: 'pagos', component: PagosComponent, canActivate:[ adminsessionGuard] },
-  
+
 
 
 

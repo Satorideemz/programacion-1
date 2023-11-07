@@ -53,12 +53,12 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
        
 
 class UsuariosAlumnos(Resource):
-    #obtener lista de los alumnos
-
-    @role_required(roles = ["admin","profesor"])
+    # Obtener lista de los alumnos
+    @role_required(roles=["admin", "profesor"])
     def get(self):
         page = 1
         per_page = 2
+        alumnos_json = None  # Inicializa la variable para almacenar los datos de los alumnos de la clase
 
         usuariosalumnos = db.session.query(UsuariosAlumnosModel)
 
@@ -68,22 +68,24 @@ class UsuariosAlumnos(Resource):
         if request.args.get('per_page'):
             per_page = int(request.args.get('per_page'))
 
-        #traemos los 30 primeros profesores ordenados por su estado de cuenta siendo primeros los que estan al dia
+        # Ordenar por estado de cuenta
         if request.args.get('get_by_status'):
             usuariosalumnos = usuariosalumnos.order_by(desc(UsuariosAlumnosModel.estado_de_la_cuenta))
 
+        # Filtrar por usuario
         if request.args.get('user_abm'):
-            usuariosalumnos= usuariosalumnos.filter(UsuariosAlumnosModel.id_Usuario == request.args.get('user_abm'))
+            usuariosalumnos = usuariosalumnos.filter(UsuariosAlumnosModel.id_Usuario == request.args.get('user_abm'))
 
+        # Paginación
         usuariosalumnos = usuariosalumnos.paginate(page=page, per_page=per_page, error_out=True, max_per_page=2)
 
-        # Barra de busqueda
+        # Barra de búsqueda
         if request.args.get('search'):
             search_param = request.args.get('search')
             page = int(request.args.get('page', 1))
-            per_page = int(request.args.get('per_page', 4))  
+            per_page = int(request.args.get('per_page', 4))
 
-            # Filtro por nombre o por apellido usando paginacion
+            # Filtrar por nombre o apellido usando paginación
             usuarios_query_search = (
                 db.session.query(UsuarioModel)
                 .join(UsuariosAlumnosModel, UsuariosAlumnosModel.id_Usuario == UsuarioModel.id_Usuario)
@@ -96,32 +98,41 @@ class UsuariosAlumnos(Resource):
                 .paginate(page=page, per_page=per_page)
             )
 
-            # Fetch paginated search results
+            # Obtener resultados de búsqueda paginados
             search_results = usuarios_query_search.items
 
-            # Return paginated search results along with total count, total pages, and current page number
+            # Devolver resultados de búsqueda paginados junto con el recuento total, páginas totales y número de página actual
             return jsonify({
                 'alumnos': [usuario.to_json_full_name() for usuario in search_results],
-                'total': usuarios_query_search.total,  # Total count of search results (not the total count of all users)
-                'pages': usuarios_query_search.pages,  # Total number of pages based on total results and items per page
-                'page': usuarios_query_search.page  # Current page number
+                'total': usuarios_query_search.total,
+                'pages': usuarios_query_search.pages,
+                'page': usuarios_query_search.page
             })
 
-            #consulta original
-            #SELECT usuario.nombre,usuario.apellido FROM usuario 
-            #JOIN alumno ON (usuario.id = alumnno=id)
-            #AND ( alumno.nombre LIKE '%sdfsd%' OR alumno.apellido LIKE '%sdfsd%'  )
+        # Nueva condición para obtener alumnos de una clase específica
+        if request.args.get('asistencias'):
+            clase_id_clickeada = int(request.args.get('clase_id'))
+            # Realiza la consulta para obtener los alumnos relacionados con la clase clickeada
+            alumnos_de_clase = (
+                db.session.query(UsuariosAlumnosModel.id_Alumno, UsuarioModel.nombre, UsuarioModel.apellido)
+                .join(UsuariosAlumnosModel, UsuariosAlumnosModel.id_Alumno == UsuarioModel.id_Usuario)
+                .filter(UsuariosAlumnosModel.id_Clase == clase_id_clickeada)
+                .all()
+            )
 
-            #search_result = [usuario.to_json_full_name() for usuario in usuarios_query_search]
+            # Convierte los resultados en objetos JSON
+            alumnos_json = [{'id_Alumno': alumno.id_Alumno, 'nombre': alumno.nombre, 'apellido': alumno.apellido} for alumno in alumnos_de_clase]
 
-            #Aplico el filtro de busqueda con paginacion
+            # Si se obtienen datos de la clase, devolver esos datos
+            if alumnos_json:
+                return jsonify({'alumnos': alumnos_json})
 
+        # Si no se obtienen datos de la clase, devolver los datos de los alumnos generales
+        return jsonify({'alumnos': [usuarioalumno.to_json() for usuarioalumno in usuariosalumnos],
+                        'total': usuariosalumnos.total,
+                        'pages': usuariosalumnos.pages,
+                        'page': page})
 
-        return jsonify ({'alumnos': [usuarioalumno.to_json() for usuarioalumno in usuariosalumnos],
-                  'total': usuariosalumnos.total,
-                  'pages': usuariosalumnos.pages,
-                  'page': page
-                })
 
 
 

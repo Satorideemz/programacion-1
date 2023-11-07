@@ -11,7 +11,8 @@ import { ClasesAsistenciaService } from 'src/app/services/clases/clases-asistenc
 export class ClasesAsistenciaAdmiComponent {
 
 
-  arrayAsistencia:any;
+  arrayAsistencia: any = []; // Inicializa como un arreglo vacío
+
   constructor(private router: Router,
     private claseasistencia: ClasesAsistenciaService ) { }
 
@@ -19,6 +20,7 @@ export class ClasesAsistenciaAdmiComponent {
     ngOnInit(){
       this.claseasistencia.getallalumnos().subscribe((data:any)=>{
         console.log('JSON data', data.alumnos);
+        console.log('Datos del servicio:', data);
         this.arrayAsistencia = data.alumnos
 
 

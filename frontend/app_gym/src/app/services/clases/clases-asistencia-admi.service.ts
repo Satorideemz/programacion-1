@@ -11,10 +11,7 @@ export class ClasesAsistenciaService {
     private httpClient: HttpClient
   ) {}
 
-  retrieve_alumno_id(alumno: string){
-    console.log('Response from service:', alumno);
-    this.alumno_id= alumno;
-  }
+
 
   getallalumnos() {
     let auth_token = localStorage.getItem('token')
@@ -23,7 +20,7 @@ export class ClasesAsistenciaService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${auth_token}`
     })
-    return this.httpClient.get(this.url + '/usuariosalumnos', {headers: headers});
+    return this.httpClient.get(this.url + '/usuariosalumnos?asistencias=', {headers: headers});
 
   };
 

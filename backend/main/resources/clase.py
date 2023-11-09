@@ -2,7 +2,7 @@ from flask_restful import Resource
 from flask import request
 from flask import jsonify
 from .. import db
-from main.models import ClaseModel
+from main.models import ClaseModel, UsuarioModel, UsuariosAlumnosModel
 
 
 from sqlalchemy import func, desc, asc
@@ -58,6 +58,26 @@ class ProfesorClases(Resource):
                   'pages': clases.pages,
                   'page': page
                 })
+    
+        if request.args.get('view_student_classes'):
+            usuarios_query = (
+                db.session.query(UsuarioModel.id_Usuario, UsuarioModel.nombre, UsuarioModel.apellido)
+                .join(UsuariosAlumnosModel, UsuariosAlumnosModel.id_Usuario == UsuarioModel.id_Usuario)
+                .join(ClaseModel, UsuariosAlumnosModel.id_Clase == ClaseModel.id_Clase)
+                .filter(ClaseModel.id_Clase == request.args.get('view_student_classes'))
+            )
+
+            usuario_list = [
+                {
+                    'id_Usuario': id_usuario,
+                    'nombre': nombre,
+                    'apellido': apellido
+                }
+                for id_usuario, nombre, apellido in usuarios_query.all()
+            ]
+
+            return jsonify({'usuarios': usuario_list})
+
 
         if request.args.get('view_full'):
             full = [clase.to_json_full_view() for clase in clases]

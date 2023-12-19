@@ -14,9 +14,10 @@ export class VerAlumnosComponent implements OnChanges {
   @Input() someInput!: string ;
 
   arrayUsuario:any;
-  currentPage: number = 0; // Pagina actual
-  totalPages: number = 0; // Total de paginas
-
+  currentPage: number = 1; // Pagina actual
+  totalPages: number  = 0; // Total de paginas
+  totalItems: number  = 0; //Total de elementos encontrados
+  itemsPerPage: number  = 2; //Numero de items por pagina
   
   // arrayUsuario = [
   //   {
@@ -50,7 +51,7 @@ export class VerAlumnosComponent implements OnChanges {
       //Si la variable de busqueda tuvo cambios, se refrescara con nuevos resultados
       console.log(this.someInput);
       //Cuando rebusco algo por defecto me llevara a la primeram pagina siempre
-      this.buscaralumnoservice.retrieve_requested_page(1)
+      this.buscaralumnoservice.retrieve_requested_page(1,4)
       this.searchquery()
 
     }
@@ -62,6 +63,7 @@ export class VerAlumnosComponent implements OnChanges {
         this.arrayUsuario = data.alumnos
         this.currentPage = data.page
         this.totalPages = data.pages
+        this.itemsPerPage = data.total
         console.log('JSON data', data.total);
       })      
     }
@@ -73,10 +75,15 @@ export class VerAlumnosComponent implements OnChanges {
 
     changepage(pagenumber:number):void {
       this.currentPage= pagenumber
-      this.buscaralumnoservice.retrieve_requested_page(pagenumber)
+      this.buscaralumnoservice.retrieve_requested_page(pagenumber,this.itemsPerPage)
       this.searchquery()
     }
 
+    navigateToFirstPage():void {
+      this.currentPage= 1
+      this.buscaralumnoservice.retrieve_requested_page(1,this.itemsPerPage)
+      this.searchquery()
+    }
 
     editButton(alumnoid:any): void {
       // Clikc de boton de editar,

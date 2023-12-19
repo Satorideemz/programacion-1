@@ -8,6 +8,7 @@ export class BuscarAlumnoService {
   url='/api';
   search_value=''
   page=1
+  per_page=4
 
   constructor(
     private httpClient: HttpClient
@@ -19,9 +20,11 @@ export class BuscarAlumnoService {
       this.search_value= search;
     }
 
-    retrieve_requested_page(inputpage: any){
+    retrieve_requested_page(inputpage: any, inputper_page: any){
       console.log('Requested page:', inputpage);
+      console.log('Requested per_page:', inputper_page);
       this.page= inputpage;
+      //this.per_page= inputper_page;
 
     }
 
@@ -35,7 +38,9 @@ export class BuscarAlumnoService {
       })
       //Envio la query a buscar por nombre o apellido del alumno
       //Ademas especifico que pagina quiero, por defecto trae la primer pagina
-      return this.httpClient.get(this.url + '/usuariosalumnos?search='+this.search_value+'&page='+this.page, {headers: headers});
+
+                                                        
+      return this.httpClient.get(this.url + '/usuariosalumnos?search='+this.search_value+'&per_page='+this.per_page+'&page='+this.page, {headers: headers});
 
     };
 

@@ -4,6 +4,17 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+// modulo de igx paginator
+
+import { 
+	IgxPaginatorModule,
+	IgxRippleModule,
+	IgxButtonGroupModule,
+	IgxButtonModule,
+	IgxIconModule,
+	IgxCardModule
+ } from "igniteui-angular";
+
 
 
 //Usuario no registrado
@@ -38,24 +49,24 @@ import { EditarRutinaComponent } from './pages/admi/editar-rutina/editar-rutina.
 import { NuevaRutinaComponent } from './pages/admi/nueva-rutina/nueva-rutina.component';
 import { BuscarUsuarioComponent } from './pages/admi/buscar-usuario/buscar-usuario.component';
 import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.component';
-import {LoggedinComponent } from './components/loggedin/loggedin.component'
-import {MainmenuComponent} from './components/mainmenu/mainmenu.component';
+import { LoggedinComponent } from './components/loggedin/loggedin.component';
+import { MainmenuComponent } from './components/mainmenu/mainmenu.component';
 import { VerAlumnosComponent } from './components/Usuario/ver-alumnos/ver-alumnos.component';
 import { VerProfesoresComponent } from './components/Usuario/ver-profesores/ver-profesores.component';
 import { UsuarioAbmComponent } from './pages/admi/usuario-abm/usuario-abm.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-
-
+//I keep the new line
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
-
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+//igx paginator
+
 
     //Usuario no registrado
     HistoriaComponent,
@@ -68,32 +79,38 @@ export function tokenGetter() {
     IngresarComponent,
 
     //Componentes temporal despues borrar
-     VerClaseComponent,
-     AbmComponent,
-     PagosComponent,
-     AbmUsuarioComponent,
+    VerClaseComponent,
+    AbmComponent,
+    PagosComponent,
+    AbmUsuarioComponent,
 
-     //Admi
-     HorariosComponent,
-     ClasesTodasComponent,
-     ClasesAsistenciaAdmiComponent,
-     AlumnosComponent,
-     PagosAdmiComponent,
-     PagosPuntualAdmiComponent,
-     RutinaAbmComponent,
-     EditarRutinaComponent,
-     NuevaRutinaComponent,
-     BuscarUsuarioComponent,
-     NuevoUsuarioComponent,
-     LoggedinComponent,
-     MainmenuComponent,
-     VerAlumnosComponent,
-     VerProfesoresComponent,
-     UsuarioAbmComponent
+    //Admi
+    HorariosComponent,
+    ClasesTodasComponent,
+    ClasesAsistenciaAdmiComponent,
+    AlumnosComponent,
+    PagosAdmiComponent,
+    PagosPuntualAdmiComponent,
+    RutinaAbmComponent,
+    EditarRutinaComponent,
+    NuevaRutinaComponent,
+    BuscarUsuarioComponent,
+    NuevoUsuarioComponent,
+    LoggedinComponent,
+    MainmenuComponent,
+    VerAlumnosComponent,
+    VerProfesoresComponent,
+    UsuarioAbmComponent
 
   ],
 
   imports: [
+    IgxPaginatorModule,
+    IgxRippleModule,
+    IgxButtonGroupModule,
+    IgxButtonModule,
+    IgxIconModule,
+    IgxCardModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -106,10 +123,12 @@ export function tokenGetter() {
         disallowedRoutes: ["http://example.com/examplebadroute/"],
       },
     }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
-export class YourModule { }
-
+export class AppModule {
+}
+export class YourModule {
+}

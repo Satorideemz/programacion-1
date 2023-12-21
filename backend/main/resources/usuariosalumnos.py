@@ -58,7 +58,7 @@ class UsuariosAlumnos(Resource):
     @role_required(roles = ["admin","profesor"])
     def get(self):
         page = 1
-        per_page = 2
+        per_page = 4
 
         usuariosalumnos = db.session.query(UsuariosAlumnosModel)
 

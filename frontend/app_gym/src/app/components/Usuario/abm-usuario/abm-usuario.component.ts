@@ -124,15 +124,15 @@ export class AbmUsuarioComponent {
   }
 
 
-
-  confirmDelete(userId: number): void {
+  //Boton de confirmacion para borrar usuario
+  confirmDelete_User(userId: number): void {
     const confirmed = window.confirm('Estás seguro de que deseas borrar este usuario?');
     if (confirmed) {
       // Si confirma el borrado, invoco al servicio de borrar usuario
       this.abm_alumnos.deleteUser(userId).subscribe({
         next: () => {
           console.log('Usuario eliminado con éxito.');
-          this.router.navigate(['/buscar-usuario']); // Redirecciono a buscar usuario
+          this.router.navigate(['/home']); // Redirecciono a buscar usuario
         },
         error: (error) => {
           console.error('Error al eliminar el usuario:', error);
@@ -146,18 +146,33 @@ export class AbmUsuarioComponent {
       // Se cancela la confirmacion de borrar usuario y regresa al formulario
     }
   }
-    //Boton de guardar cambios
-    submit(userId: number): void {
+
+
+    //Boton de guardar cambios para los alumnos
+    submit_student(userId: number): void {
       //Me aseguro antes que el formulario tenga valores validos antes de enviar
       if (this.abmalumno.valid) {
         console.log('Form login: ', this.abmalumno.value);
-        this.edituser(this.abmalumno.value, userId);
+        this.editStudent(this.abmalumno.value, userId);
       } else {
         alert('Formulario inválido');
       }
     }
-    //Traigo al servicio que invocara el PUT
-    edituser(dataUser: any = {}, userId: number): void {
+
+    //Boton de guardar cambios para los profesores
+    submit_teacher(userId: number,teacher_id: number): void {
+      //Me aseguro antes que el formulario tenga valores validos antes de enviar
+      if (this.abmprofesor.valid) {
+        console.log('Form login: ', this.abmprofesor.value);
+        this.editTeacher(this.abmprofesor.value, userId);
+        this.editTeacherDetails(this.abmprofesor.value, teacher_id);
+      } else {
+        alert('Formulario inválido');
+      }
+    }
+
+    //Traigo al servicio que invocara el PUT para editar alumnos
+    editStudent(dataUser: any = {}, userId: number): void {
       console.log('Comprobando credenciales');
       this.abm_alumnos.editUser(userId, dataUser).subscribe({
         next: () => {
@@ -173,5 +188,41 @@ export class AbmUsuarioComponent {
         }
       });
     }
+
+    //Traigo al servicio que invocara el PUT para editar profesor
+    editTeacher(dataUser: any = {}, userId: number): void {
+      console.log('Comprobando credenciales');
+      this.abm_profesores.editUser(userId, dataUser).subscribe({
+        next: () => {
+          console.log(dataUser);
+          this.router.navigateByUrl('/abm-usuario');
+          //Navego a la ruta abm-profesor luego de hacer la modificacion
+        },
+        error: (error) => {
+          alert('Credenciales inválidas');
+        },
+        complete: () => {
+          console.log('Operación de edición completa');
+        }
+      });
+    } 
+
+    //Servicio PUT para los detalles puntuales del profesor
+    editTeacherDetails(dataUser: any = {}, userId: number): void {
+      console.log('Comprobando credenciales');
+      this.abm_profesores.editTeacher(userId, dataUser).subscribe({
+        next: () => {
+          console.log(dataUser);
+          this.router.navigateByUrl('/abm-usuario');
+          //Navego a la ruta abm-profesor luego de hacer la modificacion
+        },
+        error: (error) => {
+          alert('Credenciales inválidas');
+        },
+        complete: () => {
+          console.log('Operación de edición de profesor completa');
+        }
+      });
+    }        
     
 }

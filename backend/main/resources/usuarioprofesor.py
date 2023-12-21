@@ -45,7 +45,14 @@ class UsuarioProfesor(Resource):
         db.session.commit()
 
         return usuarioprofesor.to_json(),201
-        
+    
+    #eliminar recurso
+    @role_required(roles = ["admin"])
+    def delete(self, id):
+        usuariosprofesores = db.session.query(UsuarioProfesorModel).get_or_404(id)
+        db.session.delete(usuariosprofesores)
+        db.session.commit()
+        return '',204
 
 class UsuariosProfesores(Resource):
     #obtener lista de los alumnos
@@ -73,6 +80,9 @@ class UsuariosProfesores(Resource):
             view_profes = [usuarioprofesor.to_json_view() for usuarioprofesor in usuariosprofesores]
             return jsonify(view_profes)
         
+        #traigo el usuario profesor puntual que deseo dar de alta editar o borrar
+        if request.args.get('user_abm'):
+            usuariosprofesores= usuariosprofesores.filter(UsuarioProfesorModel.id_Usuario == request.args.get('user_abm'))
 
         #filtro revisar
         #aqui traemos las clases que dicta el profesor logueado

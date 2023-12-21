@@ -42,6 +42,47 @@ export class AbmProfesoresService {
 
   };
 
+  
+  //Metodo que me permite usar el recurso PUT para editar el profesor segun los valores cambiados del formulario
+  editUser(userId: number, dataUser: any): Observable<any> {
+    let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    //Edita el profesor segun el id especificado
+    return this.httpClient.put(`${this.url}/usuario/${userId}`, dataUser, { headers: headers }).pipe(take(1));
+  }
+
+  //Edita los datos especificos del profesor
+  editTeacher(userId: number, dataUser: any): Observable<any> {
+    let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+    //Edita el profesor segun el id especificado
+    return this.httpClient.put(`${this.url}/usuarioprofesor/${userId}`, dataUser, { headers: headers }).pipe(take(1));
+  }
+
+  //Metodo que me permite borrar datos especificos de profesor
+
+  
+  deleteTeacher(userId: number): Observable<any> {
+    let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+  
+    //Borra el alumno segun el id especificado
+    return this.httpClient.delete(`${this.url}/usuarioprofesor/${userId}`, { headers: headers }).pipe(take(1));
+  }
+
+
+  
+
+
   createUser(dataLogin:any): Observable<any>{
 
     let auth_token = localStorage.getItem('token');
@@ -60,20 +101,11 @@ export class AbmProfesoresService {
       'Authorization': `Bearer ${auth_token}`
     });
 
-    // Create teacher data (specific to teachers)
+    // Da de alta los datos especificos para profesores
     return this.httpClient.post(`${this.url}/profesores`, dataTeacher, { headers: headers }).pipe(take(1));
   }  
 
-  //Metodo que me permite usar el recurso PUT para editar el profesor segun los valores cambiados del formulario
-  editUser(userId: number, dataUser: any): Observable<any> {
-    let auth_token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${auth_token}`
-    });
-    //Edita el profesor segun el id especificado
-    return this.httpClient.put(`${this.url}/usuario/${userId}`, dataUser, { headers: headers }).pipe(take(1));
-  }
+
     
   
 

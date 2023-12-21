@@ -70,6 +70,9 @@ export class AbmAlumnosService {
         return this.httpClient.delete(`${this.url}/usuario/${userId}`, { headers: headers }).pipe(take(1));
       }
 
+
+
+      
       createUser(dataLogin:any): Observable<any>{
 
         let auth_token = localStorage.getItem('token');

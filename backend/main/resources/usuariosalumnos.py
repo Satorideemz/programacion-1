@@ -72,6 +72,7 @@ class UsuariosAlumnos(Resource):
         if request.args.get('get_by_status'):
             usuariosalumnos = usuariosalumnos.order_by(desc(UsuariosAlumnosModel.estado_de_la_cuenta))
 
+        #traigo el usuario alumno puntual que deseo dar de alta editar o borrar
         if request.args.get('user_abm'):
             usuariosalumnos= usuariosalumnos.filter(UsuariosAlumnosModel.id_Usuario == request.args.get('user_abm'))
 

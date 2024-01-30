@@ -57,6 +57,17 @@ export class AbmAlumnosService {
         //Edita el alumno segun el id especificado
         return this.httpClient.put(`${this.url}/usuario/${userId}`, dataUser, { headers: headers }).pipe(take(1));
       }
+
+      editStudent(userId: number, dataUser: any): Observable<any> {
+        let auth_token = localStorage.getItem('token');
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${auth_token}`
+        });
+        //Edita el profesor segun el id especificado
+        return this.httpClient.put(`${this.url}/usuarioalumno/${userId}`, dataUser, { headers: headers }).pipe(take(1));
+      }      
+
       
       //Metodo que me permite borrar 
       deleteUser(userId: number): Observable<any> {

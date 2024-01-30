@@ -45,6 +45,7 @@ export class VerAlumnosComponent implements OnChanges {
     ngOnInit() {
       // Traigo los alumnos resultantes de la barra de busqueda
       this.searchquery()
+      
     }
 
     ngOnChanges(changes: SimpleChanges): void {

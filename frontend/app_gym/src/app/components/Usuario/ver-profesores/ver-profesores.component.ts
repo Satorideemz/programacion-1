@@ -12,7 +12,12 @@ import { AbmProfesoresService } from "src/app/services/profesores/abm-profesores
 })
 export class VerProfesoresComponent implements OnChanges  {
   @Input() someInput!: string ;
+
   arrayUsuario:any;
+  currentPage: number = 1; // Pagina actual
+  totalPages: number  = 0; // Total de paginas
+  totalItems: number  = 0; //Total de elementos encontrados
+  itemsPerPage: number  = 2; //Numero de items por pagina
   
   constructor(private router: Router,
 
@@ -59,6 +64,30 @@ export class VerProfesoresComponent implements OnChanges  {
       console.log('JSON data', data);
       this.arrayUsuario = data.profesores
     })
+  }
+
+  searchquery(){
+    // Traigo los alumnos resultantes de la barra de busqueda
+    this.buscarprofesorservice.getUsers().subscribe((data:any) =>{
+      console.log('JSON data', data);
+      this.arrayUsuario = data.alumnos
+      this.currentPage = data.page
+      this.totalPages = data.pages
+      this.itemsPerPage = data.total
+      console.log('JSON data', data.total);
+    })      
+  }
+  
+  navigateToFirstPage():void {
+    this.currentPage= 1
+    this.buscarprofesorservice.retrieve_requested_page(1,this.itemsPerPage)
+    this.searchquery()
+  }
+
+  changepage(pagenumber:number):void {
+    this.currentPage= pagenumber
+    this.buscarprofesorservice.retrieve_requested_page(pagenumber,this.itemsPerPage)
+    this.searchquery()
   }
 
   

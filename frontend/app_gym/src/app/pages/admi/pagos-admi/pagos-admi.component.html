@@ -1,4 +1,4 @@
-<app-navegacion></app-navegacion>
+    <app-navegacion></app-navegacion>
  <!-- Aca va la imagen de fondo --->
 <div class="background-image">
     <div class="esquina">
@@ -17,22 +17,22 @@
 
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="col-md-4">
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="Ingrese el nombre o apellido del alumno...">
-                        <div class="input-group-append">
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control"  [(ngModel)]="search_value" placeholder="Ingrese el nombre o apellido del alumno...">
+                            <div class="input-group-append">
 
-                            <button class="card btn btn-outline-secondary btn-lg" type="button" (click)="showVerAlumno = true">Buscar</button>
+                                <button class="card btn btn-outline-secondary btn-lg" type="button" (click)="capture_search_value(search_value)">Buscar</button>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div  *ngIf= "showVerAlumno">
-                    <app-pagos></app-pagos>
+                    <div  *ngIf= "showVerAlumnos">
+                        <app-pagos> [someInput]="changingValue"</app-pagos>
 
-                </div>     
-            </div>
+                    </div>     
+                </div>
         </div>
      
     </div>

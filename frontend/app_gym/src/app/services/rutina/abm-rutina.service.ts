@@ -52,4 +52,15 @@ export class AbmRutinaService {
     //Borra el alumno segun el id especificado
     return this.httpClient.delete(`${this.url}/planificacion/${rutinaId}`, { headers: headers }).pipe(take(1));
   }
+
+    // Agrego esta función para enviar una solicitud POST y crear una nueva rutina
+  createRutina(rutinadata: any): Observable<any> {
+    let auth_token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    });
+
+    return this.httpClient.post(`${this.url}/planificaciones`, rutinadata, { headers: headers }).pipe(take(1));
+  }  
 }

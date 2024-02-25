@@ -30,16 +30,21 @@ class Planificacion(Resource):
         planificacion = db.session.query(PlanificacionModel).get_or_404(id)
         data = request.get_json()
 
-        if 'fecha' in data:
-            fecha_str = data['fecha']
-            try:
-                fecha = datetime.strptime(fecha_str, '%Y-%m-%d')
-                data['fecha'] = fecha
-            except ValueError:
-                return {"message": "Formato incorrecto en la fecha [yyyy-MM-dd]."}, 400
-
         for key, value in data.items():
+            #si el atributo fecha esta en el json que envio como parametro
+            #convierte el string en formato fecha
+            try:
+                if key == 'fecha':
+                    value = datetime.strptime(value, "%d-%m-%Y")
+            except ValueError:
+                return {"message": "Formato incorrecto en la fecha [dd-mm-yyyy]."}, 400
+                                
             setattr(planificacion, key, value)
+
+
+        db.session.add(planificacion)
+        db.session.commit()
+
 
         jsonplanificacion = planificacion.to_json()
         if 'id_Clase' in jsonplanificacion and jsonplanificacion['id_Clase'] is not None:
@@ -50,8 +55,11 @@ class Planificacion(Resource):
             if planificacion not in clase_asociada.planificacionclases:
                 clase_asociada.planificacionclases.append(planificacion)
 
+            db.session.add(planificacion)
+            db.session.commit()
+
         print (data)
-        db.session.commit()
+
         
         return planificacion.to_json(), 201
 

@@ -1,11 +1,14 @@
 from .. import db
 from . import UsuarioModel
+from datetime import datetime
 
 class UsuariosAlumnos(db.Model):
     id_Alumno = db.Column(db.Integer,primary_key=True)
     id_Usuario = db.Column(db.Integer,db.ForeignKey("usuario.id_Usuario"), nullable=False)
     id_Clase = db.Column(db.Integer,nullable=True)    
     estado_de_la_cuenta = db.Column(db.String(15),nullable=False)
+    fecha_pago = db.Column(db.DateTime, nullable=True)
+
     usuarios= db.relationship("Usuario", back_populates="alumno", uselist=False, single_parent=True )
     
     
@@ -23,6 +26,7 @@ class UsuariosAlumnos(db.Model):
             'id_Clase' : self.id_Clase,
             'id_Alumno' : self.id_Alumno,
             'estado_de_la_cuenta' : str(self.estado_de_la_cuenta),
+            'fecha_pago' : str(self.fecha_pago.strftime("%d-%m-%Y")),
             'alumno_detalle' : self.usuariosalumnos.to_json()
         }
         return usuario_json
@@ -32,6 +36,7 @@ class UsuariosAlumnos(db.Model):
             'id_Usuario' : self.id_Usuario,
             'id_Alumno' : self.id_Alumno,
             'estado_de_la_cuenta' : str(self.estado_de_la_cuenta),
+            'fecha_pago' : str(self.fecha_pago.strftime("%d-%m-%Y")),
 
         }
         return usuario_json
@@ -42,12 +47,11 @@ class UsuariosAlumnos(db.Model):
             'id_Usuario' : self.id_Usuario,
             'id_Alumno' : self.id_Alumno,
             'estado_de_la_cuenta' : str(self.estado_de_la_cuenta),
+            'fecha_pago' : str(self.fecha_pago.strftime("%d-%m-%Y")),
             'alumno_detalle' : self.usuariosalumnos.to_json()
         }
         return usuario_json
     
-    
-
     
     @staticmethod
     #convertir json a objeto
@@ -56,9 +60,13 @@ class UsuariosAlumnos(db.Model):
         id_Clase = usuario_json.get('id_Clase')
         id_Alumno = usuario_json.get('id_Alumno')
         estado_de_la_cuenta = usuario_json.get('estado_de_la_cuenta')
+        fecha_pago = datetime.strptime(usuario_json.get('fecha_pago'), "%d-%m-%Y")
+
+        
 
         return UsuariosAlumnos(id_Usuario = id_Usuario,
-                       id_Clase =  id_Clase,       
-                       id_Alumno = id_Alumno,
-                       estado_de_la_cuenta = estado_de_la_cuenta,
-                        )
+            id_Clase =  id_Clase,       
+            id_Alumno = id_Alumno,
+            estado_de_la_cuenta = estado_de_la_cuenta,
+            fecha_pago = fecha_pago
+            )

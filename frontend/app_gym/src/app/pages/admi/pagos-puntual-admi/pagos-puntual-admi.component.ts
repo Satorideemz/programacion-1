@@ -20,7 +20,7 @@ constructor(private router: Router,
         nombre: ['', Validators.required],
         apellido: ['', Validators.required],
         estado_de_la_cuenta: ['', Validators.required],
-        //fecha: ['', Validators.required],
+        fecha_pago: ['', Validators.required],
       });
   }
 
@@ -35,7 +35,7 @@ constructor(private router: Router,
         nombre: [this.arrayAlumno[0].alumno_detalle.nombre, [Validators.required]],    
         apellido: [this.arrayAlumno[0].alumno_detalle.apellido, [Validators.required]],
         estado_de_la_cuenta : [this.arrayAlumno[0].estado_de_la_cuenta, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],   
-       // fecha : [this.arrayAlumno[0].alumno_detalle.dni, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],  
+        fecha_pago : [this.arrayAlumno[0].fecha_pago, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],  
       });
     });
   }

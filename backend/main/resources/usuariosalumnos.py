@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from flask import request
 from flask import jsonify
+from datetime import datetime
 from .. import db
 from main.models import UsuariosAlumnosModel, UsuarioModel
 from main.models import ClaseModel
@@ -34,9 +35,23 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
         usuariosalumnos = db.session.query(UsuariosAlumnosModel).get_or_404(id)
         data = request.get_json().items()
         for key,value in data:
+
+        #si el atributo fecha esta en el json que envio como parametro
+        #convierte el string en formato fecha
+            try:
+                if key == 'fecha_pago':
+                    value = datetime.strptime(value, "%d-%m-%Y")
+            except ValueError:
+                return {"message": "Formato incorrecto en la fecha [dd-mm-yyyy]."}, 400
+                                            
             setattr(usuariosalumnos,key,value)
         db.session.add(usuariosalumnos)
         db.session.commit()
+
+
+
+
+
 
         #si se modifica un alumno y resulta ser que se le asigna una clase
         #se realiza dicha asociacion

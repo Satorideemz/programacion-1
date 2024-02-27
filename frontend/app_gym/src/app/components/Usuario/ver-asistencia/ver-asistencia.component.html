@@ -2,19 +2,13 @@
     <li class="list-group-item d-flex justify-content-between align-items-center custom-rutina" *ngFor="let alumnos of arrayUsuario">
       {{ alumnos.id_Usuario }}. {{ alumnos.nombre }}, {{ alumnos.apellido }}
       <div>
-        <button class="btn btn-primary btn-sm me-2" (click)="editButton(alumnos.id_Usuario)"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button class="btn btn-success btn-sm me-2" (click)="editarIdClase(alumnos.id_Usuario)"><i class="fas fa-plus"></i> </button>
+        
       </div>
-
     </li>
   </ul>
   
-  <!-- Botones de paginacion -->
-  <!-- <div class="pagination-buttons">
-    <button class="btn btn-primary" *ngFor="let pageNumber of getPageNumbers()" (click)="changepage(pageNumber)">Pagina {{ pageNumber }}</button>
-  </div>
-   -->
-
-
+ 
 <igx-paginator #paginator
    [perPage]="1"
    [selectOptions]="[4,3,2,1]" 

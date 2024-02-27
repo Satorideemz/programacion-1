@@ -54,6 +54,8 @@ def create_app():
 
     api.add_resource(resources.UsuariosAlumnosResource, '/usuariosalumnos')
 
+    api.add_resource(resources.UsuariAlumnoResource, '/usuarialumno/<id_usuario>') #Agrego la nueva ruta de usuarios alumnos
+
     api.add_resource(resources.UsuarioAlumnoResource, '/usuarioalumno/<id>')
 
     api.add_resource(resources.UsuarioProfesorResource, '/usuarioprofesor/<id>')

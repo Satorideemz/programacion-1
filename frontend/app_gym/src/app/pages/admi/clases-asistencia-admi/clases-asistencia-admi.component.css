@@ -14,7 +14,12 @@
   width: 100%;
 
 }
-
+  
+/* Remove button width restrictions */
+  .card-block1 .btn,
+  .card-block2 .btn {
+    width: 100%;
+  }
 /* Este es el logo de la esquina*/
 
   .esquina img {
@@ -70,4 +75,22 @@
 .tolal-alumnos{
 
   color: rgb(255, 255, 255);
+}
+
+.custom-rutina {
+  background-color: rgb(160, 161, 161); /* You can change "lightblue" to any color you prefer */
+}
+
+
+/*color distinto para el contenido de las rutinas */
+.custom-bg-color {
+  background-color: rgb(107, 107, 107); /* You can change "lightgreen" to any color you prefer */
+}
+
+.pagination-buttons {
+  display: flex;
+}
+
+.pagination-buttons button {
+  margin-right: 20px; /* Adjust the margin as needed */
 }

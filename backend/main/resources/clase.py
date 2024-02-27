@@ -13,9 +13,30 @@ class ProfesorClase(Resource):
     
     def get(self,id):
         clase= db.session.query(ClaseModel).get_or_404(id)
-
         return clase.to_json()
         
+    def get_asistencia(self, id):
+        clase = db.session.query(ClaseModel).get_or_404(id)
+        
+        # Obtener la lista de asistencias para la clase
+        asistencias = (
+            db.session.query(UsuarioModel.id_Usuario, UsuarioModel.nombre, UsuarioModel.apellido)
+            .join(UsuariosAlumnosModel, UsuariosAlumnosModel.id_Usuario == UsuarioModel.id_Usuario)
+            .filter(UsuariosAlumnosModel.id_Clase == id)
+            .all()
+        )
+
+        # Formatear la lista de asistencias como JSON
+        asistencias_json = [
+            {
+                'id_Usuario': id_usuario,
+                'nombre': nombre,
+                'apellido': apellido
+            }
+            for id_usuario, nombre, apellido in asistencias
+        ]
+
+        return jsonify({'asistencias': asistencias_json})
 
 
 #Coleccion de recurso Profesores
@@ -101,3 +122,14 @@ class ProfesorClases(Resource):
         db.session.add(clase)
         db.session.commit()
         return clase.to_json(), 201
+    
+    def getAsistencia(self):
+        # Obtener el ID de la clase desde los parámetros de la solicitud
+        clase_id = request.args.get('clase_id')
+
+        # Validar que se proporcionó el ID de la clase
+        if not clase_id:
+            return jsonify({'error': 'Se requiere el ID de la clase para obtener la asistencia'}), 400
+
+        # Llamar al método get_asistencia de la clase ProfesorClase
+        return ProfesorClase().get_asistencia(clase_id)

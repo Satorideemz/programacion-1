@@ -4,6 +4,7 @@ from .usuario import Usuarios as UsuariosResource
 
 from .usuariosalumnos import UsuarioAlumno as UsuarioAlumnoResource
 from .usuariosalumnos import UsuariosAlumnos as UsuariosAlumnosResource
+from .usuariosalumnos import UsuariAlumno as UsuariAlumnoResource
 
 from .usuarioprofesor import UsuarioProfesor as UsuarioProfesorResource
 from .usuarioprofesor import UsuariosProfesores as UsuariosProfesoresResource

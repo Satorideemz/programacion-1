@@ -52,6 +52,7 @@ import { NuevoUsuarioComponent } from './pages/admi/nuevo-usuario/nuevo-usuario.
 import { LoggedinComponent } from './components/loggedin/loggedin.component';
 import { MainmenuComponent } from './components/mainmenu/mainmenu.component';
 import { VerAlumnosComponent } from './components/Usuario/ver-alumnos/ver-alumnos.component';
+import { VerAsistenciaComponent } from './components/Usuario/ver-asistencia/ver-asistencia.component';
 import { VerProfesoresComponent } from './components/Usuario/ver-profesores/ver-profesores.component';
 import { UsuarioAbmComponent } from './pages/admi/usuario-abm/usuario-abm.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -99,6 +100,7 @@ export function tokenGetter() {
     LoggedinComponent,
     MainmenuComponent,
     VerAlumnosComponent,
+    VerAsistenciaComponent,
     VerProfesoresComponent,
     UsuarioAbmComponent
 

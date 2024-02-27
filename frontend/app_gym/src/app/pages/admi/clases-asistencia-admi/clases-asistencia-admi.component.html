@@ -20,44 +20,33 @@
                                 <!-- Content for the first card -->
                             </div>
                         </div>
-                
+                        
+                        <div  class="col-md-4">
+                            <div class="input-group mb-2">
+                                <input type="text" class="form-control" [(ngModel)]="search_value"  placeholder="Ingrese el nombre o apellido del alumno...">
+                                <div class="input-group-append">
+                                    <button class="card btn btn-danger btn-lg" type="button" (click)="capture_search_value(search_value)">Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+          
+                        <div  *ngIf= "showVerAlumnos">
+                            <app-ver-asistencia [someInput]="changingValue"></app-ver-asistencia>
+                        </div>
+
                         <!-- Text Pane 1 -->
                         <div class="card-text">
                             <h3>Alumnos:</h3>
                         </div>
 
                         <!-- Nested List -->
-                        <ul class="list-group mt-3">
-                            <li class="list-group-item d-flex justify-content-between align-items-center custom-rutina">
-                                <h5>Pepe</h5>
+                        <div *ngFor="let asistencia of arrayAsistencia">
+                            <li class="card-text">
+                                {{asistencia.id_Usuario}} : {{asistencia.apellido}}   {{asistencia.nombre}}  
+                                    <button class="btn btn-danger btn-sm delete-btn" (click)="borrarIdClase(asistencia.id_Usuario)"><i class="fa-solid fa-trash"></i></button>
                             </li>
-                            <!-- Content for Rutina 1 -->
-                            <li class="list-group-item d-flex justify-content-between align-items-center custom-bg-color">
-                                <h5>Roxy</h5>
-                            </li>
-
-                            <li class="list-group-item d-flex justify-content-between align-items-center custom-rutina">
-                                <h5>Pilar</h5>
-                            </li>
-                            <!-- Content for Rutina 1 -->
-                            <li class="list-group-item d-flex justify-content-between align-items-center custom-bg-color">
-                                <h5>Pedro</h5>
-                            </li>
-                           
-                            <li class="list-group-item d-flex justify-content-between align-items-center custom-rutina">
-                                <h5>Nacho</h5>
-                            </li>
-                            <!-- Content for Rutina 1 -->
-                            <li class="list-group-item d-flex justify-content-between align-items-center custom-bg-color">
-                                <h5>Julian</h5>
-                            </li>
-
-                        </ul>
-                        <div>
-
-                            <h1 class="tolal-alumnos">Total: 6 Alumnos</h1>
-
                         </div>
+                    
                     </div>
                 </div>
          

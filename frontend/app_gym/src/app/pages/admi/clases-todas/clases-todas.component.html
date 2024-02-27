@@ -21,7 +21,7 @@
                 <div class="card">
                     <div class="card-body">
                         
-                        <a class="nav-link" routerLink="/clases-asistencia-admi"> {{clase.clase_id}} {{clase.detalles}}</a> 
+                        <a class="nav-link" (click)="seleccionarclase(clase.id_Clase)"> {{clase.id_Clase}} {{clase.detalles}}</a> 
                    </div>
                 </div>
             </div>

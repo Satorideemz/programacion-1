@@ -65,11 +65,43 @@ class UsuarioAlumno(Resource): #A la clase alumno le indico que va a ser del tip
         db.session.commit()
 
         return usuariosalumnos.to_json(),201
-       
+         
+class UsuariAlumno(Resource): #Nuevo Recurso para obtener todos los alumnos por su id_Usuario
+#Nuevo put para modificar al alumno con el Id_Usuario
+    @role_required(roles=["admin", "profesor"])
+    def put(self, id_usuario):
+        # Buscar el usuario alumno por su Id_Usuario
+        usuariosalumnos = db.session.query(UsuarioModel).filter_by(id_Usuario=id_usuario).first()
+        
+        if usuariosalumnos:
+            # Si se encuentra el usuario, buscar su correspondiente registro de alumno
+            usuariosalumnos = db.session.query(UsuariosAlumnosModel).filter_by(id_Usuario=id_usuario).first()
+            
+            if usuariosalumnos:
+                # Si se encuentra el registro de alumno, actualizar sus datos
+                data = request.get_json()
+                
+                for key, value in data.items():
+                    setattr(usuariosalumnos, key, value)
+
+                db.session.commit()
+
+                # Verificar si se asigna una clase al alumno modificado
+                if 'id_Clase' in data and data['id_Clase'] is not None:
+                    clase_asociada = db.session.query(ClaseModel).get_or_404(data['id_Clase'])
+                    clase_asociada.alumnoclases.append(usuariosalumnos)
+                    db.session.commit()
+
+                return usuariosalumnos.to_json(), 201
+            else:
+                return jsonify({'message': 'El usuario no es un alumno'}), 404
+        else:
+            return jsonify({'message': 'Usuario no encontrado'}), 408
+        
 
 class UsuariosAlumnos(Resource):
-    #obtener lista de los alumnos
 
+    #obtener lista de los alumnos
     @role_required(roles = ["admin","profesor"])
     def get(self):
         page = 1

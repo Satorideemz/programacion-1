@@ -3,6 +3,8 @@ import { Router, Route, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AbmAlumnosService } from 'src/app/services/alumnos/abm-alumnos.service';
 import { AbmProfesoresService } from 'src/app/services/profesores/abm-profesores.service';
+import { AbmAdminService } from 'src/app/services/admin/abm-admin.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-abm-usuario',
@@ -12,15 +14,19 @@ import { AbmProfesoresService } from 'src/app/services/profesores/abm-profesores
 export class AbmUsuarioComponent {
   abmalumno! : FormGroup;
   abmprofesor!: FormGroup;
+  abmadmin!: FormGroup; 
   arrayAlumno:any;
   arrayProfesor:any;
+  arrayAdmin:any;
   buttonId: number = 0;
 
   constructor(private router: Router,
+              private jwtHelper: JwtHelperService,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private abm_alumnos: AbmAlumnosService,
-              private abm_profesores: AbmProfesoresService ) {
+              private abm_profesores: AbmProfesoresService,
+              private abm_admin: AbmAdminService ) {
                 this.route.queryParams.subscribe(params => { 
                   this.buttonId = params['id'];
                 });
@@ -49,32 +55,18 @@ export class AbmUsuarioComponent {
                     disponibilidad : ['', Validators.required],
                   });
 
-              }
+                  this.abmadmin = this.formBuilder.group({
+                    nombre: ['', Validators.required],
+                    apellido: ['', Validators.required],
+                    mail: ['', [Validators.required, Validators.email]],
+                    documento: ['', Validators.required],
+                    telefono: ['', Validators.required],
+                    password: ['', Validators.required],
+                    edad: ['', Validators.required],
+                    sexo: ['', Validators.required],
+                  });                  
 
-
-  // ngOnInit() {
-  //   this.abm_alumnos.getUsers().subscribe((data:any) =>{
-  //     console.log('JSON data', data);
-  //     this.arrayUsuario = data.alumnos
-
-  //     this.abmalumno = this.formBuilder.group({
-  //       nombre : ['pepe', [Validators.required]],       //Validators.pattern('/^[A-Za-z\s']+$/')
-  //       apellido: ['', [Validators.required]],
-  //       mail : ['', [Validators.required,Validators.email]],         //Validators.email
-  //       telefono : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],     //Validators.pattern('/^\d{10}$/')
-  //       documento : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],    //Validators.pattern('/^\d{10}$/')
-  //       edad : ['', [Validators.required,Validators.minLength(1), Validators.maxLength(5)]],         //Validators.pattern('/^\d{10}$/')
-  //       sexo : ['', Validators.required],
-  //       titulo : [''],
-  //       disponibilidad : [''],
-  //       password: ['', Validators.required],
-  //       confirmpassword: ['', Validators.required],
-  //     }
-  //     );  
-
-  //   })
-  // }
-
+              }              
 
   ngOnInit() {
     //Traigo los datos del usuario que deseo editar
@@ -114,8 +106,25 @@ export class AbmUsuarioComponent {
 
         });
       });
-    }  
-  
+    }
+      
+    if (this.mybuttonId== 3){
+      this.abm_admin.getUser(this.decodeToken()).subscribe((data: any) => {
+        console.log('JSON data', data);
+        this.arrayAdmin = data;
+        //Coloco sus atributos en los campos del formulario
+        this.abmadmin = this.formBuilder.group({
+          nombre: [this.arrayAdmin.nombre, [Validators.required]],     //Validators.pattern('/^[A-Za-z\s']+$/')
+          apellido: [this.arrayAdmin.apellido, [Validators.required]],
+          mail : [this.arrayAdmin.mail, [Validators.required,Validators.email]],         //Validators.email
+          telefono : [this.arrayAdmin.telefono, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],          //Validators.pattern('/^\d{10}$/')
+          documento : [this.arrayAdmin.dni, [Validators.required,Validators.minLength(1), Validators.maxLength(25)]],    //Validators.pattern('/^\d{10}$/')
+          edad : [this.arrayAdmin.edad, [Validators.required,Validators.minLength(1), Validators.maxLength(5)]],         //Validators.pattern('/^\d{10}$/')
+          sexo : [this.arrayAdmin.sexo, Validators.required],        
+
+        });
+      });
+    }
 
   }
   
@@ -123,6 +132,31 @@ export class AbmUsuarioComponent {
     return this.buttonId
   }
 
+  get isToken(){
+    return localStorage.getItem('token');
+  }
+  
+  decodeToken(): string {
+    const token = this.isToken;
+
+    //typescript al ser tipado fuerte no soporta parametros que puedan ser nulos
+    if (token) {
+      try {
+        const decodedToken: any = this.jwtHelper.decodeToken(token);
+        //decodifico token y me quedo solo con el rol
+        const user_id: string = decodedToken?.id_Usuario || '';
+        return user_id;
+      } catch (error) {
+        //atrapo posible error en la decodificacion del token
+        console.error('Error decoding token:', error);
+        return '';
+      }
+
+    } else {
+      console.error('No token found.');
+      return '';
+    }
+  }
 
   //Boton de confirmacion para borrar usuario
   confirmDelete_User(userId: number): void {
@@ -147,6 +181,18 @@ export class AbmUsuarioComponent {
     }
   }
 
+    //Boton de guardar cambios para los alumnos
+    submit_user(userId: number): void {
+      //Me aseguro antes que el formulario tenga valores validos antes de enviar
+
+      if (this.abmadmin.valid) {
+        console.log('Form login: ', this.abmadmin.value);
+        this.editStudent(this.abmadmin.value, userId);
+      } else {
+        alert('Formulario inválido');
+        console.log('Form login: ', this.abmadmin.value);
+      }
+    }
 
     //Boton de guardar cambios para los alumnos
     submit_student(userId: number): void {
@@ -170,6 +216,26 @@ export class AbmUsuarioComponent {
         alert('Formulario inválido');
       }
     }
+
+    //Traigo al servicio que invocara el PUT para editar administradores
+    editAdmin(dataUser: any = {}, userId: number): void {
+      console.log('Comprobando credenciales');
+      this.abm_admin.editUser(userId, dataUser).subscribe({
+        next: () => {
+          console.log(dataUser);
+          this.router.navigateByUrl('/home');
+          //Navego a la ruta abm-usuario luego de hacer la modificacion
+        },
+        error: (error) => {
+          alert('Credenciales inválidas');
+        },
+        complete: () => {
+          console.log('Operación de edición completa');
+        }
+      });
+    }    
+
+
 
     //Traigo al servicio que invocara el PUT para editar alumnos
     editStudent(dataUser: any = {}, userId: number): void {

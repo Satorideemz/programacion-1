@@ -50,6 +50,13 @@ export class NavegacionComponent {
     this.authService.logout();
     this.router.navigateByUrl('home')
   }
+
+  redirectToMiperfil() {
+    const buttonId = 3; // Id para buscar alumnos
+    this.router.navigate(['/usuario-abm'] , { queryParams: { id: buttonId } });
+  }
+
+
 }
 
 

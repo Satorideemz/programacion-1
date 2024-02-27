@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AbmRutinaService } from 'src/app/services/rutina/abm-rutina.service';
 
@@ -10,28 +10,28 @@ import { AbmRutinaService } from 'src/app/services/rutina/abm-rutina.service';
 })
 export class EditarRutinaComponent implements OnInit {
   hashRutinas: any;
-  // rutinaForm: FormGroup = new FormGroup({
-  //   estado: new FormControl('', Validators.required),
-  //   fecha: new FormControl('', Validators.required),
-  //   descripcion: new FormControl('', Validators.required)
-
-  //  });
-
   rutinaForm!: FormGroup;
+  buttonId: number = 0;
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private abm_rutina: AbmRutinaService,
-    private formBuilder: FormBuilder
-
-  ) {}
+    private formBuilder : FormBuilder )
+  {   
+      this.rutinaForm = this.formBuilder.group({
+        estado: ['', [Validators.required]],
+        fecha: ['', [Validators.required]],
+        descripcion: ['', [Validators.required]]
+      })
+  }
 
   ngOnInit() {
     // Traigo las rutinas
     this.rutinaForm = this.formBuilder.group({
-      estado: [null],
-      fecha: [null],
-      descripcion: [null]
+      estado: ['', [Validators.required]],
+      fecha: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]]
     })
     this.abm_rutina.getRutina().subscribe((data: any) => {
       console.log('JSON data', data);
@@ -55,6 +55,7 @@ export class EditarRutinaComponent implements OnInit {
       // El formulario es válido, puedes proceder con la solicitud PUT
       this.putRutina(this.rutinaForm.value, this.hashRutinas.id_planificacion);
     } else {
+      console.log("formulario:",this.rutinaForm.value)
       // El formulario no es válido, muestra un mensaje de error o realiza una acción apropiada
       alert('Formulario inválido. Asegúrate de completar todos los campos.');
     }
@@ -64,14 +65,17 @@ export class EditarRutinaComponent implements OnInit {
   putRutina(rutinadata: any = {}, rutinaId: number): void {
     console.log('Comprobando credenciales');
     console.log(rutinadata)
+    
     this.abm_rutina.putRutina(rutinaId, rutinadata).subscribe({
       next: () => {
         console.log(rutinadata);
         this.router.navigateByUrl('/rutina-abm');
+        console.log(rutinadata);
         // Navego a la ruta rutina-abm luego de hacer la modificación
       },
       error: (error) => {
         alert('Credenciales inválidas');
+        console.log(rutinadata);
       },
       complete: () => {
         console.log('Operación de edición completa');

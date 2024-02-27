@@ -19,7 +19,7 @@ class Planificacion(db.Model):
             'id_Clase' : self.id_Clase ,
             'detalles' : str(self.detalles),
             'estado' : str(self.estado),
-            'fecha' : str(self.fecha.strftime("%d-%m-%Y"))
+            'fecha' : str(self.fecha.strftime("%Y-%m-%d"))
         }
         return planificacion_json
     
@@ -29,7 +29,7 @@ class Planificacion(db.Model):
             'id_Clase' : self.id_Clase ,
             'detalles' : str(self.detalles),
             'estado' : str(self.estado),
-            'fecha' : str(self.fecha.strftime("%d-%m-%Y"))
+            'fecha' : str(self.fecha.strftime("%Y-%m-%d"))
         }
         return planificacion_json
     
@@ -41,7 +41,7 @@ class Planificacion(db.Model):
         id_Clase = planificacion_json.get('id_Clase')
         detalles = planificacion_json.get('detalles')
         estado = planificacion_json.get('estado')
-        fecha = datetime.strptime(planificacion_json.get('fecha'), "%d-%m-%Y")
+        fecha = datetime.strptime(planificacion_json.get('fecha'), "%Y-%m-%d")
         
         
         return Planificacion(id_planificacion = id_planificacion,

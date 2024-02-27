@@ -35,9 +35,9 @@ class Planificacion(Resource):
             #convierte el string en formato fecha
             try:
                 if key == 'fecha':
-                    value = datetime.strptime(value, "%d-%m-%Y")
+                    value = datetime.strptime(value, "%Y-%m-%d")
             except ValueError:
-                return {"message": "Formato incorrecto en la fecha [dd-mm-yyyy]."}, 400
+                return {"message": "Formato incorrecto en la fecha [yyyy-dd-mm]."}, 400
                                 
             setattr(planificacion, key, value)
 

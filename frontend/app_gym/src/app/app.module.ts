@@ -56,6 +56,7 @@ import { VerAsistenciaComponent } from './components/Usuario/ver-asistencia/ver-
 import { VerProfesoresComponent } from './components/Usuario/ver-profesores/ver-profesores.component';
 import { UsuarioAbmComponent } from './pages/admi/usuario-abm/usuario-abm.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListaAsistenciaComponent } from './components/admi/lista-asistencia/lista-asistencia.component';
 
 //I keep the new line
 export function tokenGetter() {
@@ -102,7 +103,8 @@ export function tokenGetter() {
     VerAlumnosComponent,
     VerAsistenciaComponent,
     VerProfesoresComponent,
-    UsuarioAbmComponent
+    UsuarioAbmComponent,
+    ListaAsistenciaComponent
 
   ],
 

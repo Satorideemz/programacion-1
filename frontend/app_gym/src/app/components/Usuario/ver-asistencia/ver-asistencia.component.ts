@@ -81,6 +81,13 @@ export class VerAsistenciaComponent implements OnChanges {
 
     //}
 
+    seleccionarclase(clase_id:any): void {
+      this.asistencia.retrieve_clase_id(clase_id); //guardo el id de la clase para posteriormente saber que traer
+      console.log(clase_id)
+      this.router.navigate(['/clases-todas'] ); 
+    
+    }
+
     editarIdClase(userId: number): void {
       console.log(userId);
       this.asistencia.editUserIdClase(userId).subscribe({
@@ -90,7 +97,7 @@ export class VerAsistenciaComponent implements OnChanges {
           //Navego a la ruta clases-asistencia luego de hacer la modificacion
         },
         error: (error) => {
-          alert('Credenciales inválidas');
+          alert('No se pudo editar el id_clase del alumno');
         },
         complete: () => {
           console.log('Operación de edición completa');

@@ -23,10 +23,18 @@ export class NuevaRutinaComponent implements OnInit {
     this.rutinaForm = this.formBuilder.group({
       estado: [null, Validators.required],
       fecha: [null, Validators.required],
-      descripcion: [null, Validators.required]
+      detalles: [null, Validators.required]
     });
   }
 
+  submit() {
+    this.abm_rutina.getmaxid().subscribe((maxId: any) => {
+      // Create student with the obtained ID
+      const rutinaData = { "id_planificacion": maxId+1 };
+      //asigno rol del alumno a mi abm usuario
+      this.createRutina(this.rutinaForm.value);
+    });
+  }
   // Función para guardar la rutina
   // Boton de guardar cambios
   

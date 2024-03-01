@@ -20,6 +20,18 @@ export class AbmRutinaService {
     this.student_id= search;
   }
 
+  getmaxid(){
+    let auth_token = localStorage.getItem('token')
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+    //Busco el maximo id de rutina que exista
+    return this.httpClient.get(this.url + '/id_planificacion?get_max_id=0', {headers: headers});
+
+  }
+
   getRutina() {
     let auth_token = localStorage.getItem('token')
 

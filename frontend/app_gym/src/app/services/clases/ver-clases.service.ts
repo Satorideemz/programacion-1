@@ -7,10 +7,17 @@ import { Observable, take } from 'rxjs';
 })
 export class VerClasesService {
   url='/api';
-  clase_id=""
+  clase_id="";
+  class_flag=false;
+
   constructor(
     private httpClient: HttpClient
   ) {}
+
+  retrieve_class_flag(){
+    
+  }
+
 
    //metodo que me permite asignar el string del valor a buscar en el backend
   retrieve_clase_id(search: string){

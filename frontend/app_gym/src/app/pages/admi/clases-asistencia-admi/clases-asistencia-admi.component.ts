@@ -18,7 +18,9 @@ export class ClasesAsistenciaAdmiComponent{
   showVerAlumnos: boolean = false;
   //variable que comparte el componente padre e hijo para saber si tuvo cambios el campo de busqueda
   changingValue: string="";
-
+  //variable de bandera que comparte el padre con sus componentes hijos para saber si se agrego un nuevo alumno
+  editflag: boolean = false;
+  
   constructor(private router: Router,
     private route: ActivatedRoute,
     private asistencia: VerClasesService,

@@ -39,13 +39,7 @@
                             <h3>Alumnos:</h3>
                         </div>
 
-                        <!-- Nested List -->
-                        <div *ngFor="let asistencia of arrayAsistencia">
-                            <li class="card-text">
-                                {{asistencia.id_Usuario}} : {{asistencia.apellido}}   {{asistencia.nombre}}  
-                                    <button class="btn btn-danger btn-sm delete-btn" (click)="borrarIdClase(asistencia.id_Usuario)"><i class="fa-solid fa-trash"></i></button>
-                            </li>
-                        </div>
+                        <app-lista-asistencia></app-lista-asistencia>
                     
                     </div>
                 </div>

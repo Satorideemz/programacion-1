@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { Component, Input, Output, OnChanges, EventEmitter, SimpleChanges } from "@angular/core";
 import { Router } from '@angular/router';
 import { BuscarAlumnoService } from 'src/app/services/alumnos/buscar-alumno.service';
 import { VerClasesService } from 'src/app/services/clases/ver-clases.service';
@@ -14,6 +14,8 @@ import { AbmAlumnosService } from "src/app/services/alumnos/abm-alumnos.service"
 export class VerAsistenciaComponent implements OnChanges {
   //Este input lo uso como variable para saber si debo refrescar el resultado de busqueda
   @Input() someInput!: string ;
+
+  @Output() someOutput = new EventEmitter<boolean>();
 
   arrayAsistencia: any;
   arrayUsuario:any;
